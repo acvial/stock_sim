@@ -1,0 +1,44 @@
+services:
+  simulator:
+
+    image: sim_dev
+    container_name: ${SIMULATOR_NAME}
+    build: 
+      context: ./sim
+      dockerfile: Dockerfile.dev  
+
+    environment:
+      - CONTROLLER_NAME=${CONTROLLER_NAME}
+      - IN_PORT=${PORT_1}
+      - OUT_PORT=${PORT_2}
+
+    volumes:
+      - ./sim:/app
+    
+    networks:
+      - sim_network
+
+  controller:
+
+    image: controller_dev
+    container_name: ${CONTROLLER_NAME}
+    build: 
+      context: ./controller
+      dockerfile: Dockerfile.dev
+    
+    environment:
+      - SIMULATOR_NAME=${SIMULATOR_NAME}
+      - IN_PORT=${PORT_2}
+      - OUT_PORT=${PORT_1}
+
+    volumes:
+      - ./controller:/app
+
+    networks:
+      - sim_network
+
+networks:
+  sim_network:
+    driver: bridge
+    
+  

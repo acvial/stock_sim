@@ -18,6 +18,8 @@ services:
     networks:
       - sim_network
 
+    command: "tail -f dev/null"
+
   controller:
 
     image: controller_dev
@@ -36,6 +38,8 @@ services:
 
     networks:
       - sim_network
+
+    command: "tail -f dev/null"
 
 networks:
   sim_network:

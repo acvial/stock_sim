@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/app/build/src",
+  "command": "/usr/bin/g++   -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/Simulator.dir/main.cpp.o -c /app/src/main.cpp",
+  "file": "/app/src/main.cpp",
+  "output": "src/CMakeFiles/Simulator.dir/main.cpp.o"
+}
+]

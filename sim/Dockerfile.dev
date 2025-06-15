@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     libzmq3-dev \
     libprotobuf-dev \
     protobuf-compiler \
+    libspdlog-dev \
     cmake \
     gcc \
     g++ \

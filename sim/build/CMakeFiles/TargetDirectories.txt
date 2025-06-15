@@ -1,0 +1,7 @@
+/app/build/CMakeFiles/edit_cache.dir
+/app/build/CMakeFiles/rebuild_cache.dir
+/app/build/src/CMakeFiles/Simulator.dir
+/app/build/src/CMakeFiles/edit_cache.dir
+/app/build/src/CMakeFiles/rebuild_cache.dir
+/app/build/src/Manager/CMakeFiles/edit_cache.dir
+/app/build/src/Manager/CMakeFiles/rebuild_cache.dir

@@ -30,6 +30,53 @@ CommunicationUtils::~CommunicationUtils(){
     pushContext.close();
 }
 
+std::string CommunicationUtils::pull(){
+
+    // Create empty string
+    std::string serializedData;
+
+    try{
+
+        SPDLOG_DEBUG("Working...");
+
+        while(true){
+
+            zmq::message_t serializedMessage;
+            std::optional<size_t> recvResult = pullSocket.recv(serializedMessage, zmq::recv_flags::dontwait);
+
+            if(recvResult){ // If there is a message
+
+                SPDLOG_ERROR("Received message.");
+                serializedData = std::string(static_cast<char*>(serializedMessage.data()), serializedMessage.size());
+
+                return serializedData;
+            }
+           else{ // Otherwise sleep for 0.1 seconds
+                
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            }
+        }
+    }
+    catch(const zmq::error_t& e){
+
+        SPDLOG_ERROR(e.what());
+
+        // Terminate program
+        std::terminate();
+    }
+
+    return serializedData;
+}
+
+void CommunicationUtils::push(std::string serializedData){
+
+    // Send message
+    zmq::message_t message(serializedData.size());
+    memcpy(message.data(), serializedData.data(), serializedData.size());
+    pushSocket.send(message, zmq::send_flags::none);
+    SPDLOG_ERROR("Message sent");
+}
+
 protocols::SimulationRequest* CommunicationUtils::deserialize(std::string deserializeData){
 
     // Extract message and deserialise it

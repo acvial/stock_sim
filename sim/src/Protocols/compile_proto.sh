@@ -1,0 +1,1 @@
+protoc -I=/app/src/Protocols --cpp_out=/app/src/Protocols /app/src/Protocols/Simulation.proto

@@ -1,8 +1,26 @@
 [
 {
   "directory": "/app/build/src",
-  "command": "/usr/bin/g++   -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/Simulator.dir/main.cpp.o -c /app/src/main.cpp",
+  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Logger -I/app/src/Protocols -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/Simulator.dir/main.cpp.o -c /app/src/main.cpp",
   "file": "/app/src/main.cpp",
   "output": "src/CMakeFiles/Simulator.dir/main.cpp.o"
+},
+{
+  "directory": "/app/build/src/Communications",
+  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Logger -I/app/src/Protocols -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o -c /app/src/Communications/Communication_Utils.cpp",
+  "file": "/app/src/Communications/Communication_Utils.cpp",
+  "output": "src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o"
+},
+{
+  "directory": "/app/build/src/Logger",
+  "command": "/usr/bin/g++  -I/app/src/Logger -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/LOGGER_LIB.dir/Logger.cpp.o -c /app/src/Logger/Logger.cpp",
+  "file": "/app/src/Logger/Logger.cpp",
+  "output": "src/Logger/CMakeFiles/LOGGER_LIB.dir/Logger.cpp.o"
+},
+{
+  "directory": "/app/build/src/Protocols",
+  "command": "/usr/bin/g++  -I/app/src/Protocols -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/PROTOCOL_LIB.dir/Simulation.pb.cc.o -c /app/src/Protocols/Simulation.pb.cc",
+  "file": "/app/src/Protocols/Simulation.pb.cc",
+  "output": "src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/Simulation.pb.cc.o"
 }
 ]

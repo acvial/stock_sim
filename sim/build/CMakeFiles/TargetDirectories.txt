@@ -3,5 +3,14 @@
 /app/build/src/CMakeFiles/Simulator.dir
 /app/build/src/CMakeFiles/edit_cache.dir
 /app/build/src/CMakeFiles/rebuild_cache.dir
+/app/build/src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir
+/app/build/src/Communications/CMakeFiles/edit_cache.dir
+/app/build/src/Communications/CMakeFiles/rebuild_cache.dir
+/app/build/src/Logger/CMakeFiles/LOGGER_LIB.dir
+/app/build/src/Logger/CMakeFiles/edit_cache.dir
+/app/build/src/Logger/CMakeFiles/rebuild_cache.dir
 /app/build/src/Manager/CMakeFiles/edit_cache.dir
 /app/build/src/Manager/CMakeFiles/rebuild_cache.dir
+/app/build/src/Protocols/CMakeFiles/PROTOCOL_LIB.dir
+/app/build/src/Protocols/CMakeFiles/edit_cache.dir
+/app/build/src/Protocols/CMakeFiles/rebuild_cache.dir

@@ -129,6 +129,45 @@ Simulator/fast:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/Simulator.dir/build.make src/CMakeFiles/Simulator.dir/build
 .PHONY : Simulator/fast
 
+#=============================================================================
+# Target rules for targets named COMMUNICATIONS_LIB
+
+# Build rule for target.
+COMMUNICATIONS_LIB: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 COMMUNICATIONS_LIB
+.PHONY : COMMUNICATIONS_LIB
+
+# fast build rule for target.
+COMMUNICATIONS_LIB/fast:
+	$(MAKE) $(MAKESILENT) -f src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/build.make src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/build
+.PHONY : COMMUNICATIONS_LIB/fast
+
+#=============================================================================
+# Target rules for targets named LOGGER_LIB
+
+# Build rule for target.
+LOGGER_LIB: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 LOGGER_LIB
+.PHONY : LOGGER_LIB
+
+# fast build rule for target.
+LOGGER_LIB/fast:
+	$(MAKE) $(MAKESILENT) -f src/Logger/CMakeFiles/LOGGER_LIB.dir/build.make src/Logger/CMakeFiles/LOGGER_LIB.dir/build
+.PHONY : LOGGER_LIB/fast
+
+#=============================================================================
+# Target rules for targets named PROTOCOL_LIB
+
+# Build rule for target.
+PROTOCOL_LIB: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PROTOCOL_LIB
+.PHONY : PROTOCOL_LIB
+
+# fast build rule for target.
+PROTOCOL_LIB/fast:
+	$(MAKE) $(MAKESILENT) -f src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/build.make src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/build
+.PHONY : PROTOCOL_LIB/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -137,6 +176,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... COMMUNICATIONS_LIB"
+	@echo "... LOGGER_LIB"
+	@echo "... PROTOCOL_LIB"
 	@echo "... Simulator"
 .PHONY : help
 

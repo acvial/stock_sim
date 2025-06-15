@@ -92,6 +92,12 @@ Simulator_EXTERNAL_OBJECTS =
 
 src/Simulator: src/CMakeFiles/Simulator.dir/main.cpp.o
 src/Simulator: src/CMakeFiles/Simulator.dir/build.make
+src/Simulator: src/Communications/libCOMMUNICATIONS_LIB.a
+src/Simulator: src/Logger/libLOGGER_LIB.a
+src/Simulator: src/Protocols/libPROTOCOL_LIB.a
+src/Simulator: /usr/lib/x86-64-linux-gnu/libzmq.so
+src/Simulator: /usr/lib/x86-64-linux-gnu/libprotobuf.so
+src/Simulator: /usr/lib/x86-64-linux-gnu/libfmt.so
 src/Simulator: src/CMakeFiles/Simulator.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Simulator"
 	cd /app/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Simulator.dir/link.txt --verbose=$(VERBOSE)

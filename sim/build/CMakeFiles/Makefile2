@@ -79,17 +79,56 @@ clean: src/clean
 
 # Recursive "all" directory target.
 src/all: src/CMakeFiles/Simulator.dir/all
+src/all: src/Communications/all
+src/all: src/Logger/all
 src/all: src/Manager/all
+src/all: src/Protocols/all
 .PHONY : src/all
 
 # Recursive "preinstall" directory target.
+src/preinstall: src/Communications/preinstall
+src/preinstall: src/Logger/preinstall
 src/preinstall: src/Manager/preinstall
+src/preinstall: src/Protocols/preinstall
 .PHONY : src/preinstall
 
 # Recursive "clean" directory target.
 src/clean: src/CMakeFiles/Simulator.dir/clean
+src/clean: src/Communications/clean
+src/clean: src/Logger/clean
 src/clean: src/Manager/clean
+src/clean: src/Protocols/clean
 .PHONY : src/clean
+
+#=============================================================================
+# Directory level rules for directory src/Communications
+
+# Recursive "all" directory target.
+src/Communications/all: src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/all
+.PHONY : src/Communications/all
+
+# Recursive "preinstall" directory target.
+src/Communications/preinstall:
+.PHONY : src/Communications/preinstall
+
+# Recursive "clean" directory target.
+src/Communications/clean: src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/clean
+.PHONY : src/Communications/clean
+
+#=============================================================================
+# Directory level rules for directory src/Logger
+
+# Recursive "all" directory target.
+src/Logger/all: src/Logger/CMakeFiles/LOGGER_LIB.dir/all
+.PHONY : src/Logger/all
+
+# Recursive "preinstall" directory target.
+src/Logger/preinstall:
+.PHONY : src/Logger/preinstall
+
+# Recursive "clean" directory target.
+src/Logger/clean: src/Logger/CMakeFiles/LOGGER_LIB.dir/clean
+.PHONY : src/Logger/clean
 
 #=============================================================================
 # Directory level rules for directory src/Manager
@@ -107,18 +146,35 @@ src/Manager/clean:
 .PHONY : src/Manager/clean
 
 #=============================================================================
+# Directory level rules for directory src/Protocols
+
+# Recursive "all" directory target.
+src/Protocols/all: src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/all
+.PHONY : src/Protocols/all
+
+# Recursive "preinstall" directory target.
+src/Protocols/preinstall:
+.PHONY : src/Protocols/preinstall
+
+# Recursive "clean" directory target.
+src/Protocols/clean: src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/clean
+.PHONY : src/Protocols/clean
+
+#=============================================================================
 # Target rules for target src/CMakeFiles/Simulator.dir
 
 # All Build rule for target.
-src/CMakeFiles/Simulator.dir/all:
+src/CMakeFiles/Simulator.dir/all: src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/all
+src/CMakeFiles/Simulator.dir/all: src/Logger/CMakeFiles/LOGGER_LIB.dir/all
+src/CMakeFiles/Simulator.dir/all: src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/Simulator.dir/build.make src/CMakeFiles/Simulator.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/Simulator.dir/build.make src/CMakeFiles/Simulator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=1,2 "Built target Simulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=7,8 "Built target Simulator"
 .PHONY : src/CMakeFiles/Simulator.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/Simulator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/Simulator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/Simulator.dir/rule
@@ -131,6 +187,84 @@ Simulator: src/CMakeFiles/Simulator.dir/rule
 src/CMakeFiles/Simulator.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/Simulator.dir/build.make src/CMakeFiles/Simulator.dir/clean
 .PHONY : src/CMakeFiles/Simulator.dir/clean
+
+#=============================================================================
+# Target rules for target src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir
+
+# All Build rule for target.
+src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/build.make src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/build.make src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=1,2 "Built target COMMUNICATIONS_LIB"
+.PHONY : src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/all
+
+# Build rule for subdir invocation for target.
+src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/rule
+
+# Convenience name for target.
+COMMUNICATIONS_LIB: src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/rule
+.PHONY : COMMUNICATIONS_LIB
+
+# clean rule for target.
+src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/build.make src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/clean
+.PHONY : src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/clean
+
+#=============================================================================
+# Target rules for target src/Logger/CMakeFiles/LOGGER_LIB.dir
+
+# All Build rule for target.
+src/Logger/CMakeFiles/LOGGER_LIB.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Logger/CMakeFiles/LOGGER_LIB.dir/build.make src/Logger/CMakeFiles/LOGGER_LIB.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Logger/CMakeFiles/LOGGER_LIB.dir/build.make src/Logger/CMakeFiles/LOGGER_LIB.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=3,4 "Built target LOGGER_LIB"
+.PHONY : src/Logger/CMakeFiles/LOGGER_LIB.dir/all
+
+# Build rule for subdir invocation for target.
+src/Logger/CMakeFiles/LOGGER_LIB.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Logger/CMakeFiles/LOGGER_LIB.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : src/Logger/CMakeFiles/LOGGER_LIB.dir/rule
+
+# Convenience name for target.
+LOGGER_LIB: src/Logger/CMakeFiles/LOGGER_LIB.dir/rule
+.PHONY : LOGGER_LIB
+
+# clean rule for target.
+src/Logger/CMakeFiles/LOGGER_LIB.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Logger/CMakeFiles/LOGGER_LIB.dir/build.make src/Logger/CMakeFiles/LOGGER_LIB.dir/clean
+.PHONY : src/Logger/CMakeFiles/LOGGER_LIB.dir/clean
+
+#=============================================================================
+# Target rules for target src/Protocols/CMakeFiles/PROTOCOL_LIB.dir
+
+# All Build rule for target.
+src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/build.make src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/build.make src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=5,6 "Built target PROTOCOL_LIB"
+.PHONY : src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/all
+
+# Build rule for subdir invocation for target.
+src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/rule
+
+# Convenience name for target.
+PROTOCOL_LIB: src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/rule
+.PHONY : PROTOCOL_LIB
+
+# clean rule for target.
+src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/build.make src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/clean
+.PHONY : src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

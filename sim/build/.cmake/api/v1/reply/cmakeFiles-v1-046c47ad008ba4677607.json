@@ -91,7 +91,16 @@
 			"path" : "src/CMakeLists.txt"
 		},
 		{
+			"path" : "src/Communications/CMakeLists.txt"
+		},
+		{
+			"path" : "src/Logger/CMakeLists.txt"
+		},
+		{
 			"path" : "src/Manager/CMakeLists.txt"
+		},
+		{
+			"path" : "src/Protocols/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

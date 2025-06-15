@@ -1,0 +1,3 @@
+file(REMOVE_RECURSE
+  "libPROTOCOL_LIB.a"
+)

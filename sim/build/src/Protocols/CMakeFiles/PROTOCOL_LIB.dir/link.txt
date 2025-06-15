@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPROTOCOL_LIB.a CMakeFiles/PROTOCOL_LIB.dir/Simulation.pb.cc.o
+/usr/bin/ranlib libPROTOCOL_LIB.a

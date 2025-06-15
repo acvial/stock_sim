@@ -1,0 +1,66 @@
+syntax = "proto3";
+option optimize_for = SPEED;
+
+package protocols;
+
+message SimulationRequest{
+
+    enum ModelType{
+
+        BROWNIAN_MOTION = 0;
+        GEOMETRIC_BROWNIAN_MOTION = 1;
+        JUMP_DIFFUSSION = 2;
+        ORNSTEIN_UHLEMBECK = 3;
+    }
+
+    ModelType model = 1;
+    Parameters parameters = 2;
+    IntegrationConfig integration = 3;
+    LogConfig logConfig = 4;
+    double time_horizon = 5;
+    double timestep = 6;
+    int32 num_paths = 7;
+    bool stream_results = 8;
+    int64 timestamp = 9;
+}
+
+message Parameters {
+
+    double drift = 1;
+    double volatility = 2;
+    double initial_price = 3;
+  
+    // Optional fields for jump diffusion
+    optional double jump_intensity = 4;
+    optional double jump_mean = 5;
+    optional double jump_stddev = 6;
+  
+    // Optional fields for OU
+    optional double mean_reversion_rate = 7;
+    optional double long_term_mean = 8;
+}
+  
+message IntegrationConfig{
+
+    enum Scheme{
+
+        EULER_MARUYAMA = 0;
+        MILSTEIN = 1;
+    }
+
+    Scheme scheme = 1;
+}
+
+message LogConfig{
+
+    enum LogLevel{
+
+        DEBUG = 0;
+        INFO = 1;
+        ERROR = 2;
+    }
+    LogLevel level = 1;
+  
+    bool log_each_path = 2;
+    bool log_stats = 3;
+}

@@ -1,1 +1,1 @@
-/usr/bin/g++ -g CMakeFiles/Simulator.dir/main.cpp.o -o Simulator 
+/usr/bin/g++ -g CMakeFiles/Simulator.dir/main.cpp.o -o Simulator   -L/usr/lib/x86-64-linux-gnu  -Wl,-rpath,/usr/lib/x86-64-linux-gnu Communications/libCOMMUNICATIONS_LIB.a Logger/libLOGGER_LIB.a Protocols/libPROTOCOL_LIB.a -lzmq -lprotobuf -lfmt 

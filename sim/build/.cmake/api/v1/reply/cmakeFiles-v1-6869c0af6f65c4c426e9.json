@@ -101,6 +101,9 @@
 		},
 		{
 			"path" : "src/Protocols/CMakeLists.txt"
+		},
+		{
+			"path" : "src/Models/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

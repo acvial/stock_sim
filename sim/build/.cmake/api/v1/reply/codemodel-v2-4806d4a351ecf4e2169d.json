@@ -25,7 +25,8 @@
 						2,
 						3,
 						4,
-						5
+						5,
+						6
 					],
 					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
 					"minimumCMakeVersion" : 
@@ -37,7 +38,7 @@
 					"source" : "src",
 					"targetIndexes" : 
 					[
-						3
+						5
 					]
 				},
 				{
@@ -79,7 +80,11 @@
 					},
 					"parentIndex" : 1,
 					"projectIndex" : 0,
-					"source" : "src/Manager"
+					"source" : "src/Manager",
+					"targetIndexes" : 
+					[
+						2
+					]
 				},
 				{
 					"build" : "src/Protocols",
@@ -93,7 +98,22 @@
 					"source" : "src/Protocols",
 					"targetIndexes" : 
 					[
-						2
+						4
+					]
+				},
+				{
+					"build" : "src/Models",
+					"jsonFile" : "directory-src.Models-Debug-4f62bf0c83087803b6cb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Models",
+					"targetIndexes" : 
+					[
+						3
 					]
 				}
 			],
@@ -108,7 +128,8 @@
 						2,
 						3,
 						4,
-						5
+						5,
+						6
 					],
 					"name" : "Stock_Simulator",
 					"targetIndexes" : 
@@ -116,7 +137,9 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4,
+						5
 					]
 				}
 			],
@@ -137,6 +160,20 @@
 					"projectIndex" : 0
 				},
 				{
+					"directoryIndex" : 4,
+					"id" : "MANAGER_LIB::@7ca4fe4d00630860de97",
+					"jsonFile" : "target-MANAGER_LIB-Debug-8ffc1c201fe029856295.json",
+					"name" : "MANAGER_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "MODEL_LIB::@9c841789ed2d01b6023a",
+					"jsonFile" : "target-MODEL_LIB-Debug-95e0129b4b06f3027f0f.json",
+					"name" : "MODEL_LIB",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 5,
 					"id" : "PROTOCOL_LIB::@0d6d85245ab30f279b0c",
 					"jsonFile" : "target-PROTOCOL_LIB-Debug-fbf56eff003fa8786136.json",
@@ -146,7 +183,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "Simulator::@145eef247bfb46b6828c",
-					"jsonFile" : "target-Simulator-Debug-e7263207ee4e95d2b0fe.json",
+					"jsonFile" : "target-Simulator-Debug-f8325a77836908fc7063.json",
 					"name" : "Simulator",
 					"projectIndex" : 0
 				}

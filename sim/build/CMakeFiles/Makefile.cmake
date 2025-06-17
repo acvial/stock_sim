@@ -14,6 +14,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/app/src/Communications/CMakeLists.txt"
   "/app/src/Logger/CMakeLists.txt"
   "/app/src/Manager/CMakeLists.txt"
+  "/app/src/Models/CMakeLists.txt"
   "/app/src/Protocols/CMakeLists.txt"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
@@ -46,6 +47,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/Logger/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Manager/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Protocols/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Models/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -53,5 +55,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/Simulator.dir/DependInfo.cmake"
   "src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/DependInfo.cmake"
   "src/Logger/CMakeFiles/LOGGER_LIB.dir/DependInfo.cmake"
+  "src/Manager/CMakeFiles/MANAGER_LIB.dir/DependInfo.cmake"
   "src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/DependInfo.cmake"
+  "src/Models/CMakeFiles/MODEL_LIB.dir/DependInfo.cmake"
   )

@@ -17,6 +17,7 @@
 		"files" : 
 		[
 			"src/CMakeLists.txt",
+			"src/Manager/CMakeLists.txt",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
@@ -33,17 +34,26 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 22,
+				"line" : 21,
 				"parent" : 0
 			},
 			{
 				"file" : 1
 			},
 			{
-				"command" : 2,
+				"command" : 1,
 				"file" : 1,
-				"line" : 16,
+				"line" : 25,
 				"parent" : 3
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 16,
+				"parent" : 5
 			}
 		]
 	},
@@ -56,31 +66,31 @@
 					"fragment" : "-g -std=c++17"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"fragment" : "-Wall"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"fragment" : "-Wextra"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"fragment" : "-Wpedantic"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"fragment" : "-Werror"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"fragment" : "-Wconversion"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"fragment" : "-Wsign-conversion"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 6,
 					"fragment" : "-Wshadow"
 				}
 			],
@@ -96,7 +106,15 @@
 				},
 				{
 					"backtrace" : 2,
+					"path" : "/app/src/Manager"
+				},
+				{
+					"backtrace" : 2,
 					"path" : "/app/src/Protocols"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Models"
 				}
 			],
 			"language" : "CXX",
@@ -126,7 +144,15 @@
 		},
 		{
 			"backtrace" : 2,
+			"id" : "MANAGER_LIB::@7ca4fe4d00630860de97"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "PROTOCOL_LIB::@0d6d85245ab30f279b0c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "MODEL_LIB::@9c841789ed2d01b6023a"
 		}
 	],
 	"id" : "Simulator::@145eef247bfb46b6828c",
@@ -152,17 +178,12 @@
 			},
 			{
 				"backtrace" : 2,
+				"fragment" : "Manager/libMANAGER_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
 				"fragment" : "Communications/libCOMMUNICATIONS_LIB.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "Logger/libLOGGER_LIB.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "Protocols/libPROTOCOL_LIB.a",
 				"role" : "libraries"
 			},
 			{
@@ -174,7 +195,22 @@
 				"role" : "libraries"
 			},
 			{
+				"backtrace" : 4,
+				"fragment" : "Logger/libLOGGER_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "Models/libMODEL_LIB.a",
+				"role" : "libraries"
+			},
+			{
 				"fragment" : "-lfmt",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "Protocols/libPROTOCOL_LIB.a",
 				"role" : "libraries"
 			}
 		],

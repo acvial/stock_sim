@@ -1,7 +1,7 @@
 [
 {
   "directory": "/app/build/src",
-  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Logger -I/app/src/Protocols -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/Simulator.dir/main.cpp.o -c /app/src/main.cpp",
+  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Logger -I/app/src/Manager -I/app/src/Protocols -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/Simulator.dir/main.cpp.o -c /app/src/main.cpp",
   "file": "/app/src/main.cpp",
   "output": "src/CMakeFiles/Simulator.dir/main.cpp.o"
 },
@@ -18,9 +18,21 @@
   "output": "src/Logger/CMakeFiles/LOGGER_LIB.dir/Logger.cpp.o"
 },
 {
+  "directory": "/app/build/src/Manager",
+  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Logger -I/app/src/Manager -I/app/src/Protocols -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MANAGER_LIB.dir/Manager.cpp.o -c /app/src/Manager/Manager.cpp",
+  "file": "/app/src/Manager/Manager.cpp",
+  "output": "src/Manager/CMakeFiles/MANAGER_LIB.dir/Manager.cpp.o"
+},
+{
   "directory": "/app/build/src/Protocols",
   "command": "/usr/bin/g++  -I/app/src/Protocols -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/PROTOCOL_LIB.dir/Simulation.pb.cc.o -c /app/src/Protocols/Simulation.pb.cc",
   "file": "/app/src/Protocols/Simulation.pb.cc",
   "output": "src/Protocols/CMakeFiles/PROTOCOL_LIB.dir/Simulation.pb.cc.o"
+},
+{
+  "directory": "/app/build/src/Models",
+  "command": "/usr/bin/g++  -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MODEL_LIB.dir/Model.cpp.o -c /app/src/Models/Model.cpp",
+  "file": "/app/src/Models/Model.cpp",
+  "output": "src/Models/CMakeFiles/MODEL_LIB.dir/Model.cpp.o"
 }
 ]

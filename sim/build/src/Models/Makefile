@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /app/build && $(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles /app/build/src/Manager//CMakeFiles/progress.marks
-	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Manager/all
+	cd /app/build && $(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles /app/build/src/Models//CMakeFiles/progress.marks
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Models/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Manager/clean
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Models/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,12 +103,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Manager/preinstall
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Models/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Manager/preinstall
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Models/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -117,42 +117,42 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/Manager/CMakeFiles/MANAGER_LIB.dir/rule:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Manager/CMakeFiles/MANAGER_LIB.dir/rule
-.PHONY : src/Manager/CMakeFiles/MANAGER_LIB.dir/rule
+src/Models/CMakeFiles/MODEL_LIB.dir/rule:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Models/CMakeFiles/MODEL_LIB.dir/rule
+.PHONY : src/Models/CMakeFiles/MODEL_LIB.dir/rule
 
 # Convenience name for target.
-MANAGER_LIB: src/Manager/CMakeFiles/MANAGER_LIB.dir/rule
-.PHONY : MANAGER_LIB
+MODEL_LIB: src/Models/CMakeFiles/MODEL_LIB.dir/rule
+.PHONY : MODEL_LIB
 
 # fast build rule for target.
-MANAGER_LIB/fast:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f src/Manager/CMakeFiles/MANAGER_LIB.dir/build.make src/Manager/CMakeFiles/MANAGER_LIB.dir/build
-.PHONY : MANAGER_LIB/fast
+MODEL_LIB/fast:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f src/Models/CMakeFiles/MODEL_LIB.dir/build.make src/Models/CMakeFiles/MODEL_LIB.dir/build
+.PHONY : MODEL_LIB/fast
 
-Manager.o: Manager.cpp.o
-.PHONY : Manager.o
+Model.o: Model.cpp.o
+.PHONY : Model.o
 
 # target to build an object file
-Manager.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f src/Manager/CMakeFiles/MANAGER_LIB.dir/build.make src/Manager/CMakeFiles/MANAGER_LIB.dir/Manager.cpp.o
-.PHONY : Manager.cpp.o
+Model.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f src/Models/CMakeFiles/MODEL_LIB.dir/build.make src/Models/CMakeFiles/MODEL_LIB.dir/Model.cpp.o
+.PHONY : Model.cpp.o
 
-Manager.i: Manager.cpp.i
-.PHONY : Manager.i
+Model.i: Model.cpp.i
+.PHONY : Model.i
 
 # target to preprocess a source file
-Manager.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f src/Manager/CMakeFiles/MANAGER_LIB.dir/build.make src/Manager/CMakeFiles/MANAGER_LIB.dir/Manager.cpp.i
-.PHONY : Manager.cpp.i
+Model.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f src/Models/CMakeFiles/MODEL_LIB.dir/build.make src/Models/CMakeFiles/MODEL_LIB.dir/Model.cpp.i
+.PHONY : Model.cpp.i
 
-Manager.s: Manager.cpp.s
-.PHONY : Manager.s
+Model.s: Model.cpp.s
+.PHONY : Model.s
 
 # target to generate assembly for a file
-Manager.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f src/Manager/CMakeFiles/MANAGER_LIB.dir/build.make src/Manager/CMakeFiles/MANAGER_LIB.dir/Manager.cpp.s
-.PHONY : Manager.cpp.s
+Model.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f src/Models/CMakeFiles/MODEL_LIB.dir/build.make src/Models/CMakeFiles/MODEL_LIB.dir/Model.cpp.s
+.PHONY : Model.cpp.s
 
 # Help Target
 help:
@@ -162,10 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... MANAGER_LIB"
-	@echo "... Manager.o"
-	@echo "... Manager.i"
-	@echo "... Manager.s"
+	@echo "... MODEL_LIB"
+	@echo "... Model.o"
+	@echo "... Model.i"
+	@echo "... Model.s"
 .PHONY : help
 
 

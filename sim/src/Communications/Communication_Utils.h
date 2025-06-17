@@ -8,8 +8,8 @@ class CommunicationUtils{
 
     private:
 
-    zmq::socket_t  pushSocket, pullSocket;
-    zmq::context_t pushContext, pullContext;
+    static zmq::socket_t  pushSocket, pullSocket;
+    static zmq::context_t pushContext, pullContext;
 
     public:
 
@@ -20,11 +20,11 @@ class CommunicationUtils{
 
     /// @brief Sends a message.
     /// @param serializedData 
-    void push(std::string serializedData);
+    static void push(std::string serializedData);
 
     /// @brief Receives a message.
     /// @return Message content as string.
-    std::string pull();
+    static std::string pull();
 
     /// @brief Deserialized data on string input.
     /// @param serializedData Serialized message.

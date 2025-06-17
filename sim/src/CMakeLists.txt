@@ -6,6 +6,7 @@ set(SUBDIRECTORIES
     "/app/src/Logger/"
     "/app/src/Manager/"
     "/app/src/Protocols/"
+    "/app/src/Models/"
 )
 
 foreach(subdir ${SUBDIRECTORIES})
@@ -14,9 +15,7 @@ endforeach()
 
 set(LIBRARIES
 
-    COMMUNICATIONS_LIB
-    LOGGER_LIB
-    PROTOCOL_LIB
+    MANAGER_LIB
 )
 
 target_link_libraries(Simulator ${LIBRARIES})

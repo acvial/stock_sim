@@ -68,15 +68,14 @@ PROTOBUF_NAMESPACE_CLOSE
 namespace protocols {
 
 enum SimulationRequest_ModelType : int {
-  SimulationRequest_ModelType_BROWNIAN_MOTION = 0,
-  SimulationRequest_ModelType_GEOMETRIC_BROWNIAN_MOTION = 1,
-  SimulationRequest_ModelType_JUMP_DIFFUSSION = 2,
-  SimulationRequest_ModelType_ORNSTEIN_UHLEMBECK = 3,
+  SimulationRequest_ModelType_GEOMETRIC_BROWNIAN_MOTION = 0,
+  SimulationRequest_ModelType_JUMP_DIFFUSSION = 1,
+  SimulationRequest_ModelType_ORNSTEIN_UHLEMBECK = 2,
   SimulationRequest_ModelType_SimulationRequest_ModelType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   SimulationRequest_ModelType_SimulationRequest_ModelType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool SimulationRequest_ModelType_IsValid(int value);
-constexpr SimulationRequest_ModelType SimulationRequest_ModelType_ModelType_MIN = SimulationRequest_ModelType_BROWNIAN_MOTION;
+constexpr SimulationRequest_ModelType SimulationRequest_ModelType_ModelType_MIN = SimulationRequest_ModelType_GEOMETRIC_BROWNIAN_MOTION;
 constexpr SimulationRequest_ModelType SimulationRequest_ModelType_ModelType_MAX = SimulationRequest_ModelType_ORNSTEIN_UHLEMBECK;
 constexpr int SimulationRequest_ModelType_ModelType_ARRAYSIZE = SimulationRequest_ModelType_ModelType_MAX + 1;
 
@@ -266,8 +265,6 @@ class SimulationRequest final :
   // nested types ----------------------------------------------------
 
   typedef SimulationRequest_ModelType ModelType;
-  static constexpr ModelType BROWNIAN_MOTION =
-    SimulationRequest_ModelType_BROWNIAN_MOTION;
   static constexpr ModelType GEOMETRIC_BROWNIAN_MOTION =
     SimulationRequest_ModelType_GEOMETRIC_BROWNIAN_MOTION;
   static constexpr ModelType JUMP_DIFFUSSION =
@@ -402,13 +399,13 @@ class SimulationRequest final :
   void _internal_set_timestep(double value);
   public:
 
-  // int64 timestamp = 9;
+  // uint64 timestamp = 9;
   void clear_timestamp();
-  int64_t timestamp() const;
-  void set_timestamp(int64_t value);
+  uint64_t timestamp() const;
+  void set_timestamp(uint64_t value);
   private:
-  int64_t _internal_timestamp() const;
-  void _internal_set_timestamp(int64_t value);
+  uint64_t _internal_timestamp() const;
+  void _internal_set_timestamp(uint64_t value);
   public:
 
   // bool stream_results = 8;
@@ -435,7 +432,7 @@ class SimulationRequest final :
     int32_t num_paths_;
     double time_horizon_;
     double timestep_;
-    int64_t timestamp_;
+    uint64_t timestamp_;
     bool stream_results_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -1449,22 +1446,22 @@ inline void SimulationRequest::set_stream_results(bool value) {
   // @@protoc_insertion_point(field_set:protocols.SimulationRequest.stream_results)
 }
 
-// int64 timestamp = 9;
+// uint64 timestamp = 9;
 inline void SimulationRequest::clear_timestamp() {
-  _impl_.timestamp_ = int64_t{0};
+  _impl_.timestamp_ = uint64_t{0u};
 }
-inline int64_t SimulationRequest::_internal_timestamp() const {
+inline uint64_t SimulationRequest::_internal_timestamp() const {
   return _impl_.timestamp_;
 }
-inline int64_t SimulationRequest::timestamp() const {
+inline uint64_t SimulationRequest::timestamp() const {
   // @@protoc_insertion_point(field_get:protocols.SimulationRequest.timestamp)
   return _internal_timestamp();
 }
-inline void SimulationRequest::_internal_set_timestamp(int64_t value) {
+inline void SimulationRequest::_internal_set_timestamp(uint64_t value) {
   
   _impl_.timestamp_ = value;
 }
-inline void SimulationRequest::set_timestamp(int64_t value) {
+inline void SimulationRequest::set_timestamp(uint64_t value) {
   _internal_set_timestamp(value);
   // @@protoc_insertion_point(field_set:protocols.SimulationRequest.timestamp)
 }

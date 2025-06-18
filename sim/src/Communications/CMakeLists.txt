@@ -13,9 +13,9 @@ set(COMMUNICATIONS_INCLUDES
 
 set(COMMUNICATIONS_LIBRARIES
 
-    "/usr/lib/x86-64-linux-gnu/libzmq.so"
-    "/usr/lib/x86-64-linux-gnu/libfmt.so"
-    "/usr/lib/x86-64-linux-gnu/libprotobuf.so"
+    "/usr/lib/x86_64-linux-gnu/libzmq.so"
+    "/usr/lib/x86_64-linux-gnu/libfmt.so"
+    "/usr/lib/x86_64-linux-gnu/libprotobuf.so"
 )
 
 add_library               (COMMUNICATIONS_LIB STATIC ${COMMUNICATIONS_SOURCES})

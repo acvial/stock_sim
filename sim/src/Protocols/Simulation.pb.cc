@@ -30,7 +30,7 @@ PROTOBUF_CONSTEXPR SimulationRequest::SimulationRequest(
   , /*decltype(_impl_.num_paths_)*/0
   , /*decltype(_impl_.time_horizon_)*/0
   , /*decltype(_impl_.timestep_)*/0
-  , /*decltype(_impl_.timestamp_)*/int64_t{0}
+  , /*decltype(_impl_.timestamp_)*/uint64_t{0u}
   , /*decltype(_impl_.stream_results_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SimulationRequestDefaultTypeInternal {
@@ -166,7 +166,7 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_Simulation_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020Simulation.proto\022\tprotocols\"\245\003\n\021Simula"
+  "\n\020Simulation.proto\022\tprotocols\"\220\003\n\021Simula"
   "tionRequest\0225\n\005model\030\001 \001(\0162&.protocols.S"
   "imulationRequest.ModelType\022)\n\nparameters"
   "\030\002 \001(\0132\025.protocols.Parameters\0221\n\013integra"
@@ -174,28 +174,28 @@ const char descriptor_table_protodef_Simulation_2eproto[] PROTOBUF_SECTION_VARIA
   "\022\'\n\tlogConfig\030\004 \001(\0132\024.protocols.LogConfi"
   "g\022\024\n\014time_horizon\030\005 \001(\001\022\020\n\010timestep\030\006 \001("
   "\001\022\021\n\tnum_paths\030\007 \001(\005\022\026\n\016stream_results\030\010"
-  " \001(\010\022\021\n\ttimestamp\030\t \001(\003\"l\n\tModelType\022\023\n\017"
-  "BROWNIAN_MOTION\020\000\022\035\n\031GEOMETRIC_BROWNIAN_"
-  "MOTION\020\001\022\023\n\017JUMP_DIFFUSSION\020\002\022\026\n\022ORNSTEI"
-  "N_UHLEMBECK\020\003\"\260\002\n\nParameters\022\r\n\005drift\030\001 "
-  "\001(\001\022\022\n\nvolatility\030\002 \001(\001\022\025\n\rinitial_price"
-  "\030\003 \001(\001\022\033\n\016jump_intensity\030\004 \001(\001H\000\210\001\001\022\026\n\tj"
-  "ump_mean\030\005 \001(\001H\001\210\001\001\022\030\n\013jump_stddev\030\006 \001(\001"
-  "H\002\210\001\001\022 \n\023mean_reversion_rate\030\007 \001(\001H\003\210\001\001\022"
-  "\033\n\016long_term_mean\030\010 \001(\001H\004\210\001\001B\021\n\017_jump_in"
-  "tensityB\014\n\n_jump_meanB\016\n\014_jump_stddevB\026\n"
-  "\024_mean_reversion_rateB\021\n\017_long_term_mean"
-  "\"t\n\021IntegrationConfig\0223\n\006scheme\030\001 \001(\0162#."
-  "protocols.IntegrationConfig.Scheme\"*\n\006Sc"
-  "heme\022\022\n\016EULER_MARUYAMA\020\000\022\014\n\010MILSTEIN\020\001\"\217"
-  "\001\n\tLogConfig\022,\n\005level\030\001 \001(\0162\035.protocols."
-  "LogConfig.LogLevel\022\025\n\rlog_each_path\030\002 \001("
-  "\010\022\021\n\tlog_stats\030\003 \001(\010\"*\n\010LogLevel\022\t\n\005DEBU"
-  "G\020\000\022\010\n\004INFO\020\001\022\t\n\005ERROR\020\002B\002H\001b\006proto3"
+  " \001(\010\022\021\n\ttimestamp\030\t \001(\004\"W\n\tModelType\022\035\n\031"
+  "GEOMETRIC_BROWNIAN_MOTION\020\000\022\023\n\017JUMP_DIFF"
+  "USSION\020\001\022\026\n\022ORNSTEIN_UHLEMBECK\020\002\"\260\002\n\nPar"
+  "ameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvolatility\030\002 \001"
+  "(\001\022\025\n\rinitial_price\030\003 \001(\001\022\033\n\016jump_intens"
+  "ity\030\004 \001(\001H\000\210\001\001\022\026\n\tjump_mean\030\005 \001(\001H\001\210\001\001\022\030"
+  "\n\013jump_stddev\030\006 \001(\001H\002\210\001\001\022 \n\023mean_reversi"
+  "on_rate\030\007 \001(\001H\003\210\001\001\022\033\n\016long_term_mean\030\010 \001"
+  "(\001H\004\210\001\001B\021\n\017_jump_intensityB\014\n\n_jump_mean"
+  "B\016\n\014_jump_stddevB\026\n\024_mean_reversion_rate"
+  "B\021\n\017_long_term_mean\"t\n\021IntegrationConfig"
+  "\0223\n\006scheme\030\001 \001(\0162#.protocols.Integration"
+  "Config.Scheme\"*\n\006Scheme\022\022\n\016EULER_MARUYAM"
+  "A\020\000\022\014\n\010MILSTEIN\020\001\"\217\001\n\tLogConfig\022,\n\005level"
+  "\030\001 \001(\0162\035.protocols.LogConfig.LogLevel\022\025\n"
+  "\rlog_each_path\030\002 \001(\010\022\021\n\tlog_stats\030\003 \001(\010\""
+  "*\n\010LogLevel\022\t\n\005DEBUG\020\000\022\010\n\004INFO\020\001\022\t\n\005ERRO"
+  "R\020\002B\002H\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Simulation_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Simulation_2eproto = {
-    false, false, 1036, descriptor_table_protodef_Simulation_2eproto,
+    false, false, 1015, descriptor_table_protodef_Simulation_2eproto,
     "Simulation.proto",
     &descriptor_table_Simulation_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_Simulation_2eproto::offsets,
@@ -218,7 +218,6 @@ bool SimulationRequest_ModelType_IsValid(int value) {
     case 0:
     case 1:
     case 2:
-    case 3:
       return true;
     default:
       return false;
@@ -226,7 +225,6 @@ bool SimulationRequest_ModelType_IsValid(int value) {
 }
 
 #if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
-constexpr SimulationRequest_ModelType SimulationRequest::BROWNIAN_MOTION;
 constexpr SimulationRequest_ModelType SimulationRequest::GEOMETRIC_BROWNIAN_MOTION;
 constexpr SimulationRequest_ModelType SimulationRequest::JUMP_DIFFUSSION;
 constexpr SimulationRequest_ModelType SimulationRequest::ORNSTEIN_UHLEMBECK;
@@ -349,7 +347,7 @@ inline void SimulationRequest::SharedCtor(
     , decltype(_impl_.num_paths_){0}
     , decltype(_impl_.time_horizon_){0}
     , decltype(_impl_.timestep_){0}
-    , decltype(_impl_.timestamp_){int64_t{0}}
+    , decltype(_impl_.timestamp_){uint64_t{0u}}
     , decltype(_impl_.stream_results_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -457,7 +455,7 @@ const char* SimulationRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
       // int32 num_paths = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
-          _impl_.num_paths_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          // _impl_.num_paths_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -470,7 +468,7 @@ const char* SimulationRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
         } else
           goto handle_unusual;
         continue;
-      // int64 timestamp = 9;
+      // uint64 timestamp = 9;
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
           _impl_.timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
@@ -567,10 +565,10 @@ uint8_t* SimulationRequest::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(8, this->_internal_stream_results(), target);
   }
 
-  // int64 timestamp = 9;
+  // uint64 timestamp = 9;
   if (this->_internal_timestamp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt64ToArray(9, this->_internal_timestamp(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(9, this->_internal_timestamp(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -639,9 +637,9 @@ size_t SimulationRequest::ByteSizeLong() const {
     total_size += 1 + 8;
   }
 
-  // int64 timestamp = 9;
+  // uint64 timestamp = 9;
   if (this->_internal_timestamp() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_timestamp());
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_timestamp());
   }
 
   // bool stream_results = 8;

@@ -1,2 +1,2 @@
-/usr/bin/ar qc libMODEL_LIB.a CMakeFiles/MODEL_LIB.dir/Model.cpp.o
+/usr/bin/ar qc libMODEL_LIB.a CMakeFiles/MODEL_LIB.dir/Model.cpp.o CMakeFiles/MODEL_LIB.dir/Geometric_Brownian_Model.cpp.o CMakeFiles/MODEL_LIB.dir/Model_Factory.cpp.o
 /usr/bin/ranlib libMODEL_LIB.a

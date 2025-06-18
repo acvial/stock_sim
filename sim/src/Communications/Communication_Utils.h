@@ -1,8 +1,8 @@
-#include <zmq.hpp>
-#include <Simulation.pb.h>
-
 #ifndef COMMUNICATION_UTILS_H
 #define COMMUNICATION_UTILS_H
+
+#include <zmq.hpp>
+#include <Simulation.pb.h>
 
 class CommunicationUtils{
 
@@ -16,7 +16,7 @@ class CommunicationUtils{
     CommunicationUtils();
     ~CommunicationUtils();
 
-    private:
+    public:
 
     /// @brief Sends a message.
     /// @param serializedData 
@@ -29,11 +29,13 @@ class CommunicationUtils{
     /// @brief Deserialized data on string input.
     /// @param serializedData Serialized message.
     /// @return Simulation request protocol deserialized class.
-    protocols::SimulationRequest* deserialize(std::string serializedData);
+    static protocols::SimulationRequest* deserialize(std::string serializedData);
+
+    private:
 
     /// @brief Prints protobuf message using spdlog.
     /// @param debugString 
-    void printData(std::string debugString);
+    static void printData(std::string debugString);
 };
 
 #endif

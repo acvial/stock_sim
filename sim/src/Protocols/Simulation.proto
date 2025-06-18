@@ -7,10 +7,9 @@ message SimulationRequest{
 
     enum ModelType{
 
-        BROWNIAN_MOTION = 0;
-        GEOMETRIC_BROWNIAN_MOTION = 1;
-        JUMP_DIFFUSSION = 2;
-        ORNSTEIN_UHLEMBECK = 3;
+        GEOMETRIC_BROWNIAN_MOTION = 0;
+        JUMP_DIFFUSSION = 1;
+        ORNSTEIN_UHLEMBECK = 2;
     }
 
     ModelType model = 1;
@@ -21,7 +20,7 @@ message SimulationRequest{
     double timestep = 6;
     int32 num_paths = 7;
     bool stream_results = 8;
-    int64 timestamp = 9;
+    uint64 timestamp = 9;
 }
 
 message Parameters {
@@ -59,6 +58,7 @@ message LogConfig{
         INFO = 1;
         ERROR = 2;
     }
+    
     LogLevel level = 1;
   
     bool log_each_path = 2;

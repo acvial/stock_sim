@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/app/src/Models
+CXX_INCLUDES = -I/app/src/Logger -I/app/src/Models
 
 CXX_FLAGS = -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow
 

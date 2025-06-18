@@ -2,11 +2,18 @@
 
 Model::Model(){}
 
-Model::Model(float drift_, float volatility_, float initialPrice_) : 
-    drift(drift_), 
-    volatility(volatility_), 
+Model::Model(double drift_, double volatility_, double initialPrice_) : 
+    drift       (drift_       ), 
+    volatility  (volatility_  ), 
     initialPrice(initialPrice_)
 {}
+
+Model::Model(const ModelData& modelData){
+
+    drift        = modelData.drift;
+    volatility   = modelData.volatility;
+    initialPrice = modelData.initialPrice;
+}
 
 Model::Model(const Model& other) :
     drift       ( other.drift      ),
@@ -26,32 +33,32 @@ Model& Model::operator=(const Model& other){
     return *this;
 }
 
-void Model::setDrift(float drift_){
+void Model::setDrift(double drift_){
 
     drift = drift_;
 }
 
-void Model::setVolatility(float volatility_){
+void Model::setVolatility(double volatility_){
 
     volatility = volatility_;
 }
 
-void Model::setInitialPrice(float initialPrice_){
+void Model::setInitialPrice(double initialPrice_){
 
     initialPrice = initialPrice_;
 }
 
-float Model::getDrift() const {
+double Model::getDrift() const {
 
     return drift;
 }
 
-float Model::getVolatility() const {
+double Model::getVolatility() const {
 
     return volatility;
 }
 
-float Model::getInitialPrice() const {
+double Model::getInitialPrice() const {
 
     return initialPrice;
 }

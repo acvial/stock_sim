@@ -11,7 +11,7 @@ set(PROTOCOL_INCLUDES
 
 set(LOGGER_LIBRARIES
 
-    "/usr/lib/x86-64-linux-gnu/libprotobuf.so"
+    "/usr/lib/x86_64-linux-gnu/libprotobuf.so"
 )
 
 add_library               (PROTOCOL_LIB STATIC ${PROTOCOL_SOURCES})

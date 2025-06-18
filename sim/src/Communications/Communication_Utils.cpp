@@ -95,6 +95,8 @@ protocols::SimulationRequest* CommunicationUtils::deserialize(std::string deseri
         SPDLOG_DEBUG("###### MESSAGE CONTENT ######");
         printData(simRequest->DebugString());
     }
+
+    return simRequest;
 }
 
 void CommunicationUtils::printData(std::string debugString){

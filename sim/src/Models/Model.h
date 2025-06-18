@@ -1,38 +1,66 @@
 #ifndef MODELS_H
 #define MODELS_H
 
+/*
+    We attempt to solve some SDE of the form; dX_t = \mu(X_t, t) * dt + \sigm(X_t, t) * dW_t. 
+    The functions \mu and \sigma are specifical for each model and define it. 
+*/
+
+struct ModelData{
+
+    ModelData() = default;
+    ModelData(double drift_, double volatility_, double initialPrice_){
+        drift        = drift_;
+        volatility   = volatility_;
+        initialPrice = initialPrice_;
+    }
+    ~ModelData() = default;
+
+    double drift;
+    double volatility;
+    double initialPrice;
+};
+
 class Model{
 
     protected:
 
-    float drift;
-    float volatility;
-    float initialPrice;
+    double drift;
+    double volatility;
+    double initialPrice;
 
     public:
 
     Model           ();
-    Model           (float drift, float volatiliy, float initialPrice);
+    Model           (double drift_, double volatility_, double initialPrice_);
+    Model           (const ModelData& modelData);
     Model           (const Model& other);
     Model& operator=(const Model& other);
+    ~Model          () = default;
 
     public:
 
-    void setDrift       (float drift_       );
-    void setVolatility  (float volatility_  );
-    void setInitialPrice(float initialPrice_);
+    void setDrift       (double drift_       );
+    void setVolatility  (double volatility_  );
+    void setInitialPrice(double initialPrice_);
 
-    float getDrift       () const;
-    float getVolatility  () const;
-    float getInitialPrice() const;
+    double getDrift       () const;
+    double getVolatility  () const;
+    double getInitialPrice() const;
 
     protected:
 
-    /// @brief Computes stochastic derivative at given time t.
+    /// @brief Computes drift function.
     /// @param price_t Price of the stock at time t.
-    /// @param t       Time t.
-    /// @return Value of derivative.
-    virtual float dPrice(float price_t, float delta_t) = 0;
+    /// @param time_t  Given time.
+    /// @return Drift at time t.
+    virtual double mu(double price_t, double time_t) = 0;
+
+    /// @brief Computes volatitily function.
+    /// @param price_t Price of the stock at time t.
+    /// @param time_t  Given time.
+    /// @return Volatitily at time t.
+    virtual double sigma(double price_t, double time_t) = 0;
 };
 
 #endif

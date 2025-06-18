@@ -11,7 +11,7 @@ set(LOGGER_INCLUDES
 
 set(LOGGER_LIBRARIES
 
-    "/usr/lib/x86-64-linux-gnu/libfmt.so"
+    "/usr/lib/x86_64-linux-gnu/libfmt.so"
 )
 
 add_library               (LOGGER_LIB STATIC ${LOGGER_SOURCES})

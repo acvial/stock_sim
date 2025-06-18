@@ -31,8 +31,20 @@
 },
 {
   "directory": "/app/build/src/Models",
-  "command": "/usr/bin/g++  -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MODEL_LIB.dir/Model.cpp.o -c /app/src/Models/Model.cpp",
+  "command": "/usr/bin/g++  -I/app/src/Logger -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MODEL_LIB.dir/Model.cpp.o -c /app/src/Models/Model.cpp",
   "file": "/app/src/Models/Model.cpp",
   "output": "src/Models/CMakeFiles/MODEL_LIB.dir/Model.cpp.o"
+},
+{
+  "directory": "/app/build/src/Models",
+  "command": "/usr/bin/g++  -I/app/src/Logger -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MODEL_LIB.dir/Geometric_Brownian_Model.cpp.o -c /app/src/Models/Geometric_Brownian_Model.cpp",
+  "file": "/app/src/Models/Geometric_Brownian_Model.cpp",
+  "output": "src/Models/CMakeFiles/MODEL_LIB.dir/Geometric_Brownian_Model.cpp.o"
+},
+{
+  "directory": "/app/build/src/Models",
+  "command": "/usr/bin/g++  -I/app/src/Logger -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MODEL_LIB.dir/Model_Factory.cpp.o -c /app/src/Models/Model_Factory.cpp",
+  "file": "/app/src/Models/Model_Factory.cpp",
+  "output": "src/Models/CMakeFiles/MODEL_LIB.dir/Model_Factory.cpp.o"
 }
 ]

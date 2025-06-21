@@ -6,6 +6,9 @@
 /app/build/src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir
 /app/build/src/Communications/CMakeFiles/edit_cache.dir
 /app/build/src/Communications/CMakeFiles/rebuild_cache.dir
+/app/build/src/Environment_Manager/CMakeFiles/ENVIRONMENT_LIB.dir
+/app/build/src/Environment_Manager/CMakeFiles/edit_cache.dir
+/app/build/src/Environment_Manager/CMakeFiles/rebuild_cache.dir
 /app/build/src/Integrator/CMakeFiles/INTEGRATOR_LIB.dir
 /app/build/src/Integrator/CMakeFiles/edit_cache.dir
 /app/build/src/Integrator/CMakeFiles/rebuild_cache.dir

@@ -31,11 +31,20 @@ class CommunicationUtils{
     /// @return Simulation request protocol deserialized class.
     static protocols::SimulationRequest* deserialize(std::string serializedData);
 
+    /// @brief Serialises proto input data.
+    /// @tparam Protocols defined simulators outputs.
+    /// @param protoData Proto class storing simulator's output data.
+    /// @return String with serialised data.
+    template <typename ProtoData>
+    static std::string serialize(ProtoData* protoData);
+
     private:
 
     /// @brief Prints protobuf message using spdlog.
     /// @param debugString 
     static void printData(std::string debugString);
 };
+
+#include <Serialize.tpp>
 
 #endif

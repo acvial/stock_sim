@@ -1,0 +1,3 @@
+file(REMOVE_RECURSE
+  "libENVIRONMENT_LIB.a"
+)

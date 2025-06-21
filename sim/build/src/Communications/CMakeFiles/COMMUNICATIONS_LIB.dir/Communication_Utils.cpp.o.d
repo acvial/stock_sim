@@ -289,7 +289,8 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
  /usr/include/google/protobuf/map.h /usr/include/c++/13/functional \
  /usr/include/c++/13/bits/std_function.h \
  /usr/include/google/protobuf/map_type_handler.h \
- /usr/include/google/protobuf/extension_set.h /app/src/Logger/Logger.h \
+ /usr/include/google/protobuf/extension_set.h \
+ /app/src/Communications/Serialize.tpp /app/src/Logger/Logger.h \
  /usr/include/spdlog/spdlog.h /usr/include/spdlog/common.h \
  /usr/include/spdlog/tweakme.h /usr/include/spdlog/details/null_mutex.h \
  /usr/include/spdlog/fmt/fmt.h /usr/include/fmt/core.h \
@@ -373,4 +374,5 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
  /usr/include/spdlog/sinks/basic_file_sink-inl.h \
  /usr/include/spdlog/sinks/daily_file_sink.h \
  /usr/include/spdlog/fmt/chrono.h /usr/include/fmt/chrono.h \
- /usr/include/fmt/format.h
+ /usr/include/fmt/format.h \
+ /app/src/Environment_Manager/Environment_Manager.h

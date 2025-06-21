@@ -143,6 +143,19 @@ COMMUNICATIONS_LIB/fast:
 .PHONY : COMMUNICATIONS_LIB/fast
 
 #=============================================================================
+# Target rules for targets named ENVIRONMENT_LIB
+
+# Build rule for target.
+ENVIRONMENT_LIB: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ENVIRONMENT_LIB
+.PHONY : ENVIRONMENT_LIB
+
+# fast build rule for target.
+ENVIRONMENT_LIB/fast:
+	$(MAKE) $(MAKESILENT) -f src/Environment_Manager/CMakeFiles/ENVIRONMENT_LIB.dir/build.make src/Environment_Manager/CMakeFiles/ENVIRONMENT_LIB.dir/build
+.PHONY : ENVIRONMENT_LIB/fast
+
+#=============================================================================
 # Target rules for targets named INTEGRATOR_LIB
 
 # Build rule for target.
@@ -230,6 +243,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... BATCH_RUNNER_LIB"
 	@echo "... COMMUNICATIONS_LIB"
+	@echo "... ENVIRONMENT_LIB"
 	@echo "... INTEGRATOR_LIB"
 	@echo "... LOGGER_LIB"
 	@echo "... MANAGER_LIB"

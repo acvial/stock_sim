@@ -20,7 +20,8 @@ class Metrics{
     uint                             numberOfPaths;
     std::pair<double, double>        interval;
     RequestedMetrics                 requestedMetrics;
-    std::vector<std::vector<double>> paths;
+    std::vector<std::vector<double>> basicPaths;
+    std::vector<std::vector<double>> crossingPaths;
 
     public:
 
@@ -32,7 +33,16 @@ class Metrics{
     Metrics& operator=(const Metrics& other);
     ~Metrics          () = default;
 
-    void setPaths(std::vector<std::vector<double>>& paths_);
+    void setBasicPaths   (std::vector<std::vector<double>>& basicPaths_);
+    void setCrossingPaths(std::vector<std::vector<double>>& crossingPaths_);
+
+    uint                             getNumberOfPaths   () const;
+    const RequestedMetrics*          getRequestedMetrics() const;
+    const std::pair<double, double>* getInterval        () const;
+
+    const std::vector<double>* getExpectedPath    () const;
+    const std::vector<double>* getVariancePath    () const;
+    const MeanCrossingTime*    getMeanCrossingTime() const;
 
     /// @brief Checks which metrics have been requested and computes it.
     void computeMetrics(double timestep);

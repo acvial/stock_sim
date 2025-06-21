@@ -52,12 +52,18 @@ extern BatchConfigDefaultTypeInternal _BatchConfig_default_instance_;
 class BatchConfig_Interval;
 struct BatchConfig_IntervalDefaultTypeInternal;
 extern BatchConfig_IntervalDefaultTypeInternal _BatchConfig_Interval_default_instance_;
+class BatchResult;
+struct BatchResultDefaultTypeInternal;
+extern BatchResultDefaultTypeInternal _BatchResult_default_instance_;
 class IntegrationConfig;
 struct IntegrationConfigDefaultTypeInternal;
 extern IntegrationConfigDefaultTypeInternal _IntegrationConfig_default_instance_;
 class LogConfig;
 struct LogConfigDefaultTypeInternal;
 extern LogConfigDefaultTypeInternal _LogConfig_default_instance_;
+class MeanCrossingResults;
+struct MeanCrossingResultsDefaultTypeInternal;
+extern MeanCrossingResultsDefaultTypeInternal _MeanCrossingResults_default_instance_;
 class Parameters;
 struct ParametersDefaultTypeInternal;
 extern ParametersDefaultTypeInternal _Parameters_default_instance_;
@@ -68,8 +74,10 @@ extern SimulationRequestDefaultTypeInternal _SimulationRequest_default_instance_
 PROTOBUF_NAMESPACE_OPEN
 template<> ::protocols::BatchConfig* Arena::CreateMaybeMessage<::protocols::BatchConfig>(Arena*);
 template<> ::protocols::BatchConfig_Interval* Arena::CreateMaybeMessage<::protocols::BatchConfig_Interval>(Arena*);
+template<> ::protocols::BatchResult* Arena::CreateMaybeMessage<::protocols::BatchResult>(Arena*);
 template<> ::protocols::IntegrationConfig* Arena::CreateMaybeMessage<::protocols::IntegrationConfig>(Arena*);
 template<> ::protocols::LogConfig* Arena::CreateMaybeMessage<::protocols::LogConfig>(Arena*);
+template<> ::protocols::MeanCrossingResults* Arena::CreateMaybeMessage<::protocols::MeanCrossingResults>(Arena*);
 template<> ::protocols::Parameters* Arena::CreateMaybeMessage<::protocols::Parameters>(Arena*);
 template<> ::protocols::SimulationRequest* Arena::CreateMaybeMessage<::protocols::SimulationRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -1482,6 +1490,404 @@ class BatchConfig final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_Simulation_2eproto;
 };
+// -------------------------------------------------------------------
+
+class BatchResult final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:protocols.BatchResult) */ {
+ public:
+  inline BatchResult() : BatchResult(nullptr) {}
+  ~BatchResult() override;
+  explicit PROTOBUF_CONSTEXPR BatchResult(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BatchResult(const BatchResult& from);
+  BatchResult(BatchResult&& from) noexcept
+    : BatchResult() {
+    *this = ::std::move(from);
+  }
+
+  inline BatchResult& operator=(const BatchResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BatchResult& operator=(BatchResult&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BatchResult& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BatchResult* internal_default_instance() {
+    return reinterpret_cast<const BatchResult*>(
+               &_BatchResult_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(BatchResult& a, BatchResult& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BatchResult* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BatchResult* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BatchResult* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BatchResult>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BatchResult& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BatchResult& from) {
+    BatchResult::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BatchResult* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "protocols.BatchResult";
+  }
+  protected:
+  explicit BatchResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kExpectedPathFieldNumber = 1,
+    kVariancePathFieldNumber = 2,
+    kCrossingResultsFieldNumber = 3,
+  };
+  // repeated double expected_path = 1;
+  int expected_path_size() const;
+  private:
+  int _internal_expected_path_size() const;
+  public:
+  void clear_expected_path();
+  private:
+  double _internal_expected_path(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+      _internal_expected_path() const;
+  void _internal_add_expected_path(double value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+      _internal_mutable_expected_path();
+  public:
+  double expected_path(int index) const;
+  void set_expected_path(int index, double value);
+  void add_expected_path(double value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+      expected_path() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+      mutable_expected_path();
+
+  // repeated double variance_path = 2;
+  int variance_path_size() const;
+  private:
+  int _internal_variance_path_size() const;
+  public:
+  void clear_variance_path();
+  private:
+  double _internal_variance_path(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+      _internal_variance_path() const;
+  void _internal_add_variance_path(double value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+      _internal_mutable_variance_path();
+  public:
+  double variance_path(int index) const;
+  void set_variance_path(int index, double value);
+  void add_variance_path(double value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+      variance_path() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+      mutable_variance_path();
+
+  // optional .protocols.MeanCrossingResults crossing_results = 3;
+  bool has_crossing_results() const;
+  private:
+  bool _internal_has_crossing_results() const;
+  public:
+  void clear_crossing_results();
+  const ::protocols::MeanCrossingResults& crossing_results() const;
+  PROTOBUF_NODISCARD ::protocols::MeanCrossingResults* release_crossing_results();
+  ::protocols::MeanCrossingResults* mutable_crossing_results();
+  void set_allocated_crossing_results(::protocols::MeanCrossingResults* crossing_results);
+  private:
+  const ::protocols::MeanCrossingResults& _internal_crossing_results() const;
+  ::protocols::MeanCrossingResults* _internal_mutable_crossing_results();
+  public:
+  void unsafe_arena_set_allocated_crossing_results(
+      ::protocols::MeanCrossingResults* crossing_results);
+  ::protocols::MeanCrossingResults* unsafe_arena_release_crossing_results();
+
+  // @@protoc_insertion_point(class_scope:protocols.BatchResult)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField< double > expected_path_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField< double > variance_path_;
+    ::protocols::MeanCrossingResults* crossing_results_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_Simulation_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MeanCrossingResults final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:protocols.MeanCrossingResults) */ {
+ public:
+  inline MeanCrossingResults() : MeanCrossingResults(nullptr) {}
+  ~MeanCrossingResults() override;
+  explicit PROTOBUF_CONSTEXPR MeanCrossingResults(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MeanCrossingResults(const MeanCrossingResults& from);
+  MeanCrossingResults(MeanCrossingResults&& from) noexcept
+    : MeanCrossingResults() {
+    *this = ::std::move(from);
+  }
+
+  inline MeanCrossingResults& operator=(const MeanCrossingResults& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MeanCrossingResults& operator=(MeanCrossingResults&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MeanCrossingResults& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MeanCrossingResults* internal_default_instance() {
+    return reinterpret_cast<const MeanCrossingResults*>(
+               &_MeanCrossingResults_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(MeanCrossingResults& a, MeanCrossingResults& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MeanCrossingResults* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MeanCrossingResults* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MeanCrossingResults* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MeanCrossingResults>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MeanCrossingResults& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const MeanCrossingResults& from) {
+    MeanCrossingResults::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MeanCrossingResults* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "protocols.MeanCrossingResults";
+  }
+  protected:
+  explicit MeanCrossingResults(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTotalNumberOfPathsFieldNumber = 1,
+    kNumberOfAboveCrossingsFieldNumber = 2,
+    kExpectedCrossingTimeFieldNumber = 4,
+    kExpectedCrossingPriceFieldNumber = 5,
+    kNumberOfBelowCrossingsFieldNumber = 3,
+  };
+  // uint32 total_number_of_paths = 1;
+  void clear_total_number_of_paths();
+  uint32_t total_number_of_paths() const;
+  void set_total_number_of_paths(uint32_t value);
+  private:
+  uint32_t _internal_total_number_of_paths() const;
+  void _internal_set_total_number_of_paths(uint32_t value);
+  public:
+
+  // uint32 number_of_above_crossings = 2;
+  void clear_number_of_above_crossings();
+  uint32_t number_of_above_crossings() const;
+  void set_number_of_above_crossings(uint32_t value);
+  private:
+  uint32_t _internal_number_of_above_crossings() const;
+  void _internal_set_number_of_above_crossings(uint32_t value);
+  public:
+
+  // double expected_crossing_time = 4;
+  void clear_expected_crossing_time();
+  double expected_crossing_time() const;
+  void set_expected_crossing_time(double value);
+  private:
+  double _internal_expected_crossing_time() const;
+  void _internal_set_expected_crossing_time(double value);
+  public:
+
+  // double expected_crossing_price = 5;
+  void clear_expected_crossing_price();
+  double expected_crossing_price() const;
+  void set_expected_crossing_price(double value);
+  private:
+  double _internal_expected_crossing_price() const;
+  void _internal_set_expected_crossing_price(double value);
+  public:
+
+  // uint32 number_of_below_crossings = 3;
+  void clear_number_of_below_crossings();
+  uint32_t number_of_below_crossings() const;
+  void set_number_of_below_crossings(uint32_t value);
+  private:
+  uint32_t _internal_number_of_below_crossings() const;
+  void _internal_set_number_of_below_crossings(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:protocols.MeanCrossingResults)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    uint32_t total_number_of_paths_;
+    uint32_t number_of_above_crossings_;
+    double expected_crossing_time_;
+    double expected_crossing_price_;
+    uint32_t number_of_below_crossings_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_Simulation_2eproto;
+};
 // ===================================================================
 
 
@@ -2423,9 +2829,305 @@ inline void BatchConfig::set_allocated_interval(::protocols::BatchConfig_Interva
   // @@protoc_insertion_point(field_set_allocated:protocols.BatchConfig.interval)
 }
 
+// -------------------------------------------------------------------
+
+// BatchResult
+
+// repeated double expected_path = 1;
+inline int BatchResult::_internal_expected_path_size() const {
+  return _impl_.expected_path_.size();
+}
+inline int BatchResult::expected_path_size() const {
+  return _internal_expected_path_size();
+}
+inline void BatchResult::clear_expected_path() {
+  _impl_.expected_path_.Clear();
+}
+inline double BatchResult::_internal_expected_path(int index) const {
+  return _impl_.expected_path_.Get(index);
+}
+inline double BatchResult::expected_path(int index) const {
+  // @@protoc_insertion_point(field_get:protocols.BatchResult.expected_path)
+  return _internal_expected_path(index);
+}
+inline void BatchResult::set_expected_path(int index, double value) {
+  _impl_.expected_path_.Set(index, value);
+  // @@protoc_insertion_point(field_set:protocols.BatchResult.expected_path)
+}
+inline void BatchResult::_internal_add_expected_path(double value) {
+  _impl_.expected_path_.Add(value);
+}
+inline void BatchResult::add_expected_path(double value) {
+  _internal_add_expected_path(value);
+  // @@protoc_insertion_point(field_add:protocols.BatchResult.expected_path)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+BatchResult::_internal_expected_path() const {
+  return _impl_.expected_path_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+BatchResult::expected_path() const {
+  // @@protoc_insertion_point(field_list:protocols.BatchResult.expected_path)
+  return _internal_expected_path();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+BatchResult::_internal_mutable_expected_path() {
+  return &_impl_.expected_path_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+BatchResult::mutable_expected_path() {
+  // @@protoc_insertion_point(field_mutable_list:protocols.BatchResult.expected_path)
+  return _internal_mutable_expected_path();
+}
+
+// repeated double variance_path = 2;
+inline int BatchResult::_internal_variance_path_size() const {
+  return _impl_.variance_path_.size();
+}
+inline int BatchResult::variance_path_size() const {
+  return _internal_variance_path_size();
+}
+inline void BatchResult::clear_variance_path() {
+  _impl_.variance_path_.Clear();
+}
+inline double BatchResult::_internal_variance_path(int index) const {
+  return _impl_.variance_path_.Get(index);
+}
+inline double BatchResult::variance_path(int index) const {
+  // @@protoc_insertion_point(field_get:protocols.BatchResult.variance_path)
+  return _internal_variance_path(index);
+}
+inline void BatchResult::set_variance_path(int index, double value) {
+  _impl_.variance_path_.Set(index, value);
+  // @@protoc_insertion_point(field_set:protocols.BatchResult.variance_path)
+}
+inline void BatchResult::_internal_add_variance_path(double value) {
+  _impl_.variance_path_.Add(value);
+}
+inline void BatchResult::add_variance_path(double value) {
+  _internal_add_variance_path(value);
+  // @@protoc_insertion_point(field_add:protocols.BatchResult.variance_path)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+BatchResult::_internal_variance_path() const {
+  return _impl_.variance_path_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+BatchResult::variance_path() const {
+  // @@protoc_insertion_point(field_list:protocols.BatchResult.variance_path)
+  return _internal_variance_path();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+BatchResult::_internal_mutable_variance_path() {
+  return &_impl_.variance_path_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+BatchResult::mutable_variance_path() {
+  // @@protoc_insertion_point(field_mutable_list:protocols.BatchResult.variance_path)
+  return _internal_mutable_variance_path();
+}
+
+// optional .protocols.MeanCrossingResults crossing_results = 3;
+inline bool BatchResult::_internal_has_crossing_results() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.crossing_results_ != nullptr);
+  return value;
+}
+inline bool BatchResult::has_crossing_results() const {
+  return _internal_has_crossing_results();
+}
+inline void BatchResult::clear_crossing_results() {
+  if (_impl_.crossing_results_ != nullptr) _impl_.crossing_results_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::protocols::MeanCrossingResults& BatchResult::_internal_crossing_results() const {
+  const ::protocols::MeanCrossingResults* p = _impl_.crossing_results_;
+  return p != nullptr ? *p : reinterpret_cast<const ::protocols::MeanCrossingResults&>(
+      ::protocols::_MeanCrossingResults_default_instance_);
+}
+inline const ::protocols::MeanCrossingResults& BatchResult::crossing_results() const {
+  // @@protoc_insertion_point(field_get:protocols.BatchResult.crossing_results)
+  return _internal_crossing_results();
+}
+inline void BatchResult::unsafe_arena_set_allocated_crossing_results(
+    ::protocols::MeanCrossingResults* crossing_results) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.crossing_results_);
+  }
+  _impl_.crossing_results_ = crossing_results;
+  if (crossing_results) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protocols.BatchResult.crossing_results)
+}
+inline ::protocols::MeanCrossingResults* BatchResult::release_crossing_results() {
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::protocols::MeanCrossingResults* temp = _impl_.crossing_results_;
+  _impl_.crossing_results_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::protocols::MeanCrossingResults* BatchResult::unsafe_arena_release_crossing_results() {
+  // @@protoc_insertion_point(field_release:protocols.BatchResult.crossing_results)
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::protocols::MeanCrossingResults* temp = _impl_.crossing_results_;
+  _impl_.crossing_results_ = nullptr;
+  return temp;
+}
+inline ::protocols::MeanCrossingResults* BatchResult::_internal_mutable_crossing_results() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.crossing_results_ == nullptr) {
+    auto* p = CreateMaybeMessage<::protocols::MeanCrossingResults>(GetArenaForAllocation());
+    _impl_.crossing_results_ = p;
+  }
+  return _impl_.crossing_results_;
+}
+inline ::protocols::MeanCrossingResults* BatchResult::mutable_crossing_results() {
+  ::protocols::MeanCrossingResults* _msg = _internal_mutable_crossing_results();
+  // @@protoc_insertion_point(field_mutable:protocols.BatchResult.crossing_results)
+  return _msg;
+}
+inline void BatchResult::set_allocated_crossing_results(::protocols::MeanCrossingResults* crossing_results) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.crossing_results_;
+  }
+  if (crossing_results) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(crossing_results);
+    if (message_arena != submessage_arena) {
+      crossing_results = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, crossing_results, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.crossing_results_ = crossing_results;
+  // @@protoc_insertion_point(field_set_allocated:protocols.BatchResult.crossing_results)
+}
+
+// -------------------------------------------------------------------
+
+// MeanCrossingResults
+
+// uint32 total_number_of_paths = 1;
+inline void MeanCrossingResults::clear_total_number_of_paths() {
+  _impl_.total_number_of_paths_ = 0u;
+}
+inline uint32_t MeanCrossingResults::_internal_total_number_of_paths() const {
+  return _impl_.total_number_of_paths_;
+}
+inline uint32_t MeanCrossingResults::total_number_of_paths() const {
+  // @@protoc_insertion_point(field_get:protocols.MeanCrossingResults.total_number_of_paths)
+  return _internal_total_number_of_paths();
+}
+inline void MeanCrossingResults::_internal_set_total_number_of_paths(uint32_t value) {
+  
+  _impl_.total_number_of_paths_ = value;
+}
+inline void MeanCrossingResults::set_total_number_of_paths(uint32_t value) {
+  _internal_set_total_number_of_paths(value);
+  // @@protoc_insertion_point(field_set:protocols.MeanCrossingResults.total_number_of_paths)
+}
+
+// uint32 number_of_above_crossings = 2;
+inline void MeanCrossingResults::clear_number_of_above_crossings() {
+  _impl_.number_of_above_crossings_ = 0u;
+}
+inline uint32_t MeanCrossingResults::_internal_number_of_above_crossings() const {
+  return _impl_.number_of_above_crossings_;
+}
+inline uint32_t MeanCrossingResults::number_of_above_crossings() const {
+  // @@protoc_insertion_point(field_get:protocols.MeanCrossingResults.number_of_above_crossings)
+  return _internal_number_of_above_crossings();
+}
+inline void MeanCrossingResults::_internal_set_number_of_above_crossings(uint32_t value) {
+  
+  _impl_.number_of_above_crossings_ = value;
+}
+inline void MeanCrossingResults::set_number_of_above_crossings(uint32_t value) {
+  _internal_set_number_of_above_crossings(value);
+  // @@protoc_insertion_point(field_set:protocols.MeanCrossingResults.number_of_above_crossings)
+}
+
+// uint32 number_of_below_crossings = 3;
+inline void MeanCrossingResults::clear_number_of_below_crossings() {
+  _impl_.number_of_below_crossings_ = 0u;
+}
+inline uint32_t MeanCrossingResults::_internal_number_of_below_crossings() const {
+  return _impl_.number_of_below_crossings_;
+}
+inline uint32_t MeanCrossingResults::number_of_below_crossings() const {
+  // @@protoc_insertion_point(field_get:protocols.MeanCrossingResults.number_of_below_crossings)
+  return _internal_number_of_below_crossings();
+}
+inline void MeanCrossingResults::_internal_set_number_of_below_crossings(uint32_t value) {
+  
+  _impl_.number_of_below_crossings_ = value;
+}
+inline void MeanCrossingResults::set_number_of_below_crossings(uint32_t value) {
+  _internal_set_number_of_below_crossings(value);
+  // @@protoc_insertion_point(field_set:protocols.MeanCrossingResults.number_of_below_crossings)
+}
+
+// double expected_crossing_time = 4;
+inline void MeanCrossingResults::clear_expected_crossing_time() {
+  _impl_.expected_crossing_time_ = 0;
+}
+inline double MeanCrossingResults::_internal_expected_crossing_time() const {
+  return _impl_.expected_crossing_time_;
+}
+inline double MeanCrossingResults::expected_crossing_time() const {
+  // @@protoc_insertion_point(field_get:protocols.MeanCrossingResults.expected_crossing_time)
+  return _internal_expected_crossing_time();
+}
+inline void MeanCrossingResults::_internal_set_expected_crossing_time(double value) {
+  
+  _impl_.expected_crossing_time_ = value;
+}
+inline void MeanCrossingResults::set_expected_crossing_time(double value) {
+  _internal_set_expected_crossing_time(value);
+  // @@protoc_insertion_point(field_set:protocols.MeanCrossingResults.expected_crossing_time)
+}
+
+// double expected_crossing_price = 5;
+inline void MeanCrossingResults::clear_expected_crossing_price() {
+  _impl_.expected_crossing_price_ = 0;
+}
+inline double MeanCrossingResults::_internal_expected_crossing_price() const {
+  return _impl_.expected_crossing_price_;
+}
+inline double MeanCrossingResults::expected_crossing_price() const {
+  // @@protoc_insertion_point(field_get:protocols.MeanCrossingResults.expected_crossing_price)
+  return _internal_expected_crossing_price();
+}
+inline void MeanCrossingResults::_internal_set_expected_crossing_price(double value) {
+  
+  _impl_.expected_crossing_price_ = value;
+}
+inline void MeanCrossingResults::set_expected_crossing_price(double value) {
+  _internal_set_expected_crossing_price(value);
+  // @@protoc_insertion_point(field_set:protocols.MeanCrossingResults.expected_crossing_price)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

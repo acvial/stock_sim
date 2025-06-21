@@ -3,6 +3,8 @@
 
 src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: /app/src/Communications/Communication_Utils.cpp \
   /app/src/Communications/Communication_Utils.h \
+  /app/src/Communications/Serialize.tpp \
+  /app/src/Environment_Manager/Environment_Manager.h \
   /app/src/Logger/Logger.h \
   /app/src/Protocols/Simulation.pb.h \
   /usr/include/alloca.h \
@@ -722,8 +724,6 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/linux/stddef.h:
 
-/usr/include/c++/13/cmath:
-
 /usr/include/x86_64-linux-gnu/sys/syscall.h:
 
 /usr/include/c++/13/clocale:
@@ -788,10 +788,6 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/c++/13/bits/stl_iterator_base_types.h:
 
-/usr/include/spdlog/sinks/ansicolor_sink.h:
-
-/usr/include/google/protobuf/any.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
 /usr/include/asm-generic/errno.h:
@@ -814,9 +810,9 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/c++/13/bits/uses_allocator.h:
 
-/usr/include/c++/13/bits/stl_multiset.h:
-
 /usr/include/c++/13/bits/postypes.h:
+
+/usr/include/c++/13/bits/stl_multiset.h:
 
 /usr/include/strings.h:
 
@@ -833,6 +829,10 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 /usr/include/x86_64-linux-gnu/asm/posix_types.h:
 
 /usr/include/c++/13/cwctype:
+
+/usr/include/linux/limits.h:
+
+/usr/include/c++/13/ratio:
 
 /usr/include/c++/13/bits/this_thread_sleep.h:
 
@@ -868,9 +868,9 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/c++/13/bits/stl_construct.h:
 
-/usr/include/c++/13/compare:
+/usr/include/linux/posix_types.h:
 
-/usr/include/c++/13/system_error:
+/usr/include/c++/13/bits/ptr_traits.h:
 
 /usr/include/c++/13/bits/std_abs.h:
 
@@ -894,9 +894,11 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/c++/13/bits/memoryfwd.h:
 
-/usr/include/c++/13/bits/atomic_lockfree_defines.h:
+/usr/include/c++/13/bits/locale_facets_nonio.tcc:
 
-/usr/include/c++/13/bits/locale_facets.h:
+/usr/include/c++/13/bits/stl_heap.h:
+
+/usr/include/c++/13/utility:
 
 /usr/include/c++/13/backward/binders.h:
 
@@ -932,9 +934,81 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/c++/13/tr1/special_function_util.h:
 
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/c++/13/bits/enable_special_members.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/c++/13/bits/stream_iterator.h:
+
+/usr/include/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
+
+/usr/include/c++/13/bits/stl_vector.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/c++/13/unordered_set:
+
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
+/usr/include/c++/13/bits/streambuf_iterator.h:
+
+/usr/include/spdlog/details/log_msg_buffer.h:
+
+/usr/include/c++/13/ostream:
+
+/usr/include/x86_64-linux-gnu/asm/unistd.h:
+
+/usr/include/spdlog/pattern_formatter.h:
+
+/usr/include/c++/13/tr1/riemann_zeta.tcc:
+
+/usr/include/c++/13/bits/stl_tempbuf.h:
+
+/usr/include/spdlog/logger.h:
+
+/usr/include/c++/13/bits/stl_tree.h:
+
+/usr/include/c++/13/bits/codecvt.h:
+
+/usr/include/c++/13/bits/stl_raw_storage_iter.h:
+
+/usr/include/c++/13/algorithm:
+
+/usr/include/c++/13/bits/erase_if.h:
+
+/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
+
+/app/src/Communications/Communication_Utils.h:
+
+/usr/include/c++/13/bits/concept_check.h:
+
+/usr/include/google/protobuf/stubs/logging.h:
+
+/usr/include/c++/13/cassert:
+
+/usr/include/c++/13/bits/cpp_type_traits.h:
+
+/app/src/Environment_Manager/Environment_Manager.h:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+/usr/include/c++/13/bits/chrono.h:
+
+/usr/include/c++/13/bits/atomic_lockfree_defines.h:
+
 /usr/include/c++/13/bits/unique_lock.h:
 
 /usr/include/c++/13/mutex:
+
+/usr/include/c++/13/bits/allocated_ptr.h:
+
+/usr/include/c++/13/bit:
+
+/usr/include/c++/13/bits/basic_string.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
@@ -954,37 +1028,7 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/google/protobuf/port_def.inc:
 
-/usr/include/c++/13/bits/allocated_ptr.h:
-
-/usr/include/c++/13/bit:
-
-/usr/include/c++/13/bits/basic_string.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
-
-/usr/include/c++/13/bits/enable_special_members.h:
-
-/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
-
-/usr/include/c++/13/bits/stream_iterator.h:
-
-/usr/include/spdlog/formatter.h:
-
-/app/src/Communications/Communication_Utils.cpp:
-
-/usr/include/c++/13/bits/stl_raw_storage_iter.h:
-
-/usr/include/c++/13/algorithm:
-
-/usr/include/c++/13/bits/erase_if.h:
-
-/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
-
-/app/src/Communications/Communication_Utils.h:
-
-/usr/include/c++/13/bits/concept_check.h:
-
-/usr/include/google/protobuf/stubs/logging.h:
+/usr/include/c++/13/bits/locale_facets.h:
 
 /usr/include/c++/13/tr1/poly_hermite.tcc:
 
@@ -996,111 +1040,7 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/linux/falloc.h:
 
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/usr/include/c++/13/bits/chrono.h:
-
-/usr/include/wchar.h:
-
-/usr/include/c++/13/bits/shared_ptr_base.h:
-
-/usr/include/c++/13/bits/basic_ios.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
-
-/usr/include/asm-generic/bitsperlong.h:
-
-/usr/include/asm-generic/types.h:
-
-/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/c++/13/array:
-
-/usr/include/spdlog/version.h:
-
-/usr/include/c++/13/bits/hash_bytes.h:
-
-/usr/include/spdlog/sinks/daily_file_sink.h:
-
-/usr/include/c++/13/backward/auto_ptr.h:
-
-/usr/include/assert.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
-
-/usr/include/c++/13/bits/stl_vector.h:
-
-/usr/include/byteswap.h:
-
-/usr/include/x86_64-linux-gnu/sys/types.h:
-
-/usr/include/c++/13/unordered_set:
-
-/usr/include/c++/13/bits/stl_tempbuf.h:
-
-/usr/include/spdlog/logger.h:
-
-/usr/include/c++/13/bits/stl_tree.h:
-
-/usr/include/c++/13/bits/codecvt.h:
-
-/usr/include/asm-generic/int-ll64.h:
-
-/usr/include/spdlog/details/log_msg.h:
-
-/usr/include/c++/13/bits/shared_ptr_atomic.h:
-
-/usr/include/c++/13/set:
-
-/usr/include/google/protobuf/generated_enum_reflection.h:
-
-/usr/include/c++/13/bits/streambuf.tcc:
-
-/usr/include/c++/13/bits/specfun.h:
-
-/usr/include/c++/13/atomic:
-
-/usr/include/x86_64-linux-gnu/bits/sigstack.h:
-
-/usr/include/google/protobuf/arenaz_sampler.h:
-
-/usr/include/c++/13/bits/basic_string.h:
-
-/usr/include/c++/13/tr1/poly_laguerre.tcc:
-
-/usr/include/libintl.h:
-
-/usr/include/c++/13/bits/invoke.h:
-
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
-/usr/include/c++/13/bits/streambuf_iterator.h:
-
-/usr/include/spdlog/details/log_msg_buffer.h:
-
-/usr/include/c++/13/ostream:
-
-/usr/include/x86_64-linux-gnu/asm/unistd.h:
-
-/usr/include/spdlog/pattern_formatter.h:
-
-/usr/include/c++/13/tr1/riemann_zeta.tcc:
-
-/usr/include/c++/13/cassert:
-
-/usr/include/c++/13/bits/cpp_type_traits.h:
-
-/usr/include/alloca.h:
-
-/usr/include/asm-generic/posix_types.h:
-
-/usr/include/google/protobuf/endian.h:
-
-/usr/include/c++/13/bits/locale_conv.h:
-
-/usr/include/c++/13/bits/istream.tcc:
+/app/src/Communications/Serialize.tpp:
 
 /usr/include/c++/13/bits/exception_ptr.h:
 
@@ -1126,6 +1066,76 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/c++/13/bits/hashtable_policy.h:
 
+/usr/include/spdlog/formatter.h:
+
+/app/src/Communications/Communication_Utils.cpp:
+
+/usr/include/assert.h:
+
+/usr/include/spdlog/sinks/daily_file_sink.h:
+
+/usr/include/c++/13/backward/auto_ptr.h:
+
+/usr/include/wchar.h:
+
+/usr/include/c++/13/bits/shared_ptr_base.h:
+
+/usr/include/c++/13/bits/basic_ios.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+
+/usr/include/asm-generic/bitsperlong.h:
+
+/usr/include/asm-generic/types.h:
+
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/c++/13/array:
+
+/usr/include/spdlog/version.h:
+
+/usr/include/c++/13/bits/hash_bytes.h:
+
+/usr/include/asm-generic/int-ll64.h:
+
+/usr/include/spdlog/details/log_msg.h:
+
+/usr/include/c++/13/bits/shared_ptr_atomic.h:
+
+/usr/include/c++/13/set:
+
+/usr/include/c++/13/bits/istream.tcc:
+
+/usr/include/c++/13/bits/locale_conv.h:
+
+/usr/include/google/protobuf/generated_enum_reflection.h:
+
+/usr/include/c++/13/bits/streambuf.tcc:
+
+/usr/include/c++/13/bits/specfun.h:
+
+/usr/include/c++/13/atomic:
+
+/usr/include/x86_64-linux-gnu/bits/sigstack.h:
+
+/usr/include/google/protobuf/arenaz_sampler.h:
+
+/usr/include/c++/13/bits/basic_string.h:
+
+/usr/include/c++/13/tr1/poly_laguerre.tcc:
+
+/usr/include/libintl.h:
+
+/usr/include/c++/13/bits/invoke.h:
+
+/usr/include/alloca.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/google/protobuf/endian.h:
+
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
 /usr/include/c++/13/pstl/glue_algorithm_defs.h:
@@ -1137,10 +1147,6 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 /usr/include/c++/13/climits:
 
 /usr/include/c++/13/bits/localefwd.h:
-
-/usr/include/c++/13/bits/ptr_traits.h:
-
-/usr/include/linux/posix_types.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
@@ -1184,11 +1190,15 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 
 /usr/include/google/protobuf/stubs/common.h:
 
-/usr/include/c++/13/bits/locale_facets_nonio.tcc:
+/usr/include/c++/13/cmath:
 
-/usr/include/c++/13/bits/stl_heap.h:
+/usr/include/c++/13/system_error:
 
-/usr/include/c++/13/utility:
+/usr/include/c++/13/compare:
+
+/usr/include/spdlog/sinks/ansicolor_sink.h:
+
+/usr/include/google/protobuf/any.h:
 
 /usr/include/c++/13/cstring:
 
@@ -1203,6 +1213,10 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 /usr/include/google/protobuf/stubs/stl_util.h:
 
 /usr/include/c++/13/debug/assertions.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/c++/13/debug/debug.h:
 
 /usr/include/c++/13/ext/aligned_buffer.h:
 
@@ -1389,11 +1403,3 @@ src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o: 
 /usr/include/google/protobuf/wire_format_lite.h:
 
 /usr/include/linux/close_range.h:
-
-/usr/include/c++/13/debug/debug.h:
-
-/usr/include/linux/errno.h:
-
-/usr/include/c++/13/ratio:
-
-/usr/include/linux/limits.h:

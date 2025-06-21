@@ -28,7 +28,8 @@
 						5,
 						6,
 						7,
-						8
+						8,
+						9
 					],
 					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
 					"minimumCMakeVersion" : 
@@ -40,7 +41,7 @@
 					"source" : "src",
 					"targetIndexes" : 
 					[
-						7
+						8
 					]
 				},
 				{
@@ -59,6 +60,21 @@
 					]
 				},
 				{
+					"build" : "src/Environment_Manager",
+					"jsonFile" : "directory-src.Environment_Manager-Debug-1f1b7f707b5a8ddb5c2f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Environment_Manager",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
 					"build" : "src/Integrator",
 					"jsonFile" : "directory-src.Integrator-Debug-680dc0f00ca0116334c4.json",
 					"minimumCMakeVersion" : 
@@ -70,7 +86,7 @@
 					"source" : "src/Integrator",
 					"targetIndexes" : 
 					[
-						2
+						3
 					]
 				},
 				{
@@ -85,7 +101,7 @@
 					"source" : "src/Logger",
 					"targetIndexes" : 
 					[
-						3
+						4
 					]
 				},
 				{
@@ -100,7 +116,7 @@
 					"source" : "src/Manager",
 					"targetIndexes" : 
 					[
-						4
+						5
 					]
 				},
 				{
@@ -115,7 +131,7 @@
 					"source" : "src/Models",
 					"targetIndexes" : 
 					[
-						5
+						6
 					]
 				},
 				{
@@ -130,14 +146,14 @@
 					"source" : "src/Protocols",
 					"targetIndexes" : 
 					[
-						6
+						7
 					]
 				},
 				{
 					"build" : "src/Simulation_Runner",
 					"childIndexes" : 
 					[
-						9
+						10
 					],
 					"jsonFile" : "directory-src.Simulation_Runner-Debug-15e9defb4f19a9144a08.json",
 					"minimumCMakeVersion" : 
@@ -155,7 +171,7 @@
 					{
 						"string" : "3.16"
 					},
-					"parentIndex" : 8,
+					"parentIndex" : 9,
 					"projectIndex" : 0,
 					"source" : "src/Simulation_Runner/Batch_Runner",
 					"targetIndexes" : 
@@ -179,7 +195,8 @@
 						6,
 						7,
 						8,
-						9
+						9,
+						10
 					],
 					"name" : "Stock_Simulator",
 					"targetIndexes" : 
@@ -191,14 +208,15 @@
 						4,
 						5,
 						6,
-						7
+						7,
+						8
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 9,
+					"directoryIndex" : 10,
 					"id" : "BATCH_RUNNER_LIB::@d4b682abe76a890e8f0c",
 					"jsonFile" : "target-BATCH_RUNNER_LIB-Debug-34b01314da57833f06ca.json",
 					"name" : "BATCH_RUNNER_LIB",
@@ -207,40 +225,47 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "COMMUNICATIONS_LIB::@35a6a6d2c96d13e300b4",
-					"jsonFile" : "target-COMMUNICATIONS_LIB-Debug-50723e041ff66d822bda.json",
+					"jsonFile" : "target-COMMUNICATIONS_LIB-Debug-0dcba0721f64ea3666ef.json",
 					"name" : "COMMUNICATIONS_LIB",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 3,
+					"id" : "ENVIRONMENT_LIB::@5c5d17c1b63830d26fe1",
+					"jsonFile" : "target-ENVIRONMENT_LIB-Debug-20da4cc8906ca210e030.json",
+					"name" : "ENVIRONMENT_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
 					"id" : "INTEGRATOR_LIB::@e7e6e5acd825ac1f264d",
 					"jsonFile" : "target-INTEGRATOR_LIB-Debug-76a13524b967bb855e43.json",
 					"name" : "INTEGRATOR_LIB",
 					"projectIndex" : 0
 				},
 				{
-					"directoryIndex" : 4,
+					"directoryIndex" : 5,
 					"id" : "LOGGER_LIB::@8f2c0937412c0976db5b",
 					"jsonFile" : "target-LOGGER_LIB-Debug-12222409d22ff6e6b823.json",
 					"name" : "LOGGER_LIB",
 					"projectIndex" : 0
 				},
 				{
-					"directoryIndex" : 5,
+					"directoryIndex" : 6,
 					"id" : "MANAGER_LIB::@7ca4fe4d00630860de97",
-					"jsonFile" : "target-MANAGER_LIB-Debug-1d17d3b54346ef6d7886.json",
+					"jsonFile" : "target-MANAGER_LIB-Debug-34b1a37875d3aff7d0b8.json",
 					"name" : "MANAGER_LIB",
 					"projectIndex" : 0
 				},
 				{
-					"directoryIndex" : 6,
+					"directoryIndex" : 7,
 					"id" : "MODEL_LIB::@9c841789ed2d01b6023a",
 					"jsonFile" : "target-MODEL_LIB-Debug-3dd2de846d4c661f5e30.json",
 					"name" : "MODEL_LIB",
 					"projectIndex" : 0
 				},
 				{
-					"directoryIndex" : 7,
+					"directoryIndex" : 8,
 					"id" : "PROTOCOL_LIB::@0d6d85245ab30f279b0c",
 					"jsonFile" : "target-PROTOCOL_LIB-Debug-fbf56eff003fa8786136.json",
 					"name" : "PROTOCOL_LIB",
@@ -249,7 +274,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "Simulator::@145eef247bfb46b6828c",
-					"jsonFile" : "target-Simulator-Debug-74ef8334bde1a1c3954c.json",
+					"jsonFile" : "target-Simulator-Debug-f39697eb62c4be5a36e0.json",
 					"name" : "Simulator",
 					"projectIndex" : 0
 				}

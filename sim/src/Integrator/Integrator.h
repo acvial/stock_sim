@@ -17,7 +17,6 @@ class Integrator{
     double delta_t;
     double timeHorizon;
     uint numSteps;
-    std::vector<double> path;
 
     std::mt19937 rng;
     std::normal_distribution<double> dist;
@@ -35,18 +34,21 @@ class Integrator{
 
     void setTimestep(double delta_t_);
 
-    double                     getTimestep() const;
-    uint                       getNumSteps() const;
-    const std::vector<double>* getPath    () const;
+    double getTimestep() const;
+    uint   getNumSteps() const;
 
-    /// @brief Calculates the path.
+    /// @brief Calculates the path. Stop condition: time horizon reached.
     /// @param modelData SDE parameters at given time.
-    virtual void integratePath(const ModelData& modelData) = 0;
+    /// @return Pointer to path.
+    virtual std::unique_ptr<std::vector<double>> integratePath(const ModelData& modelData) = 0;
+
+    /// @brief Calculates the path. Stop condition. price scpated interval.
+    /// @param modelData SDE parameters at given time.
+    /// @param interval Price interval.
+    /// @return Pointer to path.
+    virtual std::unique_ptr<std::vector<double>> integratePath(const ModelData& modelData, const std::pair<double, double>& interval) = 0;
 
     private:
-
-    /// @brief Calculates number of steps and reserves memory for them.
-    void reservePathMemory();
 
     /// @brief Created engine and seed.
     void initialiseRandomEngine();

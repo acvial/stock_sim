@@ -24,9 +24,44 @@ Metrics& Metrics::operator=(const Metrics& other){
     return *this;
 }
 
-void Metrics::setPaths(std::vector<std::vector<double>>& paths_){
+void Metrics::setBasicPaths(std::vector<std::vector<double>>& basicPaths_){
 
-    paths = paths_;
+    basicPaths = basicPaths_;
+}
+
+void Metrics::setCrossingPaths(std::vector<std::vector<double>>& crossingPaths_){
+
+    crossingPaths = crossingPaths_;
+}
+
+uint Metrics::getNumberOfPaths() const {
+
+    return numberOfPaths;
+}
+
+const std::vector<double>* Metrics::getExpectedPath() const {
+
+    return &expectation;
+}
+
+const std::vector<double>* Metrics::getVariancePath() const {
+
+    return &variance;
+}
+
+const MeanCrossingTime* Metrics::getMeanCrossingTime() const {
+
+    return &meanCrossingTime;
+}
+
+const RequestedMetrics* Metrics::getRequestedMetrics() const {
+
+    return &requestedMetrics;
+}
+
+const std::pair<double, double>* Metrics::getInterval() const {
+
+    return &interval;
 }
 
 void Metrics::computeMetrics(double timestep){
@@ -45,7 +80,7 @@ void Metrics::computeMetrics(double timestep){
 void Metrics::computeExpecteationAndVariance(){
 
     // Number of points
-    size_t numberOfPoints = paths.at(0).size();
+    size_t numberOfPoints = basicPaths.at(0).size();
 
     // Compute individual metrics
     for(size_t k = 0; k < numberOfPoints; k++){
@@ -57,7 +92,7 @@ void Metrics::computeExpecteationAndVariance(){
         SPDLOG_INFO("Computing expectation.");
         for(size_t j = 0; j < numberOfPaths; j++){
 
-            expect += paths.at(j).at(k);
+            expect += basicPaths.at(j).at(k);
 
             if(j == numberOfPaths - 1){
 
@@ -69,7 +104,7 @@ void Metrics::computeExpecteationAndVariance(){
         SPDLOG_INFO("Computing variance.");
         for(size_t j = 0; j < numberOfPaths; j++){
 
-            var += std::pow(paths.at(j).at(k) - expect / numberOfPaths, 2);
+            var += std::pow(basicPaths.at(j).at(k) - expect / numberOfPaths, 2);
 
             if(j == numberOfPaths - 1){
 
@@ -84,53 +119,40 @@ void Metrics::computeMeanCrossingTime(double timestep){
     bool isAbove = false;
     bool isBelow = false;
     double meanTime = 0;
-    uint totalNumberOfCrossings = 0;
+    double meanPrice = 0;
     uint numberOfAboveCrossings = 0;
     uint numberOfBelowCrossings = 0;
 
-    for(const auto& path : paths){
+    for(const auto& path : crossingPaths){
 
-        for(size_t k = 0; k < path.size(); k++){
+        // Compute mean time
+        meanTime += (double) path.size();
 
-            // Get point
-            double point = path.at(k);
+        // Compute mean price
+        double crossingPrice = path.back();
+        meanPrice += crossingPrice;
 
-            // Check whether the crossing has ocurred from above or below
-            isBelow = (interval.first < point);
-            isAbove = (point < interval.second);
+        // Check whether the prices scaped the interval from above or below
+        isAbove = (interval.second < crossingPrice);
+        isBelow = (crossingPrice < interval.first);
 
-            if(isAbove){
+        if(isAbove){ 
 
-                SPDLOG_DEBUG("Path scaped interval from above.");
+            numberOfAboveCrossings += 1; 
+        }
+        else if(isBelow){
 
-                // Update mean
-                meanTime += (double) k;
+            numberOfBelowCrossings += 1;
+        }
+        else{
 
-                // Update counter
-                totalNumberOfCrossings += 1;
-                numberOfAboveCrossings += 1;
-
-                break;
-            }
-            else if(isBelow){
-
-                SPDLOG_DEBUG("Path scaped interval from below.");
-
-                // Update mean
-                meanTime += (double) k;
-
-                // Update counter
-                totalNumberOfCrossings += 1;
-                numberOfBelowCrossings += 1;
-
-                break;
-            }
+            SPDLOG_ERROR("Path ended without crossing.");
         }
     }
 
     // Store values
-    meanCrossingTime = MeanCrossingTime(totalNumberOfCrossings,
-                                        numberOfAboveCrossings,
+    meanCrossingTime = MeanCrossingTime(numberOfAboveCrossings,
                                         numberOfBelowCrossings,
-                                        meanTime * timestep / totalNumberOfCrossings);
+                                        meanTime * timestep / numberOfPaths,
+                                        meanPrice / numberOfPaths);
 }

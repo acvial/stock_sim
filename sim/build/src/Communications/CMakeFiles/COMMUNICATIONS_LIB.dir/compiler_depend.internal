@@ -4,6 +4,8 @@
 src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o
  /app/src/Communications/Communication_Utils.cpp
  /app/src/Communications/Communication_Utils.h
+ /app/src/Communications/Serialize.tpp
+ /app/src/Environment_Manager/Environment_Manager.h
  /app/src/Logger/Logger.h
  /app/src/Protocols/Simulation.pb.h
  /usr/include/alloca.h

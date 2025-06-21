@@ -3,6 +3,8 @@
 
 src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
   /app/src/Communications/Communication_Utils.h \
+  /app/src/Communications/Serialize.tpp \
+  /app/src/Environment_Manager/Environment_Manager.h \
   /app/src/Integrator/Euler_Maruyama.h \
   /app/src/Integrator/Integration_Data.h \
   /app/src/Integrator/Integrator.h \
@@ -14,6 +16,11 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
   /app/src/Models/Model_Data.h \
   /app/src/Models/Model_Factory.h \
   /app/src/Protocols/Simulation.pb.h \
+  /app/src/Simulation_Runner/Batch_Runner/Batch_Data.h \
+  /app/src/Simulation_Runner/Batch_Runner/Batch_Runner.h \
+  /app/src/Simulation_Runner/Batch_Runner/Metrics/Mean_Crossing_time.h \
+  /app/src/Simulation_Runner/Batch_Runner/Metrics/Metrics.h \
+  /app/src/Simulation_Runner/Batch_Runner/Metrics/Requested_Metrics.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -510,8 +517,6 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:
-
 /usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h:
@@ -592,10 +597,6 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
-/usr/include/x86_64-linux-gnu/bits/stat.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
-
 /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
 
 /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
@@ -672,8 +673,6 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/spdlog/sinks/base_sink-inl.h:
 
-/usr/include/spdlog/logger-inl.h:
-
 /usr/include/spdlog/formatter.h:
 
 /usr/include/spdlog/fmt/fmt.h:
@@ -709,8 +708,6 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 /usr/include/spdlog/details/backtracer.h:
 
 /usr/include/spdlog/details/backtracer-inl.h:
-
-/usr/include/spdlog/common.h:
 
 /usr/include/spdlog/common-inl.h:
 
@@ -752,23 +749,25 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/google/protobuf/stubs/platform_macros.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:
 
-/usr/include/c++/13/bits/unordered_set.h:
+/usr/include/google/protobuf/stubs/once.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+/usr/include/x86_64-linux-gnu/bits/locale.h:
 
-/usr/include/c++/13/bits/unique_ptr.h:
+/usr/include/google/protobuf/stubs/macros.h:
 
-/usr/include/c++/13/bits/align.h:
+/usr/include/google/protobuf/stubs/hash.h:
+
+/usr/include/locale.h:
+
+/usr/include/google/protobuf/stubs/common.h:
+
+/usr/include/google/protobuf/stubs/casts.h:
 
 /usr/include/stdint.h:
 
 /usr/include/endian.h:
-
-/usr/include/c++/13/bits/unordered_map.h:
-
-/usr/include/c++/13/bits/quoted_string.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
 
@@ -781,10 +780,6 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 /usr/include/c++/13/bits/stl_relops.h:
 
 /usr/include/c++/13/bits/stl_numeric.h:
-
-/usr/include/stdio.h:
-
-/usr/include/c++/13/bits/stl_iterator_base_types.h:
 
 /usr/include/c++/13/bits/functexcept.h:
 
@@ -822,31 +817,15 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/ratio:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h:
-
-/app/src/Integrator/Integration_Data.h:
-
-/usr/include/c++/13/bits/this_thread_sleep.h:
-
-/usr/include/google/protobuf/arena.h:
-
 /usr/include/c++/13/bits/shared_ptr.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/include/c++/13/bits/string_view.tcc:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:
-
-/usr/include/google/protobuf/stubs/once.h:
-
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
 /usr/include/c++/13/bits/requires_hosted.h:
-
-/usr/include/linux/stat.h:
-
-/usr/include/c++/13/bits/locale_facets.tcc:
 
 /usr/include/fmt/core.h:
 
@@ -855,6 +834,10 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 /usr/include/spdlog/details/synchronous_factory.h:
 
 /usr/include/c++/13/bits/stl_construct.h:
+
+/usr/include/c++/13/bits/quoted_string.h:
+
+/usr/include/c++/13/bits/unordered_map.h:
 
 /usr/include/linux/posix_types.h:
 
@@ -906,37 +889,33 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/bits/locale_facets_nonio.h:
 
-/usr/include/locale.h:
-
-/usr/include/google/protobuf/stubs/common.h:
-
 /usr/include/c++/13/bits/locale_facets.h:
 
 /usr/include/google/protobuf/generated_enum_reflection.h:
 
-/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+/usr/include/c++/13/bits/this_thread_sleep.h:
 
-/usr/include/c++/13/bits/enable_special_members.h:
+/usr/include/google/protobuf/arena.h:
 
-/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+/usr/include/c++/13/bits/invoke.h:
 
-/usr/include/c++/13/bits/stream_iterator.h:
+/usr/include/c++/13/bits/functional_hash.h:
 
-/usr/include/spdlog/spdlog.h:
+/usr/include/google/protobuf/generated_message_util.h:
 
-/app/src/Models/Model.h:
-
-/usr/include/c++/13/bits/alloc_traits.h:
+/usr/include/errno.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/include/c++/13/bits/node_handle.h:
 
-/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
-
-/usr/include/asm-generic/errno-base.h:
-
 /usr/include/asm-generic/int-ll64.h:
+
+/usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
+
+/app/src/Simulation_Runner/Batch_Runner/Metrics/Requested_Metrics.h:
 
 /app/src/Integrator/Euler_Maruyama.h:
 
@@ -944,11 +923,61 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/cwchar:
 
-/usr/include/c++/13/bits/functional_hash.h:
+/usr/include/stdio.h:
 
-/usr/include/google/protobuf/generated_message_util.h:
+/usr/include/c++/13/bits/stl_iterator_base_types.h:
 
-/usr/include/errno.h:
+/usr/include/spdlog/common.h:
+
+/app/src/Simulation_Runner/Batch_Runner/Batch_Runner.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+
+/usr/include/c++/13/bits/hashtable.h:
+
+/usr/include/spdlog/logger-inl.h:
+
+/app/src/Simulation_Runner/Batch_Runner/Batch_Data.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/c++/13/bits/stl_iterator.h:
+
+/usr/include/c++/13/ext/numeric_traits.h:
+
+/usr/include/c++/13/backward/binders.h:
+
+/usr/include/c++/13/bits/locale_conv.h:
+
+/usr/include/c++/13/bits/istream.tcc:
+
+/usr/include/c++/13/bits/exception_ptr.h:
+
+/usr/include/google/protobuf/generated_enum_util.h:
+
+/usr/include/spdlog/details/log_msg.h:
+
+/usr/include/c++/13/set:
+
+/usr/include/c++/13/bits/shared_ptr_atomic.h:
+
+/usr/include/c++/13/bits/erase_if.h:
+
+/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
+
+/app/src/Communications/Communication_Utils.h:
+
+/usr/include/c++/13/bits/ios_base.h:
+
+/usr/include/c++/13/iterator:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+/usr/include/c++/13/bits/chrono.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
@@ -972,27 +1001,15 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/bits/shared_ptr_base.h:
 
+/usr/include/limits.h:
+
+/usr/include/c++/13/bits/std_thread.h:
+
+/usr/include/c++/13/initializer_list:
+
+/usr/include/c++/13/tr1/bessel_function.tcc:
+
 /usr/include/c++/13/bits/basic_ios.h:
-
-/usr/include/spdlog/details/log_msg.h:
-
-/usr/include/c++/13/set:
-
-/usr/include/c++/13/bits/shared_ptr_atomic.h:
-
-/usr/include/c++/13/bits/erase_if.h:
-
-/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
-
-/app/src/Communications/Communication_Utils.h:
-
-/usr/include/c++/13/bits/concept_check.h:
-
-/usr/include/google/protobuf/stubs/logging.h:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/usr/include/c++/13/bits/chrono.h:
 
 /usr/include/byteswap.h:
 
@@ -1024,12 +1041,6 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/typeinfo:
 
-/usr/include/c++/13/bits/locale_conv.h:
-
-/usr/include/c++/13/bits/istream.tcc:
-
-/usr/include/c++/13/bits/exception_ptr.h:
-
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
 
 /usr/include/x86_64-linux-gnu/bits/signal_ext.h:
@@ -1039,30 +1050,6 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 /usr/include/c++/13/bits/char_traits.h:
 
 /usr/include/c++/13/bits/hashtable_policy.h:
-
-/usr/include/c++/13/bits/stl_raw_storage_iter.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
-/usr/include/asm-generic/errno.h:
-
-/app/src/main.cpp:
-
-/usr/include/c++/13/algorithm:
-
-/usr/include/c++/13/ext/concurrence.h:
-
-/usr/include/c++/13/array:
-
-/usr/include/spdlog/version.h:
-
-/usr/include/c++/13/bits/hash_bytes.h:
-
-/usr/include/spdlog/sinks/daily_file_sink.h:
-
-/usr/include/c++/13/backward/auto_ptr.h:
-
-/usr/include/assert.h:
 
 /usr/include/c++/13/bits/stl_tempbuf.h:
 
@@ -1074,11 +1061,23 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/bits/codecvt.h:
 
-/usr/include/c++/13/backward/binders.h:
+/usr/include/spdlog/spdlog.h:
 
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
+/app/src/Models/Model.h:
 
-/usr/include/c++/13/bits/algorithmfwd.h:
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:
+
+/app/src/Simulation_Runner/Batch_Runner/Metrics/Mean_Crossing_time.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+/usr/include/spdlog/sinks/basic_file_sink.h:
+
+/usr/include/c++/13/bits/stl_multimap.h:
+
+/app/src/Integrator/Integrator_Factory.h:
 
 /app/src/Protocols/Simulation.pb.h:
 
@@ -1090,17 +1089,83 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/random:
 
-/usr/include/c++/13/bits/uniform_int_dist.h:
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/c++/13/bits/algorithmfwd.h:
+
+/usr/include/c++/13/bits/alloc_traits.h:
+
+/usr/include/google/protobuf/stubs/logging.h:
+
+/usr/include/c++/13/bits/concept_check.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
+
+/usr/include/c++/13/tr1/special_function_util.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h:
+
+/app/src/Integrator/Integration_Data.h:
 
 /usr/include/c++/13/bits/locale_classes.tcc:
 
-/usr/include/google/protobuf/generated_enum_util.h:
+/usr/include/c++/13/bits/uniform_int_dist.h:
+
+/usr/include/assert.h:
+
+/usr/include/spdlog/sinks/daily_file_sink.h:
+
+/usr/include/c++/13/backward/auto_ptr.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/app/src/Models/Model_Factory.h:
+
+/usr/include/c++/13/memory:
+
+/usr/include/c++/13/ext/concurrence.h:
+
+/app/src/Communications/Serialize.tpp:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/c++/13/bits/stream_iterator.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/c++/13/bits/enable_special_members.h:
+
+/usr/include/c++/13/bits/stl_raw_storage_iter.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
+
+/usr/include/asm-generic/errno.h:
+
+/app/src/main.cpp:
+
+/usr/include/c++/13/algorithm:
+
+/usr/include/spdlog/version.h:
+
+/usr/include/c++/13/bits/hash_bytes.h:
+
+/usr/include/c++/13/array:
+
+/usr/include/c++/13/bits/streambuf.tcc:
+
+/usr/include/c++/13/bits/specfun.h:
+
+/usr/include/c++/13/bits/basic_string.h:
+
+/usr/include/c++/13/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/13/atomic:
+
+/usr/include/x86_64-linux-gnu/bits/sigstack.h:
+
+/usr/include/google/protobuf/arenaz_sampler.h:
 
 /usr/include/c++/13/bits/atomic_lockfree_defines.h:
-
-/usr/include/c++/13/bits/unique_lock.h:
-
-/usr/include/c++/13/mutex:
 
 /usr/include/c++/13/bits/basic_string.tcc:
 
@@ -1126,35 +1191,17 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/google/protobuf/port_def.inc:
 
-/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
-
-/usr/include/c++/13/tr1/special_function_util.h:
-
-/usr/include/x86_64-linux-gnu/bits/local_lim.h:
-
-/app/src/Models/Model_Factory.h:
-
-/usr/include/c++/13/memory:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/usr/include/spdlog/sinks/basic_file_sink.h:
-
-/usr/include/c++/13/bits/stl_multimap.h:
-
-/app/src/Integrator/Integrator_Factory.h:
-
 /usr/include/c++/13/bits/predefined_ops.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
 /usr/include/c++/13/condition_variable:
 
-/usr/include/x86_64-linux-gnu/bits/locale.h:
+/usr/include/c++/13/bits/align.h:
 
-/usr/include/google/protobuf/stubs/macros.h:
+/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/c++/13/bits/unique_ptr.h:
 
 /usr/include/c++/13/bit:
 
@@ -1169,22 +1216,6 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 /usr/include/c++/13/bits/basic_ios.tcc:
 
 /usr/include/c++/13/pstl/execution_defs.h:
-
-/usr/include/c++/13/bits/streambuf.tcc:
-
-/usr/include/c++/13/bits/specfun.h:
-
-/usr/include/c++/13/atomic:
-
-/usr/include/x86_64-linux-gnu/bits/sigstack.h:
-
-/usr/include/google/protobuf/arenaz_sampler.h:
-
-/usr/include/c++/13/bits/basic_string.h:
-
-/usr/include/c++/13/tr1/poly_laguerre.tcc:
-
-/usr/include/c++/13/bits/invoke.h:
 
 /usr/include/alloca.h:
 
@@ -1202,6 +1233,12 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/bits/localefwd.h:
 
+/usr/include/linux/stat.h:
+
+/usr/include/c++/13/bits/locale_facets.tcc:
+
+/app/src/Simulation_Runner/Batch_Runner/Metrics/Metrics.h:
+
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/c++/13/bits/exception_defines.h:
@@ -1212,17 +1249,19 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/streambuf:
 
-/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+/usr/include/c++/13/bits/unique_lock.h:
 
-/usr/include/c++/13/bits/hashtable.h:
+/usr/include/c++/13/mutex:
 
-/usr/include/c++/13/iterator:
+/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
 
-/usr/include/c++/13/bits/ios_base.h:
+/usr/include/c++/13/bits/unordered_set.h:
 
 /usr/include/c++/13/optional:
 
 /usr/include/c++/13/bits/vector.tcc:
+
+/app/src/Environment_Manager/Environment_Manager.h:
 
 /usr/include/c++/13/bits/cpp_type_traits.h:
 
@@ -1276,25 +1315,11 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 
 /usr/include/c++/13/new:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-/usr/include/c++/13/bits/stl_iterator.h:
-
-/usr/include/c++/13/ext/numeric_traits.h:
-
 /usr/include/c++/13/ext/string_conversions.h:
 
 /usr/include/c++/13/ext/type_traits.h:
 
 /usr/include/c++/13/functional:
-
-/usr/include/limits.h:
-
-/usr/include/c++/13/bits/std_thread.h:
-
-/usr/include/c++/13/tr1/bessel_function.tcc:
-
-/usr/include/c++/13/initializer_list:
 
 /usr/include/c++/13/ios:
 
@@ -1441,7 +1466,3 @@ src/CMakeFiles/Simulator.dir/main.cpp.o: /app/src/main.cpp \
 /usr/include/google/protobuf/repeated_ptr_field.h:
 
 /usr/include/google/protobuf/stubs/callback.h:
-
-/usr/include/google/protobuf/stubs/casts.h:
-
-/usr/include/google/protobuf/stubs/hash.h:

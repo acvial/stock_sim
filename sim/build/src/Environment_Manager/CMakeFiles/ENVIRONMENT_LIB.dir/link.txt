@@ -1,0 +1,2 @@
+/usr/bin/ar qc libENVIRONMENT_LIB.a CMakeFiles/ENVIRONMENT_LIB.dir/Environment_Manager.cpp.o
+/usr/bin/ranlib libENVIRONMENT_LIB.a

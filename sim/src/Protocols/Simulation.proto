@@ -3,6 +3,7 @@ option optimize_for = SPEED;
 
 package protocols;
 
+// ------------------ SIMULATION INPUT --------------------- //
 message SimulationRequest{
 
     enum ModelType{
@@ -84,4 +85,23 @@ message BatchConfig{
     uint32 num_paths = 1;
     bool mean_crossing_time = 2;
     optional Interval interval = 3;
+}
+
+// ------------------ SIMULATION OUTPUT --------------------- //
+
+message BatchResult{
+
+    repeated double expected_path = 1;
+    repeated double variance_path = 2;
+
+    optional MeanCrossingResults crossing_results = 3;
+}
+
+message MeanCrossingResults{
+
+    uint32 total_number_of_paths = 1;
+    uint32 number_of_above_crossings = 2;
+    uint32 number_of_below_crossings = 3;
+    double expected_crossing_time = 4;
+    double expected_crossing_price = 5;
 }

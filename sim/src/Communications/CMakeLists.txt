@@ -1,6 +1,7 @@
 set(COMMUNICATIONS_SOURCES
 
     "/app/src/Communications/Communication_Utils.cpp"
+    "/app/src/Communications/Serialize.tpp"
 )
 
 set(COMMUNICATIONS_INCLUDES
@@ -17,6 +18,7 @@ set(COMMUNICATIONS_LIBRARIES
     "/usr/lib/x86_64-linux-gnu/libfmt.so"
     "/usr/lib/x86_64-linux-gnu/libprotobuf.so"
     LOGGER_LIB
+    ENVIRONMENT_LIB
 )
 
 add_library               (COMMUNICATIONS_LIB STATIC ${COMMUNICATIONS_SOURCES})

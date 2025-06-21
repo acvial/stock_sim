@@ -7,7 +7,8 @@ BatchRunner::BatchRunner(const BatchData& batchData) :
                   batchData.interval,
                   batchData.requestedMetrics)
 {
-    paths.reserve(numberOfPaths);
+    basicPaths.reserve(numberOfPaths);
+    crossingPaths.reserve(numberOfPaths);
 }
 
 BatchRunner::BatchRunner(const BatchRunner& other) :
@@ -15,16 +16,18 @@ BatchRunner::BatchRunner(const BatchRunner& other) :
     metrics      (other.metrics      )
 {
 
-    paths.reserve(numberOfPaths);
+    basicPaths.reserve(numberOfPaths);
+    crossingPaths.reserve(numberOfPaths);
 }
 
 BatchRunner& BatchRunner::operator=(const BatchRunner& other){
 
     if(this != &other){
 
-        numberOfPaths = other.numberOfPaths;
-        metrics       = other.metrics;
-        paths         = other.paths;
+        numberOfPaths  = other.numberOfPaths;
+        metrics        = other.metrics;
+        basicPaths     = other.basicPaths;
+        crossingPaths  = other.crossingPaths;
     }
 
     return *this;
@@ -45,9 +48,14 @@ Metrics* BatchRunner::getMetrics(){
     return &metrics;
 }
 
-const std::vector<std::vector<double>>* BatchRunner::getPaths() const {
+const std::vector<std::vector<double>>* BatchRunner::getBasicPaths() const {
 
-    return &paths;
+    return &basicPaths;
+}
+
+const std::vector<std::vector<double>>* BatchRunner::getCrossingPaths() const {
+
+    return &crossingPaths;
 }
 
 void BatchRunner::computePaths(std::unique_ptr<Model> model, std::unique_ptr<Integrator> integrator){
@@ -57,16 +65,28 @@ void BatchRunner::computePaths(std::unique_ptr<Model> model, std::unique_ptr<Int
 
         SPDLOG_INFO("Integrating path: {}", k + 1);
 
-        // Integrate one path
-        integrator->integratePath(model->getModelData());
+        // Integrate one path (BASIC) and save it
+        basicPaths.push_back(
+            *std::move(
+                integrator->integratePath(model->getModelData())
+            )
+        );
 
-        // Save path
-        paths.push_back(*integrator->getPath());
+        if(metrics.getRequestedMetrics()->meanCrossingTime){
+
+            // Integrate one path (CROSSING) and save it
+           crossingPaths.push_back(
+               *std::move(
+                    integrator->integratePath(model->getModelData(), *metrics.getInterval())
+                )
+            );
+        }
 
         // Refresh seed
         integrator->refreshSeed();
     }
 
     // Pass object reference to metrics object
-    metrics.setPaths(paths);
+    metrics.setBasicPaths(basicPaths);
+    metrics.setCrossingPaths(crossingPaths);
 }

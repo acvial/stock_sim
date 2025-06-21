@@ -5,20 +5,20 @@
 
 struct MeanCrossingTime{
 
-    uint   numberOfTotalCrossings;
     uint   numberOfAboveCrossings;
     uint   numberOfBelowCrossings;
     double meanTime; 
+    double meanPrice;
 
     MeanCrossingTime() = default;
-    MeanCrossingTime(uint   numberOfTotalCrossings_,
-                     uint   numberOfAboveCrossings_,
+    MeanCrossingTime(uint   numberOfAboveCrossings_,
                      uint   numberOfBelowCrossings_,
-                     double meanTime_) : 
-        numberOfTotalCrossings(numberOfTotalCrossings_),
+                     double meanTime_,
+                     double meanPrice_) : 
         numberOfAboveCrossings(numberOfAboveCrossings_),
         numberOfBelowCrossings(numberOfBelowCrossings_),
-        meanTime              (meanTime_              )
+        meanTime              (meanTime_              ),
+        meanPrice             (meanPrice_             )
     {}
     ~MeanCrossingTime() = default;
 };

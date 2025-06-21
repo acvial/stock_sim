@@ -18,7 +18,7 @@ std::shared_ptr<spdlog::logger> Logger::initialiseLogger(std::string logName, st
     auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logName, true);
     fileSink->set_pattern(pattern);
     fileSink->set_level(spdlog::level::trace);
-    sinks.push_back(consoleSink);
+    sinks.push_back(fileSink);
 
     logger = std::make_shared<spdlog::logger>("multi_sink", begin(sinks), end(sinks));
     spdlog::set_default_logger(logger);

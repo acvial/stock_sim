@@ -5,7 +5,7 @@ Integrator::Integrator() :
     delta_t    (0),
     timeHorizon(0){
 
-    reservePathMemory();
+    numSteps = (uint) std::ceil(timeHorizon / delta_t);
     initialiseRandomEngine();
 }
 
@@ -13,7 +13,7 @@ Integrator::Integrator(double timestep, double timeHorizon_) :
     delta_t    (timestep    ),
     timeHorizon(timeHorizon_)
 {
-    reservePathMemory();
+    numSteps = (uint) std::ceil(timeHorizon / delta_t);
     initialiseRandomEngine();
 }
 
@@ -22,7 +22,7 @@ Integrator::Integrator(const IntegrationData& integrationData){
     delta_t     = integrationData.delta_t;
     timeHorizon = integrationData.timeHorizon;
 
-    reservePathMemory();
+    numSteps = (uint) std::ceil(timeHorizon / delta_t);
     initialiseRandomEngine();
 }
 
@@ -30,7 +30,7 @@ Integrator::Integrator(const Integrator& other) :
     delta_t    (other.delta_t    ),
     timeHorizon(other.timeHorizon)
 {
-    reservePathMemory();
+    numSteps = (uint) std::ceil(timeHorizon / delta_t);
     initialiseRandomEngine();
 }
 
@@ -58,17 +58,6 @@ double Integrator::getTimestep() const {
 uint Integrator::getNumSteps() const {
 
     return numSteps;
-}
-
-const std::vector<double>* Integrator::getPath() const {
-
-    return &path;
-}
-
-void Integrator::reservePathMemory(){
-
-    numSteps = (uint) std::ceil(timeHorizon / delta_t);
-    path.reserve(numSteps);
 }
 
 void Integrator::initialiseRandomEngine(){

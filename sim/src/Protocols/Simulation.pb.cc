@@ -122,8 +122,41 @@ struct BatchConfigDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BatchConfigDefaultTypeInternal _BatchConfig_default_instance_;
+PROTOBUF_CONSTEXPR BatchResult::BatchResult(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.expected_path_)*/{}
+  , /*decltype(_impl_.variance_path_)*/{}
+  , /*decltype(_impl_.crossing_results_)*/nullptr} {}
+struct BatchResultDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BatchResultDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BatchResultDefaultTypeInternal() {}
+  union {
+    BatchResult _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BatchResultDefaultTypeInternal _BatchResult_default_instance_;
+PROTOBUF_CONSTEXPR MeanCrossingResults::MeanCrossingResults(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.total_number_of_paths_)*/0u
+  , /*decltype(_impl_.number_of_above_crossings_)*/0u
+  , /*decltype(_impl_.expected_crossing_time_)*/0
+  , /*decltype(_impl_.expected_crossing_price_)*/0
+  , /*decltype(_impl_.number_of_below_crossings_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct MeanCrossingResultsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MeanCrossingResultsDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MeanCrossingResultsDefaultTypeInternal() {}
+  union {
+    MeanCrossingResults _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MeanCrossingResultsDefaultTypeInternal _MeanCrossingResults_default_instance_;
 }  // namespace protocols
-static ::_pb::Metadata file_level_metadata_Simulation_2eproto[6];
+static ::_pb::Metadata file_level_metadata_Simulation_2eproto[8];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Simulation_2eproto[4];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Simulation_2eproto = nullptr;
 
@@ -208,6 +241,29 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   ~0u,
   ~0u,
   0,
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchResult, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchResult, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchResult, _impl_.expected_path_),
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchResult, _impl_.variance_path_),
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchResult, _impl_.crossing_results_),
+  ~0u,
+  ~0u,
+  0,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::protocols::MeanCrossingResults, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::protocols::MeanCrossingResults, _impl_.total_number_of_paths_),
+  PROTOBUF_FIELD_OFFSET(::protocols::MeanCrossingResults, _impl_.number_of_above_crossings_),
+  PROTOBUF_FIELD_OFFSET(::protocols::MeanCrossingResults, _impl_.number_of_below_crossings_),
+  PROTOBUF_FIELD_OFFSET(::protocols::MeanCrossingResults, _impl_.expected_crossing_time_),
+  PROTOBUF_FIELD_OFFSET(::protocols::MeanCrossingResults, _impl_.expected_crossing_price_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 13, -1, sizeof(::protocols::SimulationRequest)},
@@ -216,6 +272,8 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 51, -1, -1, sizeof(::protocols::LogConfig)},
   { 60, -1, -1, sizeof(::protocols::BatchConfig_Interval)},
   { 68, 77, -1, sizeof(::protocols::BatchConfig)},
+  { 80, 89, -1, sizeof(::protocols::BatchResult)},
+  { 92, -1, -1, sizeof(::protocols::MeanCrossingResults)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -225,6 +283,8 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::protocols::_LogConfig_default_instance_._instance,
   &::protocols::_BatchConfig_Interval_default_instance_._instance,
   &::protocols::_BatchConfig_default_instance_._instance,
+  &::protocols::_BatchResult_default_instance_._instance,
+  &::protocols::_MeanCrossingResults_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Simulation_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -260,14 +320,22 @@ const char descriptor_table_protodef_Simulation_2eproto[] PROTOBUF_SECTION_VARIA
   "chConfig\022\021\n\tnum_paths\030\001 \001(\r\022\032\n\022mean_cros"
   "sing_time\030\002 \001(\010\0226\n\010interval\030\003 \001(\0132\037.prot"
   "ocols.BatchConfig.IntervalH\000\210\001\001\032 \n\010Inter"
-  "val\022\t\n\001a\030\001 \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_intervalB\002"
-  "H\001b\006proto3"
+  "val\022\t\n\001a\030\001 \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_interval\"\217"
+  "\001\n\013BatchResult\022\025\n\rexpected_path\030\001 \003(\001\022\025\n"
+  "\rvariance_path\030\002 \003(\001\022=\n\020crossing_results"
+  "\030\003 \001(\0132\036.protocols.MeanCrossingResultsH\000"
+  "\210\001\001B\023\n\021_crossing_results\"\273\001\n\023MeanCrossin"
+  "gResults\022\035\n\025total_number_of_paths\030\001 \001(\r\022"
+  "!\n\031number_of_above_crossings\030\002 \001(\r\022!\n\031nu"
+  "mber_of_below_crossings\030\003 \001(\r\022\036\n\026expecte"
+  "d_crossing_time\030\004 \001(\001\022\037\n\027expected_crossi"
+  "ng_price\030\005 \001(\001B\002H\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Simulation_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Simulation_2eproto = {
-    false, false, 1330, descriptor_table_protodef_Simulation_2eproto,
+    false, false, 1666, descriptor_table_protodef_Simulation_2eproto,
     "Simulation.proto",
-    &descriptor_table_Simulation_2eproto_once, nullptr, 0, 6,
+    &descriptor_table_Simulation_2eproto_once, nullptr, 0, 8,
     schemas, file_default_instances, TableStruct_Simulation_2eproto::offsets,
     file_level_metadata_Simulation_2eproto, file_level_enum_descriptors_Simulation_2eproto,
     file_level_service_descriptors_Simulation_2eproto,
@@ -2217,6 +2285,584 @@ void BatchConfig::InternalSwap(BatchConfig* other) {
       file_level_metadata_Simulation_2eproto[5]);
 }
 
+// ===================================================================
+
+class BatchResult::_Internal {
+ public:
+  using HasBits = decltype(std::declval<BatchResult>()._impl_._has_bits_);
+  static const ::protocols::MeanCrossingResults& crossing_results(const BatchResult* msg);
+  static void set_has_crossing_results(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::protocols::MeanCrossingResults&
+BatchResult::_Internal::crossing_results(const BatchResult* msg) {
+  return *msg->_impl_.crossing_results_;
+}
+BatchResult::BatchResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:protocols.BatchResult)
+}
+BatchResult::BatchResult(const BatchResult& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  BatchResult* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.expected_path_){from._impl_.expected_path_}
+    , decltype(_impl_.variance_path_){from._impl_.variance_path_}
+    , decltype(_impl_.crossing_results_){nullptr}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_crossing_results()) {
+    _this->_impl_.crossing_results_ = new ::protocols::MeanCrossingResults(*from._impl_.crossing_results_);
+  }
+  // @@protoc_insertion_point(copy_constructor:protocols.BatchResult)
+}
+
+inline void BatchResult::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.expected_path_){arena}
+    , decltype(_impl_.variance_path_){arena}
+    , decltype(_impl_.crossing_results_){nullptr}
+  };
+}
+
+BatchResult::~BatchResult() {
+  // @@protoc_insertion_point(destructor:protocols.BatchResult)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void BatchResult::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.expected_path_.~RepeatedField();
+  _impl_.variance_path_.~RepeatedField();
+  if (this != internal_default_instance()) delete _impl_.crossing_results_;
+}
+
+void BatchResult::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void BatchResult::Clear() {
+// @@protoc_insertion_point(message_clear_start:protocols.BatchResult)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.expected_path_.Clear();
+  _impl_.variance_path_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(_impl_.crossing_results_ != nullptr);
+    _impl_.crossing_results_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* BatchResult::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated double expected_path = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_expected_path(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 9) {
+          _internal_add_expected_path(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated double variance_path = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedDoubleParser(_internal_mutable_variance_path(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 17) {
+          _internal_add_variance_path(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr));
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .protocols.MeanCrossingResults crossing_results = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_crossing_results(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* BatchResult::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:protocols.BatchResult)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated double expected_path = 1;
+  if (this->_internal_expected_path_size() > 0) {
+    target = stream->WriteFixedPacked(1, _internal_expected_path(), target);
+  }
+
+  // repeated double variance_path = 2;
+  if (this->_internal_variance_path_size() > 0) {
+    target = stream->WriteFixedPacked(2, _internal_variance_path(), target);
+  }
+
+  // optional .protocols.MeanCrossingResults crossing_results = 3;
+  if (_internal_has_crossing_results()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::crossing_results(this),
+        _Internal::crossing_results(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:protocols.BatchResult)
+  return target;
+}
+
+size_t BatchResult::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:protocols.BatchResult)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated double expected_path = 1;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_expected_path_size());
+    size_t data_size = 8UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
+
+  // repeated double variance_path = 2;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_variance_path_size());
+    size_t data_size = 8UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
+
+  // optional .protocols.MeanCrossingResults crossing_results = 3;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.crossing_results_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BatchResult::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    BatchResult::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BatchResult::GetClassData() const { return &_class_data_; }
+
+
+void BatchResult::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<BatchResult*>(&to_msg);
+  auto& from = static_cast<const BatchResult&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:protocols.BatchResult)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.expected_path_.MergeFrom(from._impl_.expected_path_);
+  _this->_impl_.variance_path_.MergeFrom(from._impl_.variance_path_);
+  if (from._internal_has_crossing_results()) {
+    _this->_internal_mutable_crossing_results()->::protocols::MeanCrossingResults::MergeFrom(
+        from._internal_crossing_results());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void BatchResult::CopyFrom(const BatchResult& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:protocols.BatchResult)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BatchResult::IsInitialized() const {
+  return true;
+}
+
+void BatchResult::InternalSwap(BatchResult* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.expected_path_.InternalSwap(&other->_impl_.expected_path_);
+  _impl_.variance_path_.InternalSwap(&other->_impl_.variance_path_);
+  swap(_impl_.crossing_results_, other->_impl_.crossing_results_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata BatchResult::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Simulation_2eproto_getter, &descriptor_table_Simulation_2eproto_once,
+      file_level_metadata_Simulation_2eproto[6]);
+}
+
+// ===================================================================
+
+class MeanCrossingResults::_Internal {
+ public:
+};
+
+MeanCrossingResults::MeanCrossingResults(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:protocols.MeanCrossingResults)
+}
+MeanCrossingResults::MeanCrossingResults(const MeanCrossingResults& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  MeanCrossingResults* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.total_number_of_paths_){}
+    , decltype(_impl_.number_of_above_crossings_){}
+    , decltype(_impl_.expected_crossing_time_){}
+    , decltype(_impl_.expected_crossing_price_){}
+    , decltype(_impl_.number_of_below_crossings_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.total_number_of_paths_, &from._impl_.total_number_of_paths_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.number_of_below_crossings_) -
+    reinterpret_cast<char*>(&_impl_.total_number_of_paths_)) + sizeof(_impl_.number_of_below_crossings_));
+  // @@protoc_insertion_point(copy_constructor:protocols.MeanCrossingResults)
+}
+
+inline void MeanCrossingResults::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.total_number_of_paths_){0u}
+    , decltype(_impl_.number_of_above_crossings_){0u}
+    , decltype(_impl_.expected_crossing_time_){0}
+    , decltype(_impl_.expected_crossing_price_){0}
+    , decltype(_impl_.number_of_below_crossings_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+MeanCrossingResults::~MeanCrossingResults() {
+  // @@protoc_insertion_point(destructor:protocols.MeanCrossingResults)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void MeanCrossingResults::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void MeanCrossingResults::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void MeanCrossingResults::Clear() {
+// @@protoc_insertion_point(message_clear_start:protocols.MeanCrossingResults)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.total_number_of_paths_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.number_of_below_crossings_) -
+      reinterpret_cast<char*>(&_impl_.total_number_of_paths_)) + sizeof(_impl_.number_of_below_crossings_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* MeanCrossingResults::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 total_number_of_paths = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.total_number_of_paths_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 number_of_above_crossings = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.number_of_above_crossings_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 number_of_below_crossings = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.number_of_below_crossings_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // double expected_crossing_time = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 33)) {
+          _impl_.expected_crossing_time_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // double expected_crossing_price = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 41)) {
+          _impl_.expected_crossing_price_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* MeanCrossingResults::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:protocols.MeanCrossingResults)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 total_number_of_paths = 1;
+  if (this->_internal_total_number_of_paths() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_total_number_of_paths(), target);
+  }
+
+  // uint32 number_of_above_crossings = 2;
+  if (this->_internal_number_of_above_crossings() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_number_of_above_crossings(), target);
+  }
+
+  // uint32 number_of_below_crossings = 3;
+  if (this->_internal_number_of_below_crossings() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_number_of_below_crossings(), target);
+  }
+
+  // double expected_crossing_time = 4;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_expected_crossing_time = this->_internal_expected_crossing_time();
+  uint64_t raw_expected_crossing_time;
+  memcpy(&raw_expected_crossing_time, &tmp_expected_crossing_time, sizeof(tmp_expected_crossing_time));
+  if (raw_expected_crossing_time != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(4, this->_internal_expected_crossing_time(), target);
+  }
+
+  // double expected_crossing_price = 5;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_expected_crossing_price = this->_internal_expected_crossing_price();
+  uint64_t raw_expected_crossing_price;
+  memcpy(&raw_expected_crossing_price, &tmp_expected_crossing_price, sizeof(tmp_expected_crossing_price));
+  if (raw_expected_crossing_price != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(5, this->_internal_expected_crossing_price(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:protocols.MeanCrossingResults)
+  return target;
+}
+
+size_t MeanCrossingResults::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:protocols.MeanCrossingResults)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint32 total_number_of_paths = 1;
+  if (this->_internal_total_number_of_paths() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_total_number_of_paths());
+  }
+
+  // uint32 number_of_above_crossings = 2;
+  if (this->_internal_number_of_above_crossings() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_number_of_above_crossings());
+  }
+
+  // double expected_crossing_time = 4;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_expected_crossing_time = this->_internal_expected_crossing_time();
+  uint64_t raw_expected_crossing_time;
+  memcpy(&raw_expected_crossing_time, &tmp_expected_crossing_time, sizeof(tmp_expected_crossing_time));
+  if (raw_expected_crossing_time != 0) {
+    total_size += 1 + 8;
+  }
+
+  // double expected_crossing_price = 5;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_expected_crossing_price = this->_internal_expected_crossing_price();
+  uint64_t raw_expected_crossing_price;
+  memcpy(&raw_expected_crossing_price, &tmp_expected_crossing_price, sizeof(tmp_expected_crossing_price));
+  if (raw_expected_crossing_price != 0) {
+    total_size += 1 + 8;
+  }
+
+  // uint32 number_of_below_crossings = 3;
+  if (this->_internal_number_of_below_crossings() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_number_of_below_crossings());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MeanCrossingResults::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    MeanCrossingResults::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MeanCrossingResults::GetClassData() const { return &_class_data_; }
+
+
+void MeanCrossingResults::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<MeanCrossingResults*>(&to_msg);
+  auto& from = static_cast<const MeanCrossingResults&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:protocols.MeanCrossingResults)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_total_number_of_paths() != 0) {
+    _this->_internal_set_total_number_of_paths(from._internal_total_number_of_paths());
+  }
+  if (from._internal_number_of_above_crossings() != 0) {
+    _this->_internal_set_number_of_above_crossings(from._internal_number_of_above_crossings());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_expected_crossing_time = from._internal_expected_crossing_time();
+  uint64_t raw_expected_crossing_time;
+  memcpy(&raw_expected_crossing_time, &tmp_expected_crossing_time, sizeof(tmp_expected_crossing_time));
+  if (raw_expected_crossing_time != 0) {
+    _this->_internal_set_expected_crossing_time(from._internal_expected_crossing_time());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_expected_crossing_price = from._internal_expected_crossing_price();
+  uint64_t raw_expected_crossing_price;
+  memcpy(&raw_expected_crossing_price, &tmp_expected_crossing_price, sizeof(tmp_expected_crossing_price));
+  if (raw_expected_crossing_price != 0) {
+    _this->_internal_set_expected_crossing_price(from._internal_expected_crossing_price());
+  }
+  if (from._internal_number_of_below_crossings() != 0) {
+    _this->_internal_set_number_of_below_crossings(from._internal_number_of_below_crossings());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MeanCrossingResults::CopyFrom(const MeanCrossingResults& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:protocols.MeanCrossingResults)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MeanCrossingResults::IsInitialized() const {
+  return true;
+}
+
+void MeanCrossingResults::InternalSwap(MeanCrossingResults* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(MeanCrossingResults, _impl_.number_of_below_crossings_)
+      + sizeof(MeanCrossingResults::_impl_.number_of_below_crossings_)
+      - PROTOBUF_FIELD_OFFSET(MeanCrossingResults, _impl_.total_number_of_paths_)>(
+          reinterpret_cast<char*>(&_impl_.total_number_of_paths_),
+          reinterpret_cast<char*>(&other->_impl_.total_number_of_paths_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata MeanCrossingResults::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Simulation_2eproto_getter, &descriptor_table_Simulation_2eproto_once,
+      file_level_metadata_Simulation_2eproto[7]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace protocols
 PROTOBUF_NAMESPACE_OPEN
@@ -2243,6 +2889,14 @@ Arena::CreateMaybeMessage< ::protocols::BatchConfig_Interval >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::protocols::BatchConfig*
 Arena::CreateMaybeMessage< ::protocols::BatchConfig >(Arena* arena) {
   return Arena::CreateMessageInternal< ::protocols::BatchConfig >(arena);
+}
+template<> PROTOBUF_NOINLINE ::protocols::BatchResult*
+Arena::CreateMaybeMessage< ::protocols::BatchResult >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::protocols::BatchResult >(arena);
+}
+template<> PROTOBUF_NOINLINE ::protocols::MeanCrossingResults*
+Arena::CreateMaybeMessage< ::protocols::MeanCrossingResults >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::protocols::MeanCrossingResults >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

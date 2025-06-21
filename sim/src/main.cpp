@@ -1,6 +1,6 @@
-#include <cstdlib>
 #include <Logger.h>
 #include <Manager.h>
+#include <Environment_Manager.h>
 
 int main(){
 
@@ -8,7 +8,7 @@ int main(){
     Manager& manager = Manager::getManager();
     
     // Initialise the logger
-    std::string logName = getenv("LOG_FILE_PATH");
+    std::string logName = EnvironmentManager::getEnv("LOG_FILE_PATH");
     std::string pattern = "[%Y-%m-%d %H:%M:%S.%f] [%s] [%!] [%#] [%^%l%$] %v";
     
     auto logger = Logger::initialiseLogger(logName, pattern);
@@ -37,7 +37,7 @@ int main(){
         logLevel = "ERROR";
     }
     
-    SPDLOG_ERROR("Initial log level is {}", logLevel);
+    SPDLOG_ERROR("Initial log level is {}.", logLevel);
     
     // Run simulation
     manager.runSimulation();

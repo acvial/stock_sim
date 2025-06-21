@@ -17,7 +17,8 @@ class BatchRunner{
 
     uint                             numberOfPaths;
     Metrics                          metrics;
-    std::vector<std::vector<double>> paths;
+    std::vector<std::vector<double>> basicPaths;
+    std::vector<std::vector<double>> crossingPaths;
 
     public:
 
@@ -33,7 +34,11 @@ class BatchRunner{
 
     uint                                    getNumberOfPaths() const;
     Metrics*                                getMetrics      ();
-    const std::vector<std::vector<double>>* getPaths        () const;
+    const std::vector<std::vector<double>>* getBasicPaths   () const;
+    const std::vector<std::vector<double>>* getCrossingPaths() const;
+
+    /// @brief Clears paths from memory.
+    void resetPaths();
 
     /// @brief Calls integrator and model and generates a given number of paths.
     void computePaths(std::unique_ptr<Model> model, std::unique_ptr<Integrator> integrator);

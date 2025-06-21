@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <Communication_Utils.h>
 #include <Logger.h>
+#include <Environment_Manager.h>
 
 zmq::context_t CommunicationUtils::pullContext = zmq::context_t(4);
 zmq::context_t CommunicationUtils::pushContext = zmq::context_t(4);
@@ -11,12 +12,12 @@ zmq::socket_t CommunicationUtils::pushSocket = zmq::socket_t(CommunicationUtils:
 CommunicationUtils::CommunicationUtils(){
 
     // Pull address
-    auto pullAddress = "tcp://" + std::string(std::getenv("CONTROLLER_NAME")) + ":" + std::getenv("IN_PORT");
+    auto pullAddress = "tcp://" + std::string(EnvironmentManager::getEnv("CONTROLLER_NAME")) + ":" + EnvironmentManager::getEnv("IN_PORT");
     SPDLOG_DEBUG("Receiving address: {}", pullAddress);
     pullSocket.bind(pullAddress);
 
     // Push address
-    auto pushAddress = "tcp://" + std::string(std::getenv("CONTROLLER_NAME")) + ":" + std::getenv("OUT_PORT");
+    auto pushAddress = "tcp://" + std::string(EnvironmentManager::getEnv("CONTROLLER_NAME")) + ":" + EnvironmentManager::getEnv("OUT_PORT");
     SPDLOG_DEBUG("Sending address: {}", pushAddress);
     pullSocket.bind(pushAddress);
 }

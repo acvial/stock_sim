@@ -52,6 +52,15 @@ void Manager::runSimulation(){
 
                     // Compute metrics
                     batchRunner.getMetrics()->computeMetrics(integrator->getTimestep());
+
+                    // Map results
+                    protocols::BatchResult* protoBatch = mapBatchResults(batchRunner.getMetrics());
+
+                    // Serialize data
+                    std::string serializedMessage = CommunicationUtils::serialize<protocols::BatchResult>(protoBatch);
+
+                    // Send results
+                    CommunicationUtils::push(serializedMessage);
                 }
 
                 // Delete data
@@ -156,4 +165,37 @@ void Manager::setLogLevel(protocols::LogConfig* logConfig){
             throw std::invalid_argument("Requested unknown log level.");
         }
     }
+}
+
+protocols::BatchResult* Manager::mapBatchResults(Metrics* metrics){
+
+    // Create pointer
+    protocols::BatchResult* batchResults = new protocols::BatchResult();
+
+    // Map variance and expectation paths
+    const std::vector<double>* expectation = metrics->getExpectedPath();
+    const std::vector<double>* variance    = metrics->getVariancePath();
+
+    for(size_t k = 0; k < metrics->getNumberOfPaths(); k++){
+
+        batchResults->add_expected_path(expectation->at(k));
+        batchResults->add_variance_path(variance->at(k));
+    }
+
+    // Map crossing time
+    if(metrics->getRequestedMetrics()->meanCrossingTime){
+
+        mapMeanCrossingTime(batchResults->mutable_crossing_results(), metrics->getMeanCrossingTime());
+    }
+
+    return batchResults;
+}
+
+void Manager::mapMeanCrossingTime(protocols::MeanCrossingResults* protoCrossingResults, const MeanCrossingTime* meanCrossingTime){
+
+    // Set data
+    protoCrossingResults->set_expected_crossing_price  (meanCrossingTime->meanPrice             );
+    protoCrossingResults->set_expected_crossing_time   (meanCrossingTime->meanTime              );
+    protoCrossingResults->set_number_of_above_crossings(meanCrossingTime->numberOfAboveCrossings);
+    protoCrossingResults->set_number_of_below_crossings(meanCrossingTime->numberOfBelowCrossings);
 }

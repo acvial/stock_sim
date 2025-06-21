@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "src/Manager/libMANAGER_LIB.a"
+			"path" : "src/Communications/libCOMMUNICATIONS_LIB.a"
 		}
 	],
 	"backtrace" : 1,
@@ -18,7 +18,7 @@
 		],
 		"files" : 
 		[
-			"src/Manager/CMakeLists.txt",
+			"src/Communications/CMakeLists.txt",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
@@ -100,35 +100,15 @@
 				},
 				{
 					"backtrace" : 5,
-					"path" : "/app/src/Integrator"
-				},
-				{
-					"backtrace" : 5,
 					"path" : "/app/src/Logger"
-				},
-				{
-					"backtrace" : 5,
-					"path" : "/app/src/Manager"
-				},
-				{
-					"backtrace" : 5,
-					"path" : "/app/src/Models"
 				},
 				{
 					"backtrace" : 5,
 					"path" : "/app/src/Protocols"
 				},
 				{
-					"backtrace" : 5,
-					"path" : "/app/src/Simulation_Runner"
-				},
-				{
 					"backtrace" : 2,
-					"path" : "/app/src/Simulation_Runner/Batch_Runner"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/app/src/Simulation_Runner/Batch_Runner/Metrics"
+					"path" : "/app/src/Environment_Manager"
 				}
 			],
 			"language" : "CXX",
@@ -150,36 +130,20 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "COMMUNICATIONS_LIB::@35a6a6d2c96d13e300b4"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "INTEGRATOR_LIB::@e7e6e5acd825ac1f264d"
+			"id" : "ENVIRONMENT_LIB::@5c5d17c1b63830d26fe1"
 		},
 		{
 			"backtrace" : 2,
 			"id" : "LOGGER_LIB::@8f2c0937412c0976db5b"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "MODEL_LIB::@9c841789ed2d01b6023a"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "PROTOCOL_LIB::@0d6d85245ab30f279b0c"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "BATCH_RUNNER_LIB::@d4b682abe76a890e8f0c"
 		}
 	],
-	"id" : "MANAGER_LIB::@7ca4fe4d00630860de97",
-	"name" : "MANAGER_LIB",
-	"nameOnDisk" : "libMANAGER_LIB.a",
+	"id" : "COMMUNICATIONS_LIB::@35a6a6d2c96d13e300b4",
+	"name" : "COMMUNICATIONS_LIB",
+	"nameOnDisk" : "libCOMMUNICATIONS_LIB.a",
 	"paths" : 
 	{
-		"build" : "src/Manager",
-		"source" : "src/Manager"
+		"build" : "src/Communications",
+		"source" : "src/Communications"
 	},
 	"sourceGroups" : 
 	[
@@ -189,6 +153,13 @@
 			[
 				0
 			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				1
+			]
 		}
 	],
 	"sources" : 
@@ -196,8 +167,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/Manager/Manager.cpp",
+			"path" : "src/Communications/Communication_Utils.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/Communications/Serialize.tpp",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "STATIC_LIBRARY"

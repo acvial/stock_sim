@@ -37,7 +37,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 23,
+				"line" : 24,
 				"parent" : 0
 			},
 			{
@@ -55,7 +55,7 @@
 			{
 				"command" : 1,
 				"file" : 2,
-				"line" : 24,
+				"line" : 26,
 				"parent" : 5
 			},
 			{
@@ -156,6 +156,10 @@
 				},
 				{
 					"backtrace" : 2,
+					"path" : "/app/src/Environment_Manager"
+				},
+				{
+					"backtrace" : 2,
 					"path" : "/app/src/Simulation_Runner/Batch_Runner"
 				},
 				{
@@ -183,6 +187,10 @@
 		{
 			"backtrace" : 2,
 			"id" : "COMMUNICATIONS_LIB::@35a6a6d2c96d13e300b4"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ENVIRONMENT_LIB::@5c5d17c1b63830d26fe1"
 		},
 		{
 			"backtrace" : 2,
@@ -245,6 +253,11 @@
 			{
 				"backtrace" : 6,
 				"fragment" : "Logger/libLOGGER_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "Environment_Manager/libENVIRONMENT_LIB.a",
 				"role" : "libraries"
 			},
 			{

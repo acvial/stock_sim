@@ -94,6 +94,9 @@
 			"path" : "src/Communications/CMakeLists.txt"
 		},
 		{
+			"path" : "src/Environment_Manager/CMakeLists.txt"
+		},
+		{
 			"path" : "src/Integrator/CMakeLists.txt"
 		},
 		{

@@ -4,6 +4,8 @@
 src/CMakeFiles/Simulator.dir/main.cpp.o
  /app/src/main.cpp
  /app/src/Communications/Communication_Utils.h
+ /app/src/Communications/Serialize.tpp
+ /app/src/Environment_Manager/Environment_Manager.h
  /app/src/Integrator/Euler_Maruyama.h
  /app/src/Integrator/Integration_Data.h
  /app/src/Integrator/Integrator.h
@@ -15,6 +17,11 @@ src/CMakeFiles/Simulator.dir/main.cpp.o
  /app/src/Models/Model_Data.h
  /app/src/Models/Model_Factory.h
  /app/src/Protocols/Simulation.pb.h
+ /app/src/Simulation_Runner/Batch_Runner/Batch_Data.h
+ /app/src/Simulation_Runner/Batch_Runner/Batch_Runner.h
+ /app/src/Simulation_Runner/Batch_Runner/Metrics/Mean_Crossing_time.h
+ /app/src/Simulation_Runner/Batch_Runner/Metrics/Metrics.h
+ /app/src/Simulation_Runner/Batch_Runner/Metrics/Requested_Metrics.h
  /usr/include/alloca.h
  /usr/include/asm-generic/bitsperlong.h
  /usr/include/asm-generic/errno-base.h

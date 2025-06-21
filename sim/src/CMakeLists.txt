@@ -3,6 +3,7 @@ add_executable(Simulator main.cpp)
 set(SUBDIRECTORIES 
 
     "/app/src/Communications/"
+    "/app/src/Environment_Manager/"
     "/app/src/Integrator"
     "/app/src/Logger/"
     "/app/src/Manager/"

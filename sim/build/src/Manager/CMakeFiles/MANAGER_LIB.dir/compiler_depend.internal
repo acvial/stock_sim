@@ -4,6 +4,7 @@
 src/Manager/CMakeFiles/MANAGER_LIB.dir/Manager.cpp.o
  /app/src/Manager/Manager.cpp
  /app/src/Communications/Communication_Utils.h
+ /app/src/Communications/Serialize.tpp
  /app/src/Integrator/Euler_Maruyama.h
  /app/src/Integrator/Integration_Data.h
  /app/src/Integrator/Integrator.h

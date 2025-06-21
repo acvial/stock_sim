@@ -1,15 +1,21 @@
 [
 {
   "directory": "/app/build/src",
-  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Integrator -I/app/src/Logger -I/app/src/Manager -I/app/src/Models -I/app/src/Protocols -I/app/src/Simulation_Runner -I/app/src/Simulation_Runner/Batch_Runner -I/app/src/Simulation_Runner/Batch_Runner/Metrics -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/Simulator.dir/main.cpp.o -c /app/src/main.cpp",
+  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Integrator -I/app/src/Logger -I/app/src/Manager -I/app/src/Models -I/app/src/Protocols -I/app/src/Simulation_Runner -I/app/src/Environment_Manager -I/app/src/Simulation_Runner/Batch_Runner -I/app/src/Simulation_Runner/Batch_Runner/Metrics -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/Simulator.dir/main.cpp.o -c /app/src/main.cpp",
   "file": "/app/src/main.cpp",
   "output": "src/CMakeFiles/Simulator.dir/main.cpp.o"
 },
 {
   "directory": "/app/build/src/Communications",
-  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Logger -I/app/src/Protocols -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o -c /app/src/Communications/Communication_Utils.cpp",
+  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Logger -I/app/src/Protocols -I/app/src/Environment_Manager -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o -c /app/src/Communications/Communication_Utils.cpp",
   "file": "/app/src/Communications/Communication_Utils.cpp",
   "output": "src/Communications/CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o"
+},
+{
+  "directory": "/app/build/src/Environment_Manager",
+  "command": "/usr/bin/g++  -I/app/src/Environment_Manager -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/ENVIRONMENT_LIB.dir/Environment_Manager.cpp.o -c /app/src/Environment_Manager/Environment_Manager.cpp",
+  "file": "/app/src/Environment_Manager/Environment_Manager.cpp",
+  "output": "src/Environment_Manager/CMakeFiles/ENVIRONMENT_LIB.dir/Environment_Manager.cpp.o"
 },
 {
   "directory": "/app/build/src/Integrator",
@@ -37,7 +43,7 @@
 },
 {
   "directory": "/app/build/src/Manager",
-  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Integrator -I/app/src/Logger -I/app/src/Manager -I/app/src/Models -I/app/src/Protocols -I/app/src/Simulation_Runner -I/app/src/Simulation_Runner/Batch_Runner -I/app/src/Simulation_Runner/Batch_Runner/Metrics -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MANAGER_LIB.dir/Manager.cpp.o -c /app/src/Manager/Manager.cpp",
+  "command": "/usr/bin/g++  -I/app/src/Communications -I/app/src/Integrator -I/app/src/Logger -I/app/src/Manager -I/app/src/Models -I/app/src/Protocols -I/app/src/Simulation_Runner -I/app/src/Environment_Manager -I/app/src/Simulation_Runner/Batch_Runner -I/app/src/Simulation_Runner/Batch_Runner/Metrics -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MANAGER_LIB.dir/Manager.cpp.o -c /app/src/Manager/Manager.cpp",
   "file": "/app/src/Manager/Manager.cpp",
   "output": "src/Manager/CMakeFiles/MANAGER_LIB.dir/Manager.cpp.o"
 },

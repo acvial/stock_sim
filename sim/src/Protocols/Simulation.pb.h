@@ -46,6 +46,12 @@ struct TableStruct_Simulation_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Simulation_2eproto;
 namespace protocols {
+class BatchConfig;
+struct BatchConfigDefaultTypeInternal;
+extern BatchConfigDefaultTypeInternal _BatchConfig_default_instance_;
+class BatchConfig_Interval;
+struct BatchConfig_IntervalDefaultTypeInternal;
+extern BatchConfig_IntervalDefaultTypeInternal _BatchConfig_Interval_default_instance_;
 class IntegrationConfig;
 struct IntegrationConfigDefaultTypeInternal;
 extern IntegrationConfigDefaultTypeInternal _IntegrationConfig_default_instance_;
@@ -60,6 +66,8 @@ struct SimulationRequestDefaultTypeInternal;
 extern SimulationRequestDefaultTypeInternal _SimulationRequest_default_instance_;
 }  // namespace protocols
 PROTOBUF_NAMESPACE_OPEN
+template<> ::protocols::BatchConfig* Arena::CreateMaybeMessage<::protocols::BatchConfig>(Arena*);
+template<> ::protocols::BatchConfig_Interval* Arena::CreateMaybeMessage<::protocols::BatchConfig_Interval>(Arena*);
 template<> ::protocols::IntegrationConfig* Arena::CreateMaybeMessage<::protocols::IntegrationConfig>(Arena*);
 template<> ::protocols::LogConfig* Arena::CreateMaybeMessage<::protocols::LogConfig>(Arena*);
 template<> ::protocols::Parameters* Arena::CreateMaybeMessage<::protocols::Parameters>(Arena*);
@@ -93,15 +101,41 @@ inline bool SimulationRequest_ModelType_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SimulationRequest_ModelType>(
     SimulationRequest_ModelType_descriptor(), name, value);
 }
+enum SimulationRequest_SimulationMode : int {
+  SimulationRequest_SimulationMode_BATCH = 0,
+  SimulationRequest_SimulationMode_INTERACTIVE = 1,
+  SimulationRequest_SimulationMode_SimulationRequest_SimulationMode_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  SimulationRequest_SimulationMode_SimulationRequest_SimulationMode_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool SimulationRequest_SimulationMode_IsValid(int value);
+constexpr SimulationRequest_SimulationMode SimulationRequest_SimulationMode_SimulationMode_MIN = SimulationRequest_SimulationMode_BATCH;
+constexpr SimulationRequest_SimulationMode SimulationRequest_SimulationMode_SimulationMode_MAX = SimulationRequest_SimulationMode_INTERACTIVE;
+constexpr int SimulationRequest_SimulationMode_SimulationMode_ARRAYSIZE = SimulationRequest_SimulationMode_SimulationMode_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_SimulationMode_descriptor();
+template<typename T>
+inline const std::string& SimulationRequest_SimulationMode_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, SimulationRequest_SimulationMode>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function SimulationRequest_SimulationMode_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    SimulationRequest_SimulationMode_descriptor(), enum_t_value);
+}
+inline bool SimulationRequest_SimulationMode_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SimulationRequest_SimulationMode* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SimulationRequest_SimulationMode>(
+    SimulationRequest_SimulationMode_descriptor(), name, value);
+}
 enum IntegrationConfig_Scheme : int {
   IntegrationConfig_Scheme_EULER_MARUYAMA = 0,
   IntegrationConfig_Scheme_MILSTEIN = 1,
+  IntegrationConfig_Scheme_RUNGE_KUTTA = 3,
   IntegrationConfig_Scheme_IntegrationConfig_Scheme_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   IntegrationConfig_Scheme_IntegrationConfig_Scheme_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool IntegrationConfig_Scheme_IsValid(int value);
 constexpr IntegrationConfig_Scheme IntegrationConfig_Scheme_Scheme_MIN = IntegrationConfig_Scheme_EULER_MARUYAMA;
-constexpr IntegrationConfig_Scheme IntegrationConfig_Scheme_Scheme_MAX = IntegrationConfig_Scheme_MILSTEIN;
+constexpr IntegrationConfig_Scheme IntegrationConfig_Scheme_Scheme_MAX = IntegrationConfig_Scheme_RUNGE_KUTTA;
 constexpr int IntegrationConfig_Scheme_Scheme_ARRAYSIZE = IntegrationConfig_Scheme_Scheme_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* IntegrationConfig_Scheme_descriptor();
@@ -296,18 +330,46 @@ class SimulationRequest final :
     return SimulationRequest_ModelType_Parse(name, value);
   }
 
+  typedef SimulationRequest_SimulationMode SimulationMode;
+  static constexpr SimulationMode BATCH =
+    SimulationRequest_SimulationMode_BATCH;
+  static constexpr SimulationMode INTERACTIVE =
+    SimulationRequest_SimulationMode_INTERACTIVE;
+  static inline bool SimulationMode_IsValid(int value) {
+    return SimulationRequest_SimulationMode_IsValid(value);
+  }
+  static constexpr SimulationMode SimulationMode_MIN =
+    SimulationRequest_SimulationMode_SimulationMode_MIN;
+  static constexpr SimulationMode SimulationMode_MAX =
+    SimulationRequest_SimulationMode_SimulationMode_MAX;
+  static constexpr int SimulationMode_ARRAYSIZE =
+    SimulationRequest_SimulationMode_SimulationMode_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  SimulationMode_descriptor() {
+    return SimulationRequest_SimulationMode_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& SimulationMode_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, SimulationMode>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function SimulationMode_Name.");
+    return SimulationRequest_SimulationMode_Name(enum_t_value);
+  }
+  static inline bool SimulationMode_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      SimulationMode* value) {
+    return SimulationRequest_SimulationMode_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
     kParametersFieldNumber = 2,
     kIntegrationFieldNumber = 3,
     kLogConfigFieldNumber = 4,
+    kBatchConfigFieldNumber = 6,
     kModelFieldNumber = 1,
-    kNumPathsFieldNumber = 7,
-    kTimeHorizonFieldNumber = 5,
-    kTimestepFieldNumber = 6,
-    kTimestampFieldNumber = 9,
-    kStreamResultsFieldNumber = 8,
+    kModeFieldNumber = 5,
+    kTimestampFieldNumber = 8,
   };
   // .protocols.Parameters parameters = 2;
   bool has_parameters() const;
@@ -345,23 +407,41 @@ class SimulationRequest final :
       ::protocols::IntegrationConfig* integration);
   ::protocols::IntegrationConfig* unsafe_arena_release_integration();
 
-  // .protocols.LogConfig logConfig = 4;
-  bool has_logconfig() const;
+  // .protocols.LogConfig log_config = 4;
+  bool has_log_config() const;
   private:
-  bool _internal_has_logconfig() const;
+  bool _internal_has_log_config() const;
   public:
-  void clear_logconfig();
-  const ::protocols::LogConfig& logconfig() const;
-  PROTOBUF_NODISCARD ::protocols::LogConfig* release_logconfig();
-  ::protocols::LogConfig* mutable_logconfig();
-  void set_allocated_logconfig(::protocols::LogConfig* logconfig);
+  void clear_log_config();
+  const ::protocols::LogConfig& log_config() const;
+  PROTOBUF_NODISCARD ::protocols::LogConfig* release_log_config();
+  ::protocols::LogConfig* mutable_log_config();
+  void set_allocated_log_config(::protocols::LogConfig* log_config);
   private:
-  const ::protocols::LogConfig& _internal_logconfig() const;
-  ::protocols::LogConfig* _internal_mutable_logconfig();
+  const ::protocols::LogConfig& _internal_log_config() const;
+  ::protocols::LogConfig* _internal_mutable_log_config();
   public:
-  void unsafe_arena_set_allocated_logconfig(
-      ::protocols::LogConfig* logconfig);
-  ::protocols::LogConfig* unsafe_arena_release_logconfig();
+  void unsafe_arena_set_allocated_log_config(
+      ::protocols::LogConfig* log_config);
+  ::protocols::LogConfig* unsafe_arena_release_log_config();
+
+  // optional .protocols.BatchConfig batch_config = 6;
+  bool has_batch_config() const;
+  private:
+  bool _internal_has_batch_config() const;
+  public:
+  void clear_batch_config();
+  const ::protocols::BatchConfig& batch_config() const;
+  PROTOBUF_NODISCARD ::protocols::BatchConfig* release_batch_config();
+  ::protocols::BatchConfig* mutable_batch_config();
+  void set_allocated_batch_config(::protocols::BatchConfig* batch_config);
+  private:
+  const ::protocols::BatchConfig& _internal_batch_config() const;
+  ::protocols::BatchConfig* _internal_mutable_batch_config();
+  public:
+  void unsafe_arena_set_allocated_batch_config(
+      ::protocols::BatchConfig* batch_config);
+  ::protocols::BatchConfig* unsafe_arena_release_batch_config();
 
   // .protocols.SimulationRequest.ModelType model = 1;
   void clear_model();
@@ -372,49 +452,22 @@ class SimulationRequest final :
   void _internal_set_model(::protocols::SimulationRequest_ModelType value);
   public:
 
-  // int32 num_paths = 7;
-  void clear_num_paths();
-  int32_t num_paths() const;
-  void set_num_paths(int32_t value);
+  // .protocols.SimulationRequest.SimulationMode mode = 5;
+  void clear_mode();
+  ::protocols::SimulationRequest_SimulationMode mode() const;
+  void set_mode(::protocols::SimulationRequest_SimulationMode value);
   private:
-  int32_t _internal_num_paths() const;
-  void _internal_set_num_paths(int32_t value);
+  ::protocols::SimulationRequest_SimulationMode _internal_mode() const;
+  void _internal_set_mode(::protocols::SimulationRequest_SimulationMode value);
   public:
 
-  // double time_horizon = 5;
-  void clear_time_horizon();
-  double time_horizon() const;
-  void set_time_horizon(double value);
-  private:
-  double _internal_time_horizon() const;
-  void _internal_set_time_horizon(double value);
-  public:
-
-  // double timestep = 6;
-  void clear_timestep();
-  double timestep() const;
-  void set_timestep(double value);
-  private:
-  double _internal_timestep() const;
-  void _internal_set_timestep(double value);
-  public:
-
-  // uint64 timestamp = 9;
+  // uint64 timestamp = 8;
   void clear_timestamp();
   uint64_t timestamp() const;
   void set_timestamp(uint64_t value);
   private:
   uint64_t _internal_timestamp() const;
   void _internal_set_timestamp(uint64_t value);
-  public:
-
-  // bool stream_results = 8;
-  void clear_stream_results();
-  bool stream_results() const;
-  void set_stream_results(bool value);
-  private:
-  bool _internal_stream_results() const;
-  void _internal_set_stream_results(bool value);
   public:
 
   // @@protoc_insertion_point(class_scope:protocols.SimulationRequest)
@@ -425,16 +478,15 @@ class SimulationRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::protocols::Parameters* parameters_;
     ::protocols::IntegrationConfig* integration_;
-    ::protocols::LogConfig* logconfig_;
+    ::protocols::LogConfig* log_config_;
+    ::protocols::BatchConfig* batch_config_;
     int model_;
-    int32_t num_paths_;
-    double time_horizon_;
-    double timestep_;
+    int mode_;
     uint64_t timestamp_;
-    bool stream_results_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_Simulation_2eproto;
@@ -810,6 +862,8 @@ class IntegrationConfig final :
     IntegrationConfig_Scheme_EULER_MARUYAMA;
   static constexpr Scheme MILSTEIN =
     IntegrationConfig_Scheme_MILSTEIN;
+  static constexpr Scheme RUNGE_KUTTA =
+    IntegrationConfig_Scheme_RUNGE_KUTTA;
   static inline bool Scheme_IsValid(int value) {
     return IntegrationConfig_Scheme_IsValid(value);
   }
@@ -838,8 +892,28 @@ class IntegrationConfig final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kTimestepFieldNumber = 2,
+    kTimeHorizonFieldNumber = 3,
     kSchemeFieldNumber = 1,
   };
+  // double timestep = 2;
+  void clear_timestep();
+  double timestep() const;
+  void set_timestep(double value);
+  private:
+  double _internal_timestep() const;
+  void _internal_set_timestep(double value);
+  public:
+
+  // double time_horizon = 3;
+  void clear_time_horizon();
+  double time_horizon() const;
+  void set_time_horizon(double value);
+  private:
+  double _internal_time_horizon() const;
+  void _internal_set_time_horizon(double value);
+  public:
+
   // .protocols.IntegrationConfig.Scheme scheme = 1;
   void clear_scheme();
   ::protocols::IntegrationConfig_Scheme scheme() const;
@@ -857,6 +931,8 @@ class IntegrationConfig final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    double timestep_;
+    double time_horizon_;
     int scheme_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -1061,6 +1137,347 @@ class LogConfig final :
     bool log_each_path_;
     bool log_stats_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_Simulation_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BatchConfig_Interval final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:protocols.BatchConfig.Interval) */ {
+ public:
+  inline BatchConfig_Interval() : BatchConfig_Interval(nullptr) {}
+  ~BatchConfig_Interval() override;
+  explicit PROTOBUF_CONSTEXPR BatchConfig_Interval(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BatchConfig_Interval(const BatchConfig_Interval& from);
+  BatchConfig_Interval(BatchConfig_Interval&& from) noexcept
+    : BatchConfig_Interval() {
+    *this = ::std::move(from);
+  }
+
+  inline BatchConfig_Interval& operator=(const BatchConfig_Interval& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BatchConfig_Interval& operator=(BatchConfig_Interval&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BatchConfig_Interval& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BatchConfig_Interval* internal_default_instance() {
+    return reinterpret_cast<const BatchConfig_Interval*>(
+               &_BatchConfig_Interval_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(BatchConfig_Interval& a, BatchConfig_Interval& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BatchConfig_Interval* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BatchConfig_Interval* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BatchConfig_Interval* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BatchConfig_Interval>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BatchConfig_Interval& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BatchConfig_Interval& from) {
+    BatchConfig_Interval::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BatchConfig_Interval* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "protocols.BatchConfig.Interval";
+  }
+  protected:
+  explicit BatchConfig_Interval(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAFieldNumber = 1,
+    kBFieldNumber = 2,
+  };
+  // double a = 1;
+  void clear_a();
+  double a() const;
+  void set_a(double value);
+  private:
+  double _internal_a() const;
+  void _internal_set_a(double value);
+  public:
+
+  // double b = 2;
+  void clear_b();
+  double b() const;
+  void set_b(double value);
+  private:
+  double _internal_b() const;
+  void _internal_set_b(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:protocols.BatchConfig.Interval)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    double a_;
+    double b_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_Simulation_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BatchConfig final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:protocols.BatchConfig) */ {
+ public:
+  inline BatchConfig() : BatchConfig(nullptr) {}
+  ~BatchConfig() override;
+  explicit PROTOBUF_CONSTEXPR BatchConfig(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BatchConfig(const BatchConfig& from);
+  BatchConfig(BatchConfig&& from) noexcept
+    : BatchConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline BatchConfig& operator=(const BatchConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BatchConfig& operator=(BatchConfig&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BatchConfig& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BatchConfig* internal_default_instance() {
+    return reinterpret_cast<const BatchConfig*>(
+               &_BatchConfig_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(BatchConfig& a, BatchConfig& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BatchConfig* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BatchConfig* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BatchConfig* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BatchConfig>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BatchConfig& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BatchConfig& from) {
+    BatchConfig::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BatchConfig* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "protocols.BatchConfig";
+  }
+  protected:
+  explicit BatchConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef BatchConfig_Interval Interval;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIntervalFieldNumber = 3,
+    kNumPathsFieldNumber = 1,
+    kMeanCrossingTimeFieldNumber = 2,
+  };
+  // optional .protocols.BatchConfig.Interval interval = 3;
+  bool has_interval() const;
+  private:
+  bool _internal_has_interval() const;
+  public:
+  void clear_interval();
+  const ::protocols::BatchConfig_Interval& interval() const;
+  PROTOBUF_NODISCARD ::protocols::BatchConfig_Interval* release_interval();
+  ::protocols::BatchConfig_Interval* mutable_interval();
+  void set_allocated_interval(::protocols::BatchConfig_Interval* interval);
+  private:
+  const ::protocols::BatchConfig_Interval& _internal_interval() const;
+  ::protocols::BatchConfig_Interval* _internal_mutable_interval();
+  public:
+  void unsafe_arena_set_allocated_interval(
+      ::protocols::BatchConfig_Interval* interval);
+  ::protocols::BatchConfig_Interval* unsafe_arena_release_interval();
+
+  // uint32 num_paths = 1;
+  void clear_num_paths();
+  uint32_t num_paths() const;
+  void set_num_paths(uint32_t value);
+  private:
+  uint32_t _internal_num_paths() const;
+  void _internal_set_num_paths(uint32_t value);
+  public:
+
+  // bool mean_crossing_time = 2;
+  void clear_mean_crossing_time();
+  bool mean_crossing_time() const;
+  void set_mean_crossing_time(bool value);
+  private:
+  bool _internal_mean_crossing_time() const;
+  void _internal_set_mean_crossing_time(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:protocols.BatchConfig)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::protocols::BatchConfig_Interval* interval_;
+    uint32_t num_paths_;
+    bool mean_crossing_time_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_Simulation_2eproto;
@@ -1276,45 +1693,45 @@ inline void SimulationRequest::set_allocated_integration(::protocols::Integratio
   // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.integration)
 }
 
-// .protocols.LogConfig logConfig = 4;
-inline bool SimulationRequest::_internal_has_logconfig() const {
-  return this != internal_default_instance() && _impl_.logconfig_ != nullptr;
+// .protocols.LogConfig log_config = 4;
+inline bool SimulationRequest::_internal_has_log_config() const {
+  return this != internal_default_instance() && _impl_.log_config_ != nullptr;
 }
-inline bool SimulationRequest::has_logconfig() const {
-  return _internal_has_logconfig();
+inline bool SimulationRequest::has_log_config() const {
+  return _internal_has_log_config();
 }
-inline void SimulationRequest::clear_logconfig() {
-  if (GetArenaForAllocation() == nullptr && _impl_.logconfig_ != nullptr) {
-    delete _impl_.logconfig_;
+inline void SimulationRequest::clear_log_config() {
+  if (GetArenaForAllocation() == nullptr && _impl_.log_config_ != nullptr) {
+    delete _impl_.log_config_;
   }
-  _impl_.logconfig_ = nullptr;
+  _impl_.log_config_ = nullptr;
 }
-inline const ::protocols::LogConfig& SimulationRequest::_internal_logconfig() const {
-  const ::protocols::LogConfig* p = _impl_.logconfig_;
+inline const ::protocols::LogConfig& SimulationRequest::_internal_log_config() const {
+  const ::protocols::LogConfig* p = _impl_.log_config_;
   return p != nullptr ? *p : reinterpret_cast<const ::protocols::LogConfig&>(
       ::protocols::_LogConfig_default_instance_);
 }
-inline const ::protocols::LogConfig& SimulationRequest::logconfig() const {
-  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.logConfig)
-  return _internal_logconfig();
+inline const ::protocols::LogConfig& SimulationRequest::log_config() const {
+  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.log_config)
+  return _internal_log_config();
 }
-inline void SimulationRequest::unsafe_arena_set_allocated_logconfig(
-    ::protocols::LogConfig* logconfig) {
+inline void SimulationRequest::unsafe_arena_set_allocated_log_config(
+    ::protocols::LogConfig* log_config) {
   if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.logconfig_);
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.log_config_);
   }
-  _impl_.logconfig_ = logconfig;
-  if (logconfig) {
+  _impl_.log_config_ = log_config;
+  if (log_config) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protocols.SimulationRequest.logConfig)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protocols.SimulationRequest.log_config)
 }
-inline ::protocols::LogConfig* SimulationRequest::release_logconfig() {
+inline ::protocols::LogConfig* SimulationRequest::release_log_config() {
   
-  ::protocols::LogConfig* temp = _impl_.logconfig_;
-  _impl_.logconfig_ = nullptr;
+  ::protocols::LogConfig* temp = _impl_.log_config_;
+  _impl_.log_config_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
   temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
@@ -1326,127 +1743,157 @@ inline ::protocols::LogConfig* SimulationRequest::release_logconfig() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::protocols::LogConfig* SimulationRequest::unsafe_arena_release_logconfig() {
-  // @@protoc_insertion_point(field_release:protocols.SimulationRequest.logConfig)
+inline ::protocols::LogConfig* SimulationRequest::unsafe_arena_release_log_config() {
+  // @@protoc_insertion_point(field_release:protocols.SimulationRequest.log_config)
   
-  ::protocols::LogConfig* temp = _impl_.logconfig_;
-  _impl_.logconfig_ = nullptr;
+  ::protocols::LogConfig* temp = _impl_.log_config_;
+  _impl_.log_config_ = nullptr;
   return temp;
 }
-inline ::protocols::LogConfig* SimulationRequest::_internal_mutable_logconfig() {
+inline ::protocols::LogConfig* SimulationRequest::_internal_mutable_log_config() {
   
-  if (_impl_.logconfig_ == nullptr) {
+  if (_impl_.log_config_ == nullptr) {
     auto* p = CreateMaybeMessage<::protocols::LogConfig>(GetArenaForAllocation());
-    _impl_.logconfig_ = p;
+    _impl_.log_config_ = p;
   }
-  return _impl_.logconfig_;
+  return _impl_.log_config_;
 }
-inline ::protocols::LogConfig* SimulationRequest::mutable_logconfig() {
-  ::protocols::LogConfig* _msg = _internal_mutable_logconfig();
-  // @@protoc_insertion_point(field_mutable:protocols.SimulationRequest.logConfig)
+inline ::protocols::LogConfig* SimulationRequest::mutable_log_config() {
+  ::protocols::LogConfig* _msg = _internal_mutable_log_config();
+  // @@protoc_insertion_point(field_mutable:protocols.SimulationRequest.log_config)
   return _msg;
 }
-inline void SimulationRequest::set_allocated_logconfig(::protocols::LogConfig* logconfig) {
+inline void SimulationRequest::set_allocated_log_config(::protocols::LogConfig* log_config) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
-    delete _impl_.logconfig_;
+    delete _impl_.log_config_;
   }
-  if (logconfig) {
+  if (log_config) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(logconfig);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(log_config);
     if (message_arena != submessage_arena) {
-      logconfig = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, logconfig, submessage_arena);
+      log_config = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, log_config, submessage_arena);
     }
     
   } else {
     
   }
-  _impl_.logconfig_ = logconfig;
-  // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.logConfig)
+  _impl_.log_config_ = log_config;
+  // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.log_config)
 }
 
-// double time_horizon = 5;
-inline void SimulationRequest::clear_time_horizon() {
-  _impl_.time_horizon_ = 0;
+// .protocols.SimulationRequest.SimulationMode mode = 5;
+inline void SimulationRequest::clear_mode() {
+  _impl_.mode_ = 0;
 }
-inline double SimulationRequest::_internal_time_horizon() const {
-  return _impl_.time_horizon_;
+inline ::protocols::SimulationRequest_SimulationMode SimulationRequest::_internal_mode() const {
+  return static_cast< ::protocols::SimulationRequest_SimulationMode >(_impl_.mode_);
 }
-inline double SimulationRequest::time_horizon() const {
-  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.time_horizon)
-  return _internal_time_horizon();
+inline ::protocols::SimulationRequest_SimulationMode SimulationRequest::mode() const {
+  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.mode)
+  return _internal_mode();
 }
-inline void SimulationRequest::_internal_set_time_horizon(double value) {
+inline void SimulationRequest::_internal_set_mode(::protocols::SimulationRequest_SimulationMode value) {
   
-  _impl_.time_horizon_ = value;
+  _impl_.mode_ = value;
 }
-inline void SimulationRequest::set_time_horizon(double value) {
-  _internal_set_time_horizon(value);
-  // @@protoc_insertion_point(field_set:protocols.SimulationRequest.time_horizon)
-}
-
-// double timestep = 6;
-inline void SimulationRequest::clear_timestep() {
-  _impl_.timestep_ = 0;
-}
-inline double SimulationRequest::_internal_timestep() const {
-  return _impl_.timestep_;
-}
-inline double SimulationRequest::timestep() const {
-  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.timestep)
-  return _internal_timestep();
-}
-inline void SimulationRequest::_internal_set_timestep(double value) {
-  
-  _impl_.timestep_ = value;
-}
-inline void SimulationRequest::set_timestep(double value) {
-  _internal_set_timestep(value);
-  // @@protoc_insertion_point(field_set:protocols.SimulationRequest.timestep)
+inline void SimulationRequest::set_mode(::protocols::SimulationRequest_SimulationMode value) {
+  _internal_set_mode(value);
+  // @@protoc_insertion_point(field_set:protocols.SimulationRequest.mode)
 }
 
-// int32 num_paths = 7;
-inline void SimulationRequest::clear_num_paths() {
-  _impl_.num_paths_ = 0;
+// optional .protocols.BatchConfig batch_config = 6;
+inline bool SimulationRequest::_internal_has_batch_config() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.batch_config_ != nullptr);
+  return value;
 }
-inline int32_t SimulationRequest::_internal_num_paths() const {
-  return _impl_.num_paths_;
+inline bool SimulationRequest::has_batch_config() const {
+  return _internal_has_batch_config();
 }
-inline int32_t SimulationRequest::num_paths() const {
-  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.num_paths)
-  return _internal_num_paths();
+inline void SimulationRequest::clear_batch_config() {
+  if (_impl_.batch_config_ != nullptr) _impl_.batch_config_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline void SimulationRequest::_internal_set_num_paths(int32_t value) {
-  
-  _impl_.num_paths_ = value;
+inline const ::protocols::BatchConfig& SimulationRequest::_internal_batch_config() const {
+  const ::protocols::BatchConfig* p = _impl_.batch_config_;
+  return p != nullptr ? *p : reinterpret_cast<const ::protocols::BatchConfig&>(
+      ::protocols::_BatchConfig_default_instance_);
 }
-inline void SimulationRequest::set_num_paths(int32_t value) {
-  _internal_set_num_paths(value);
-  // @@protoc_insertion_point(field_set:protocols.SimulationRequest.num_paths)
+inline const ::protocols::BatchConfig& SimulationRequest::batch_config() const {
+  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.batch_config)
+  return _internal_batch_config();
+}
+inline void SimulationRequest::unsafe_arena_set_allocated_batch_config(
+    ::protocols::BatchConfig* batch_config) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.batch_config_);
+  }
+  _impl_.batch_config_ = batch_config;
+  if (batch_config) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protocols.SimulationRequest.batch_config)
+}
+inline ::protocols::BatchConfig* SimulationRequest::release_batch_config() {
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::protocols::BatchConfig* temp = _impl_.batch_config_;
+  _impl_.batch_config_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::protocols::BatchConfig* SimulationRequest::unsafe_arena_release_batch_config() {
+  // @@protoc_insertion_point(field_release:protocols.SimulationRequest.batch_config)
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::protocols::BatchConfig* temp = _impl_.batch_config_;
+  _impl_.batch_config_ = nullptr;
+  return temp;
+}
+inline ::protocols::BatchConfig* SimulationRequest::_internal_mutable_batch_config() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.batch_config_ == nullptr) {
+    auto* p = CreateMaybeMessage<::protocols::BatchConfig>(GetArenaForAllocation());
+    _impl_.batch_config_ = p;
+  }
+  return _impl_.batch_config_;
+}
+inline ::protocols::BatchConfig* SimulationRequest::mutable_batch_config() {
+  ::protocols::BatchConfig* _msg = _internal_mutable_batch_config();
+  // @@protoc_insertion_point(field_mutable:protocols.SimulationRequest.batch_config)
+  return _msg;
+}
+inline void SimulationRequest::set_allocated_batch_config(::protocols::BatchConfig* batch_config) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.batch_config_;
+  }
+  if (batch_config) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(batch_config);
+    if (message_arena != submessage_arena) {
+      batch_config = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, batch_config, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.batch_config_ = batch_config;
+  // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.batch_config)
 }
 
-// bool stream_results = 8;
-inline void SimulationRequest::clear_stream_results() {
-  _impl_.stream_results_ = false;
-}
-inline bool SimulationRequest::_internal_stream_results() const {
-  return _impl_.stream_results_;
-}
-inline bool SimulationRequest::stream_results() const {
-  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.stream_results)
-  return _internal_stream_results();
-}
-inline void SimulationRequest::_internal_set_stream_results(bool value) {
-  
-  _impl_.stream_results_ = value;
-}
-inline void SimulationRequest::set_stream_results(bool value) {
-  _internal_set_stream_results(value);
-  // @@protoc_insertion_point(field_set:protocols.SimulationRequest.stream_results)
-}
-
-// uint64 timestamp = 9;
+// uint64 timestamp = 8;
 inline void SimulationRequest::clear_timestamp() {
   _impl_.timestamp_ = uint64_t{0u};
 }
@@ -1694,6 +2141,46 @@ inline void IntegrationConfig::set_scheme(::protocols::IntegrationConfig_Scheme 
   // @@protoc_insertion_point(field_set:protocols.IntegrationConfig.scheme)
 }
 
+// double timestep = 2;
+inline void IntegrationConfig::clear_timestep() {
+  _impl_.timestep_ = 0;
+}
+inline double IntegrationConfig::_internal_timestep() const {
+  return _impl_.timestep_;
+}
+inline double IntegrationConfig::timestep() const {
+  // @@protoc_insertion_point(field_get:protocols.IntegrationConfig.timestep)
+  return _internal_timestep();
+}
+inline void IntegrationConfig::_internal_set_timestep(double value) {
+  
+  _impl_.timestep_ = value;
+}
+inline void IntegrationConfig::set_timestep(double value) {
+  _internal_set_timestep(value);
+  // @@protoc_insertion_point(field_set:protocols.IntegrationConfig.timestep)
+}
+
+// double time_horizon = 3;
+inline void IntegrationConfig::clear_time_horizon() {
+  _impl_.time_horizon_ = 0;
+}
+inline double IntegrationConfig::_internal_time_horizon() const {
+  return _impl_.time_horizon_;
+}
+inline double IntegrationConfig::time_horizon() const {
+  // @@protoc_insertion_point(field_get:protocols.IntegrationConfig.time_horizon)
+  return _internal_time_horizon();
+}
+inline void IntegrationConfig::_internal_set_time_horizon(double value) {
+  
+  _impl_.time_horizon_ = value;
+}
+inline void IntegrationConfig::set_time_horizon(double value) {
+  _internal_set_time_horizon(value);
+  // @@protoc_insertion_point(field_set:protocols.IntegrationConfig.time_horizon)
+}
+
 // -------------------------------------------------------------------
 
 // LogConfig
@@ -1758,9 +2245,191 @@ inline void LogConfig::set_log_stats(bool value) {
   // @@protoc_insertion_point(field_set:protocols.LogConfig.log_stats)
 }
 
+// -------------------------------------------------------------------
+
+// BatchConfig_Interval
+
+// double a = 1;
+inline void BatchConfig_Interval::clear_a() {
+  _impl_.a_ = 0;
+}
+inline double BatchConfig_Interval::_internal_a() const {
+  return _impl_.a_;
+}
+inline double BatchConfig_Interval::a() const {
+  // @@protoc_insertion_point(field_get:protocols.BatchConfig.Interval.a)
+  return _internal_a();
+}
+inline void BatchConfig_Interval::_internal_set_a(double value) {
+  
+  _impl_.a_ = value;
+}
+inline void BatchConfig_Interval::set_a(double value) {
+  _internal_set_a(value);
+  // @@protoc_insertion_point(field_set:protocols.BatchConfig.Interval.a)
+}
+
+// double b = 2;
+inline void BatchConfig_Interval::clear_b() {
+  _impl_.b_ = 0;
+}
+inline double BatchConfig_Interval::_internal_b() const {
+  return _impl_.b_;
+}
+inline double BatchConfig_Interval::b() const {
+  // @@protoc_insertion_point(field_get:protocols.BatchConfig.Interval.b)
+  return _internal_b();
+}
+inline void BatchConfig_Interval::_internal_set_b(double value) {
+  
+  _impl_.b_ = value;
+}
+inline void BatchConfig_Interval::set_b(double value) {
+  _internal_set_b(value);
+  // @@protoc_insertion_point(field_set:protocols.BatchConfig.Interval.b)
+}
+
+// -------------------------------------------------------------------
+
+// BatchConfig
+
+// uint32 num_paths = 1;
+inline void BatchConfig::clear_num_paths() {
+  _impl_.num_paths_ = 0u;
+}
+inline uint32_t BatchConfig::_internal_num_paths() const {
+  return _impl_.num_paths_;
+}
+inline uint32_t BatchConfig::num_paths() const {
+  // @@protoc_insertion_point(field_get:protocols.BatchConfig.num_paths)
+  return _internal_num_paths();
+}
+inline void BatchConfig::_internal_set_num_paths(uint32_t value) {
+  
+  _impl_.num_paths_ = value;
+}
+inline void BatchConfig::set_num_paths(uint32_t value) {
+  _internal_set_num_paths(value);
+  // @@protoc_insertion_point(field_set:protocols.BatchConfig.num_paths)
+}
+
+// bool mean_crossing_time = 2;
+inline void BatchConfig::clear_mean_crossing_time() {
+  _impl_.mean_crossing_time_ = false;
+}
+inline bool BatchConfig::_internal_mean_crossing_time() const {
+  return _impl_.mean_crossing_time_;
+}
+inline bool BatchConfig::mean_crossing_time() const {
+  // @@protoc_insertion_point(field_get:protocols.BatchConfig.mean_crossing_time)
+  return _internal_mean_crossing_time();
+}
+inline void BatchConfig::_internal_set_mean_crossing_time(bool value) {
+  
+  _impl_.mean_crossing_time_ = value;
+}
+inline void BatchConfig::set_mean_crossing_time(bool value) {
+  _internal_set_mean_crossing_time(value);
+  // @@protoc_insertion_point(field_set:protocols.BatchConfig.mean_crossing_time)
+}
+
+// optional .protocols.BatchConfig.Interval interval = 3;
+inline bool BatchConfig::_internal_has_interval() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.interval_ != nullptr);
+  return value;
+}
+inline bool BatchConfig::has_interval() const {
+  return _internal_has_interval();
+}
+inline void BatchConfig::clear_interval() {
+  if (_impl_.interval_ != nullptr) _impl_.interval_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::protocols::BatchConfig_Interval& BatchConfig::_internal_interval() const {
+  const ::protocols::BatchConfig_Interval* p = _impl_.interval_;
+  return p != nullptr ? *p : reinterpret_cast<const ::protocols::BatchConfig_Interval&>(
+      ::protocols::_BatchConfig_Interval_default_instance_);
+}
+inline const ::protocols::BatchConfig_Interval& BatchConfig::interval() const {
+  // @@protoc_insertion_point(field_get:protocols.BatchConfig.interval)
+  return _internal_interval();
+}
+inline void BatchConfig::unsafe_arena_set_allocated_interval(
+    ::protocols::BatchConfig_Interval* interval) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.interval_);
+  }
+  _impl_.interval_ = interval;
+  if (interval) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protocols.BatchConfig.interval)
+}
+inline ::protocols::BatchConfig_Interval* BatchConfig::release_interval() {
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::protocols::BatchConfig_Interval* temp = _impl_.interval_;
+  _impl_.interval_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::protocols::BatchConfig_Interval* BatchConfig::unsafe_arena_release_interval() {
+  // @@protoc_insertion_point(field_release:protocols.BatchConfig.interval)
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::protocols::BatchConfig_Interval* temp = _impl_.interval_;
+  _impl_.interval_ = nullptr;
+  return temp;
+}
+inline ::protocols::BatchConfig_Interval* BatchConfig::_internal_mutable_interval() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.interval_ == nullptr) {
+    auto* p = CreateMaybeMessage<::protocols::BatchConfig_Interval>(GetArenaForAllocation());
+    _impl_.interval_ = p;
+  }
+  return _impl_.interval_;
+}
+inline ::protocols::BatchConfig_Interval* BatchConfig::mutable_interval() {
+  ::protocols::BatchConfig_Interval* _msg = _internal_mutable_interval();
+  // @@protoc_insertion_point(field_mutable:protocols.BatchConfig.interval)
+  return _msg;
+}
+inline void BatchConfig::set_allocated_interval(::protocols::BatchConfig_Interval* interval) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.interval_;
+  }
+  if (interval) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(interval);
+    if (message_arena != submessage_arena) {
+      interval = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, interval, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.interval_ = interval;
+  // @@protoc_insertion_point(field_set_allocated:protocols.BatchConfig.interval)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1778,6 +2447,11 @@ template <> struct is_proto_enum< ::protocols::SimulationRequest_ModelType> : ::
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::protocols::SimulationRequest_ModelType>() {
   return ::protocols::SimulationRequest_ModelType_descriptor();
+}
+template <> struct is_proto_enum< ::protocols::SimulationRequest_SimulationMode> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::protocols::SimulationRequest_SimulationMode>() {
+  return ::protocols::SimulationRequest_SimulationMode_descriptor();
 }
 template <> struct is_proto_enum< ::protocols::IntegrationConfig_Scheme> : ::std::true_type {};
 template <>

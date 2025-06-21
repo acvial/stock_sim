@@ -97,9 +97,11 @@ src/Simulator: src/Communications/libCOMMUNICATIONS_LIB.a
 src/Simulator: /usr/lib/x86_64-linux-gnu/libzmq.so
 src/Simulator: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 src/Simulator: src/Logger/libLOGGER_LIB.a
-src/Simulator: src/Models/libMODEL_LIB.a
-src/Simulator: /usr/lib/x86_64-linux-gnu/libfmt.so
 src/Simulator: src/Protocols/libPROTOCOL_LIB.a
+src/Simulator: src/Simulation_Runner/Batch_Runner/libBATCH_RUNNER_LIB.a
+src/Simulator: src/Models/libMODEL_LIB.a
+src/Simulator: src/Integrator/libINTEGRATOR_LIB.a
+src/Simulator: /usr/lib/x86_64-linux-gnu/libfmt.so
 src/Simulator: src/CMakeFiles/Simulator.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Simulator"
 	cd /app/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Simulator.dir/link.txt --verbose=$(VERBOSE)

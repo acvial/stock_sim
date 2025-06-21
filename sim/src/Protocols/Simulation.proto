@@ -12,15 +12,20 @@ message SimulationRequest{
         ORNSTEIN_UHLEMBECK = 2;
     }
 
+    enum SimulationMode{
+
+        BATCH = 0;
+        INTERACTIVE = 1;
+    }
+
     ModelType model = 1;
     Parameters parameters = 2;
     IntegrationConfig integration = 3;
-    LogConfig logConfig = 4;
-    double time_horizon = 5;
-    double timestep = 6;
-    int32 num_paths = 7;
-    bool stream_results = 8;
-    uint64 timestamp = 9;
+    LogConfig log_config = 4;
+    SimulationMode mode = 5;
+    optional BatchConfig batch_config = 6;
+    
+    uint64 timestamp = 8;
 }
 
 message Parameters {
@@ -45,9 +50,12 @@ message IntegrationConfig{
 
         EULER_MARUYAMA = 0;
         MILSTEIN = 1;
+        RUNGE_KUTTA = 3;
     }
 
     Scheme scheme = 1;
+    double timestep = 2;
+    double time_horizon = 3;
 }
 
 message LogConfig{
@@ -58,9 +66,22 @@ message LogConfig{
         INFO = 1;
         ERROR = 2;
     }
-    
+
     LogLevel level = 1;
   
     bool log_each_path = 2;
     bool log_stats = 3;
+}
+
+message BatchConfig{
+
+    message Interval{
+        
+        double a = 1;
+        double b = 2;
+    }
+
+    uint32 num_paths = 1;
+    bool mean_crossing_time = 2;
+    optional Interval interval = 3;
 }

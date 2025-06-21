@@ -1,6 +1,10 @@
 #include <Model.h>
 
-Model::Model(){}
+Model::Model() :
+    drift(0),
+    volatility(0),
+    initialPrice(0)
+{}
 
 Model::Model(double drift_, double volatility_, double initialPrice_) : 
     drift       (drift_       ), 
@@ -48,6 +52,13 @@ void Model::setInitialPrice(double initialPrice_){
     initialPrice = initialPrice_;
 }
 
+void Model::setModelData(const ModelData& modelData_){
+
+    drift        = modelData_.drift;
+    volatility   = modelData_.volatility;
+    initialPrice = modelData_.initialPrice;
+}
+
 double Model::getDrift() const {
 
     return drift;
@@ -61,4 +72,9 @@ double Model::getVolatility() const {
 double Model::getInitialPrice() const {
 
     return initialPrice;
+}
+
+ModelData Model::getModelData() const {
+
+    return ModelData(drift, volatility, initialPrice);
 }

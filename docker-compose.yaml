@@ -11,6 +11,7 @@ services:
       - CONTROLLER_NAME=${CONTROLLER_NAME}
       - IN_PORT=${PORT_1}
       - OUT_PORT=${PORT_2}
+      - LOG_FILE_PATH=${LOG_FILE_PATH}
 
     volumes:
       - ./sim:/app

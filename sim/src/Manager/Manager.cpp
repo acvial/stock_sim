@@ -35,8 +35,24 @@ void Manager::runSimulation(){
                 // Get model
                 std::unique_ptr<Model> model = mapModel(deserialisedMessage);
 
+                // Get integrator
+                std::unique_ptr<Integrator> integrator = mapIntegrator(deserialisedMessage);
+
                 // Set log level
-                setLogLevel(deserialisedMessage->mutable_logconfig());
+                setLogLevel(deserialisedMessage->mutable_log_config());
+
+                // Call simulator runner
+                if(deserialisedMessage->mode() == protocols::SimulationRequest::BATCH){
+
+                    // Get batch config
+                    BatchRunner& batchRunner = *mapBatchConfig(deserialisedMessage->mutable_batch_config());
+
+                    // Run batch simulation
+                    batchRunner.computePaths(std::move(model), std::move(integrator));
+
+                    // Compute metrics
+                    batchRunner.getMetrics()->computeMetrics(integrator->getTimestep());
+                }
 
                 // Delete data
                 delete deserialisedMessage;
@@ -49,7 +65,7 @@ void Manager::runSimulation(){
             }
             catch(const std::invalid_argument& e){
 
-                // mapModel throws
+                // Model, integration throws
                 SPDLOG_ERROR(e.what());
 
                 delete deserialisedMessage;
@@ -75,6 +91,44 @@ std::unique_ptr<Model> Manager::mapModel(protocols::SimulationRequest* deseriali
 
     // Call model factory
     return ModelFactory::create(type, modelData);
+}
+
+std::unique_ptr<Integrator> Manager::mapIntegrator(protocols::SimulationRequest* deserialisedMessage){
+
+    // Extract integrator data parameters
+    const auto& integrator = deserialisedMessage->integration();
+
+    const IntegrationData integrationData(
+        integrator.timestep(),
+        integrator.time_horizon()
+    );
+
+    // Extract type of scheme
+    const std::string type = integrator.Scheme_Name(integrator.scheme());
+
+    // Call integrator factory
+    return IntegratorFactory::create(type, integrationData);
+}
+
+std::unique_ptr<BatchRunner> Manager::mapBatchConfig(protocols::BatchConfig* batchConfig){
+
+    // Map requested metrics
+    RequestedMetrics requestedMetrics(batchConfig->mean_crossing_time());
+
+    // Map interval
+    std::pair<double, double> interval;
+
+    if(batchConfig->has_interval()){
+
+        const auto& protoInterval = batchConfig->interval();
+        interval = std::make_pair<double, double>(protoInterval.a(), protoInterval.b());
+    }
+
+    BatchData batchData(batchConfig->num_paths(),
+                        requestedMetrics,
+                        interval);
+    
+    return std::make_unique<BatchRunner>(batchData);
 }
 
 void Manager::setLogLevel(protocols::LogConfig* logConfig){

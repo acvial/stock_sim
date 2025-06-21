@@ -1,0 +1,2 @@
+/usr/bin/ar qc libBATCH_RUNNER_LIB.a CMakeFiles/BATCH_RUNNER_LIB.dir/Batch_Runner.cpp.o CMakeFiles/BATCH_RUNNER_LIB.dir/Metrics/Metrics.cpp.o
+/usr/bin/ranlib libBATCH_RUNNER_LIB.a

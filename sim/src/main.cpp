@@ -16,6 +16,7 @@ int main(){
     if(!logger){
     
         spdlog::error("Failed to initialise the logger.");
+        std::terminate();
     }
     
     // Set default level

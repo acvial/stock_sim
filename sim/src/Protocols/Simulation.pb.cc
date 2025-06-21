@@ -23,16 +23,15 @@ namespace _pbi = _pb::internal;
 namespace protocols {
 PROTOBUF_CONSTEXPR SimulationRequest::SimulationRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.parameters_)*/nullptr
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.parameters_)*/nullptr
   , /*decltype(_impl_.integration_)*/nullptr
-  , /*decltype(_impl_.logconfig_)*/nullptr
+  , /*decltype(_impl_.log_config_)*/nullptr
+  , /*decltype(_impl_.batch_config_)*/nullptr
   , /*decltype(_impl_.model_)*/0
-  , /*decltype(_impl_.num_paths_)*/0
-  , /*decltype(_impl_.time_horizon_)*/0
-  , /*decltype(_impl_.timestep_)*/0
-  , /*decltype(_impl_.timestamp_)*/uint64_t{0u}
-  , /*decltype(_impl_.stream_results_)*/false
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+  , /*decltype(_impl_.mode_)*/0
+  , /*decltype(_impl_.timestamp_)*/uint64_t{0u}} {}
 struct SimulationRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SimulationRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -65,7 +64,9 @@ struct ParametersDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ParametersDefaultTypeInternal _Parameters_default_instance_;
 PROTOBUF_CONSTEXPR IntegrationConfig::IntegrationConfig(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.scheme_)*/0
+    /*decltype(_impl_.timestep_)*/0
+  , /*decltype(_impl_.time_horizon_)*/0
+  , /*decltype(_impl_.scheme_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct IntegrationConfigDefaultTypeInternal {
   PROTOBUF_CONSTEXPR IntegrationConfigDefaultTypeInternal()
@@ -91,13 +92,43 @@ struct LogConfigDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LogConfigDefaultTypeInternal _LogConfig_default_instance_;
+PROTOBUF_CONSTEXPR BatchConfig_Interval::BatchConfig_Interval(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.a_)*/0
+  , /*decltype(_impl_.b_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct BatchConfig_IntervalDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BatchConfig_IntervalDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BatchConfig_IntervalDefaultTypeInternal() {}
+  union {
+    BatchConfig_Interval _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BatchConfig_IntervalDefaultTypeInternal _BatchConfig_Interval_default_instance_;
+PROTOBUF_CONSTEXPR BatchConfig::BatchConfig(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.interval_)*/nullptr
+  , /*decltype(_impl_.num_paths_)*/0u
+  , /*decltype(_impl_.mean_crossing_time_)*/false} {}
+struct BatchConfigDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BatchConfigDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BatchConfigDefaultTypeInternal() {}
+  union {
+    BatchConfig _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BatchConfigDefaultTypeInternal _BatchConfig_default_instance_;
 }  // namespace protocols
-static ::_pb::Metadata file_level_metadata_Simulation_2eproto[4];
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Simulation_2eproto[3];
+static ::_pb::Metadata file_level_metadata_Simulation_2eproto[6];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Simulation_2eproto[4];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Simulation_2eproto = nullptr;
 
 const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -106,12 +137,17 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.model_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.parameters_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.integration_),
-  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.logconfig_),
-  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.time_horizon_),
-  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.timestep_),
-  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.num_paths_),
-  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.stream_results_),
+  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.log_config_),
+  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.mode_),
+  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.batch_config_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.timestamp_),
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  0,
+  ~0u,
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -141,6 +177,8 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::protocols::IntegrationConfig, _impl_.scheme_),
+  PROTOBUF_FIELD_OFFSET(::protocols::IntegrationConfig, _impl_.timestep_),
+  PROTOBUF_FIELD_OFFSET(::protocols::IntegrationConfig, _impl_.time_horizon_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::protocols::LogConfig, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -150,12 +188,34 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   PROTOBUF_FIELD_OFFSET(::protocols::LogConfig, _impl_.level_),
   PROTOBUF_FIELD_OFFSET(::protocols::LogConfig, _impl_.log_each_path_),
   PROTOBUF_FIELD_OFFSET(::protocols::LogConfig, _impl_.log_stats_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchConfig_Interval, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchConfig_Interval, _impl_.a_),
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchConfig_Interval, _impl_.b_),
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchConfig, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchConfig, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchConfig, _impl_.num_paths_),
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchConfig, _impl_.mean_crossing_time_),
+  PROTOBUF_FIELD_OFFSET(::protocols::BatchConfig, _impl_.interval_),
+  ~0u,
+  ~0u,
+  0,
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::protocols::SimulationRequest)},
-  { 15, 29, -1, sizeof(::protocols::Parameters)},
-  { 37, -1, -1, sizeof(::protocols::IntegrationConfig)},
-  { 44, -1, -1, sizeof(::protocols::LogConfig)},
+  { 0, 13, -1, sizeof(::protocols::SimulationRequest)},
+  { 20, 34, -1, sizeof(::protocols::Parameters)},
+  { 42, -1, -1, sizeof(::protocols::IntegrationConfig)},
+  { 51, -1, -1, sizeof(::protocols::LogConfig)},
+  { 60, -1, -1, sizeof(::protocols::BatchConfig_Interval)},
+  { 68, 77, -1, sizeof(::protocols::BatchConfig)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -163,41 +223,51 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::protocols::_Parameters_default_instance_._instance,
   &::protocols::_IntegrationConfig_default_instance_._instance,
   &::protocols::_LogConfig_default_instance_._instance,
+  &::protocols::_BatchConfig_Interval_default_instance_._instance,
+  &::protocols::_BatchConfig_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Simulation_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020Simulation.proto\022\tprotocols\"\220\003\n\021Simula"
+  "\n\020Simulation.proto\022\tprotocols\"\353\003\n\021Simula"
   "tionRequest\0225\n\005model\030\001 \001(\0162&.protocols.S"
   "imulationRequest.ModelType\022)\n\nparameters"
   "\030\002 \001(\0132\025.protocols.Parameters\0221\n\013integra"
   "tion\030\003 \001(\0132\034.protocols.IntegrationConfig"
-  "\022\'\n\tlogConfig\030\004 \001(\0132\024.protocols.LogConfi"
-  "g\022\024\n\014time_horizon\030\005 \001(\001\022\020\n\010timestep\030\006 \001("
-  "\001\022\021\n\tnum_paths\030\007 \001(\005\022\026\n\016stream_results\030\010"
-  " \001(\010\022\021\n\ttimestamp\030\t \001(\004\"W\n\tModelType\022\035\n\031"
-  "GEOMETRIC_BROWNIAN_MOTION\020\000\022\023\n\017JUMP_DIFF"
-  "USSION\020\001\022\026\n\022ORNSTEIN_UHLEMBECK\020\002\"\260\002\n\nPar"
-  "ameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvolatility\030\002 \001"
-  "(\001\022\025\n\rinitial_price\030\003 \001(\001\022\033\n\016jump_intens"
-  "ity\030\004 \001(\001H\000\210\001\001\022\026\n\tjump_mean\030\005 \001(\001H\001\210\001\001\022\030"
-  "\n\013jump_stddev\030\006 \001(\001H\002\210\001\001\022 \n\023mean_reversi"
-  "on_rate\030\007 \001(\001H\003\210\001\001\022\033\n\016long_term_mean\030\010 \001"
-  "(\001H\004\210\001\001B\021\n\017_jump_intensityB\014\n\n_jump_mean"
-  "B\016\n\014_jump_stddevB\026\n\024_mean_reversion_rate"
-  "B\021\n\017_long_term_mean\"t\n\021IntegrationConfig"
-  "\0223\n\006scheme\030\001 \001(\0162#.protocols.Integration"
-  "Config.Scheme\"*\n\006Scheme\022\022\n\016EULER_MARUYAM"
-  "A\020\000\022\014\n\010MILSTEIN\020\001\"\217\001\n\tLogConfig\022,\n\005level"
-  "\030\001 \001(\0162\035.protocols.LogConfig.LogLevel\022\025\n"
-  "\rlog_each_path\030\002 \001(\010\022\021\n\tlog_stats\030\003 \001(\010\""
-  "*\n\010LogLevel\022\t\n\005DEBUG\020\000\022\010\n\004INFO\020\001\022\t\n\005ERRO"
-  "R\020\002B\002H\001b\006proto3"
+  "\022(\n\nlog_config\030\004 \001(\0132\024.protocols.LogConf"
+  "ig\0229\n\004mode\030\005 \001(\0162+.protocols.SimulationR"
+  "equest.SimulationMode\0221\n\014batch_config\030\006 "
+  "\001(\0132\026.protocols.BatchConfigH\000\210\001\001\022\021\n\ttime"
+  "stamp\030\010 \001(\004\"W\n\tModelType\022\035\n\031GEOMETRIC_BR"
+  "OWNIAN_MOTION\020\000\022\023\n\017JUMP_DIFFUSSION\020\001\022\026\n\022"
+  "ORNSTEIN_UHLEMBECK\020\002\",\n\016SimulationMode\022\t"
+  "\n\005BATCH\020\000\022\017\n\013INTERACTIVE\020\001B\017\n\r_batch_con"
+  "fig\"\260\002\n\nParameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvol"
+  "atility\030\002 \001(\001\022\025\n\rinitial_price\030\003 \001(\001\022\033\n\016"
+  "jump_intensity\030\004 \001(\001H\000\210\001\001\022\026\n\tjump_mean\030\005"
+  " \001(\001H\001\210\001\001\022\030\n\013jump_stddev\030\006 \001(\001H\002\210\001\001\022 \n\023m"
+  "ean_reversion_rate\030\007 \001(\001H\003\210\001\001\022\033\n\016long_te"
+  "rm_mean\030\010 \001(\001H\004\210\001\001B\021\n\017_jump_intensityB\014\n"
+  "\n_jump_meanB\016\n\014_jump_stddevB\026\n\024_mean_rev"
+  "ersion_rateB\021\n\017_long_term_mean\"\255\001\n\021Integ"
+  "rationConfig\0223\n\006scheme\030\001 \001(\0162#.protocols"
+  ".IntegrationConfig.Scheme\022\020\n\010timestep\030\002 "
+  "\001(\001\022\024\n\014time_horizon\030\003 \001(\001\";\n\006Scheme\022\022\n\016E"
+  "ULER_MARUYAMA\020\000\022\014\n\010MILSTEIN\020\001\022\017\n\013RUNGE_K"
+  "UTTA\020\003\"\217\001\n\tLogConfig\022,\n\005level\030\001 \001(\0162\035.pr"
+  "otocols.LogConfig.LogLevel\022\025\n\rlog_each_p"
+  "ath\030\002 \001(\010\022\021\n\tlog_stats\030\003 \001(\010\"*\n\010LogLevel"
+  "\022\t\n\005DEBUG\020\000\022\010\n\004INFO\020\001\022\t\n\005ERROR\020\002\"\243\001\n\013Bat"
+  "chConfig\022\021\n\tnum_paths\030\001 \001(\r\022\032\n\022mean_cros"
+  "sing_time\030\002 \001(\010\0226\n\010interval\030\003 \001(\0132\037.prot"
+  "ocols.BatchConfig.IntervalH\000\210\001\001\032 \n\010Inter"
+  "val\022\t\n\001a\030\001 \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_intervalB\002"
+  "H\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Simulation_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Simulation_2eproto = {
-    false, false, 1015, descriptor_table_protodef_Simulation_2eproto,
+    false, false, 1330, descriptor_table_protodef_Simulation_2eproto,
     "Simulation.proto",
-    &descriptor_table_Simulation_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_Simulation_2eproto_once, nullptr, 0, 6,
     schemas, file_default_instances, TableStruct_Simulation_2eproto::offsets,
     file_level_metadata_Simulation_2eproto, file_level_enum_descriptors_Simulation_2eproto,
     file_level_service_descriptors_Simulation_2eproto,
@@ -232,11 +302,11 @@ constexpr SimulationRequest_ModelType SimulationRequest::ModelType_MIN;
 constexpr SimulationRequest_ModelType SimulationRequest::ModelType_MAX;
 constexpr int SimulationRequest::ModelType_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* IntegrationConfig_Scheme_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_SimulationMode_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Simulation_2eproto);
   return file_level_enum_descriptors_Simulation_2eproto[1];
 }
-bool IntegrationConfig_Scheme_IsValid(int value) {
+bool SimulationRequest_SimulationMode_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
@@ -247,15 +317,38 @@ bool IntegrationConfig_Scheme_IsValid(int value) {
 }
 
 #if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+constexpr SimulationRequest_SimulationMode SimulationRequest::BATCH;
+constexpr SimulationRequest_SimulationMode SimulationRequest::INTERACTIVE;
+constexpr SimulationRequest_SimulationMode SimulationRequest::SimulationMode_MIN;
+constexpr SimulationRequest_SimulationMode SimulationRequest::SimulationMode_MAX;
+constexpr int SimulationRequest::SimulationMode_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* IntegrationConfig_Scheme_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Simulation_2eproto);
+  return file_level_enum_descriptors_Simulation_2eproto[2];
+}
+bool IntegrationConfig_Scheme_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr IntegrationConfig_Scheme IntegrationConfig::EULER_MARUYAMA;
 constexpr IntegrationConfig_Scheme IntegrationConfig::MILSTEIN;
+constexpr IntegrationConfig_Scheme IntegrationConfig::RUNGE_KUTTA;
 constexpr IntegrationConfig_Scheme IntegrationConfig::Scheme_MIN;
 constexpr IntegrationConfig_Scheme IntegrationConfig::Scheme_MAX;
 constexpr int IntegrationConfig::Scheme_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* LogConfig_LogLevel_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Simulation_2eproto);
-  return file_level_enum_descriptors_Simulation_2eproto[2];
+  return file_level_enum_descriptors_Simulation_2eproto[3];
 }
 bool LogConfig_LogLevel_IsValid(int value) {
   switch (value) {
@@ -281,9 +374,14 @@ constexpr int LogConfig::LogLevel_ARRAYSIZE;
 
 class SimulationRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<SimulationRequest>()._impl_._has_bits_);
   static const ::protocols::Parameters& parameters(const SimulationRequest* msg);
   static const ::protocols::IntegrationConfig& integration(const SimulationRequest* msg);
-  static const ::protocols::LogConfig& logconfig(const SimulationRequest* msg);
+  static const ::protocols::LogConfig& log_config(const SimulationRequest* msg);
+  static const ::protocols::BatchConfig& batch_config(const SimulationRequest* msg);
+  static void set_has_batch_config(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::protocols::Parameters&
@@ -295,8 +393,12 @@ SimulationRequest::_Internal::integration(const SimulationRequest* msg) {
   return *msg->_impl_.integration_;
 }
 const ::protocols::LogConfig&
-SimulationRequest::_Internal::logconfig(const SimulationRequest* msg) {
-  return *msg->_impl_.logconfig_;
+SimulationRequest::_Internal::log_config(const SimulationRequest* msg) {
+  return *msg->_impl_.log_config_;
+}
+const ::protocols::BatchConfig&
+SimulationRequest::_Internal::batch_config(const SimulationRequest* msg) {
+  return *msg->_impl_.batch_config_;
 }
 SimulationRequest::SimulationRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -308,16 +410,15 @@ SimulationRequest::SimulationRequest(const SimulationRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   SimulationRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.parameters_){nullptr}
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.parameters_){nullptr}
     , decltype(_impl_.integration_){nullptr}
-    , decltype(_impl_.logconfig_){nullptr}
+    , decltype(_impl_.log_config_){nullptr}
+    , decltype(_impl_.batch_config_){nullptr}
     , decltype(_impl_.model_){}
-    , decltype(_impl_.num_paths_){}
-    , decltype(_impl_.time_horizon_){}
-    , decltype(_impl_.timestep_){}
-    , decltype(_impl_.timestamp_){}
-    , decltype(_impl_.stream_results_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
+    , decltype(_impl_.mode_){}
+    , decltype(_impl_.timestamp_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_parameters()) {
@@ -326,12 +427,15 @@ SimulationRequest::SimulationRequest(const SimulationRequest& from)
   if (from._internal_has_integration()) {
     _this->_impl_.integration_ = new ::protocols::IntegrationConfig(*from._impl_.integration_);
   }
-  if (from._internal_has_logconfig()) {
-    _this->_impl_.logconfig_ = new ::protocols::LogConfig(*from._impl_.logconfig_);
+  if (from._internal_has_log_config()) {
+    _this->_impl_.log_config_ = new ::protocols::LogConfig(*from._impl_.log_config_);
+  }
+  if (from._internal_has_batch_config()) {
+    _this->_impl_.batch_config_ = new ::protocols::BatchConfig(*from._impl_.batch_config_);
   }
   ::memcpy(&_impl_.model_, &from._impl_.model_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.stream_results_) -
-    reinterpret_cast<char*>(&_impl_.model_)) + sizeof(_impl_.stream_results_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.timestamp_) -
+    reinterpret_cast<char*>(&_impl_.model_)) + sizeof(_impl_.timestamp_));
   // @@protoc_insertion_point(copy_constructor:protocols.SimulationRequest)
 }
 
@@ -340,16 +444,15 @@ inline void SimulationRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.parameters_){nullptr}
-    , decltype(_impl_.integration_){nullptr}
-    , decltype(_impl_.logconfig_){nullptr}
-    , decltype(_impl_.model_){0}
-    , decltype(_impl_.num_paths_){0}
-    , decltype(_impl_.time_horizon_){0}
-    , decltype(_impl_.timestep_){0}
-    , decltype(_impl_.timestamp_){uint64_t{0u}}
-    , decltype(_impl_.stream_results_){false}
+      decltype(_impl_._has_bits_){}
     , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.parameters_){nullptr}
+    , decltype(_impl_.integration_){nullptr}
+    , decltype(_impl_.log_config_){nullptr}
+    , decltype(_impl_.batch_config_){nullptr}
+    , decltype(_impl_.model_){0}
+    , decltype(_impl_.mode_){0}
+    , decltype(_impl_.timestamp_){uint64_t{0u}}
   };
 }
 
@@ -366,7 +469,8 @@ inline void SimulationRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.parameters_;
   if (this != internal_default_instance()) delete _impl_.integration_;
-  if (this != internal_default_instance()) delete _impl_.logconfig_;
+  if (this != internal_default_instance()) delete _impl_.log_config_;
+  if (this != internal_default_instance()) delete _impl_.batch_config_;
 }
 
 void SimulationRequest::SetCachedSize(int size) const {
@@ -387,18 +491,25 @@ void SimulationRequest::Clear() {
     delete _impl_.integration_;
   }
   _impl_.integration_ = nullptr;
-  if (GetArenaForAllocation() == nullptr && _impl_.logconfig_ != nullptr) {
-    delete _impl_.logconfig_;
+  if (GetArenaForAllocation() == nullptr && _impl_.log_config_ != nullptr) {
+    delete _impl_.log_config_;
   }
-  _impl_.logconfig_ = nullptr;
+  _impl_.log_config_ = nullptr;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(_impl_.batch_config_ != nullptr);
+    _impl_.batch_config_->Clear();
+  }
   ::memset(&_impl_.model_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.stream_results_) -
-      reinterpret_cast<char*>(&_impl_.model_)) + sizeof(_impl_.stream_results_));
+      reinterpret_cast<char*>(&_impl_.timestamp_) -
+      reinterpret_cast<char*>(&_impl_.model_)) + sizeof(_impl_.timestamp_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* SimulationRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
@@ -428,49 +539,34 @@ const char* SimulationRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
         } else
           goto handle_unusual;
         continue;
-      // .protocols.LogConfig logConfig = 4;
+      // .protocols.LogConfig log_config = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          ptr = ctx->ParseMessage(_internal_mutable_logconfig(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_log_config(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // double time_horizon = 5;
+      // .protocols.SimulationRequest.SimulationMode mode = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 41)) {
-          _impl_.time_horizon_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
-          ptr += sizeof(double);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_mode(static_cast<::protocols::SimulationRequest_SimulationMode>(val));
         } else
           goto handle_unusual;
         continue;
-      // double timestep = 6;
+      // optional .protocols.BatchConfig batch_config = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 49)) {
-          _impl_.timestep_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
-          ptr += sizeof(double);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 num_paths = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
-          // _impl_.num_paths_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr = ctx->ParseMessage(_internal_mutable_batch_config(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bool stream_results = 8;
+      // uint64 timestamp = 8;
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
-          _impl_.stream_results_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint64 timestamp = 9;
-      case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
           _impl_.timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -492,6 +588,7 @@ const char* SimulationRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
     CHK_(ptr != nullptr);
   }  // while
 message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -526,49 +623,31 @@ uint8_t* SimulationRequest::_InternalSerialize(
         _Internal::integration(this).GetCachedSize(), target, stream);
   }
 
-  // .protocols.LogConfig logConfig = 4;
-  if (this->_internal_has_logconfig()) {
+  // .protocols.LogConfig log_config = 4;
+  if (this->_internal_has_log_config()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, _Internal::logconfig(this),
-        _Internal::logconfig(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(4, _Internal::log_config(this),
+        _Internal::log_config(this).GetCachedSize(), target, stream);
   }
 
-  // double time_horizon = 5;
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_time_horizon = this->_internal_time_horizon();
-  uint64_t raw_time_horizon;
-  memcpy(&raw_time_horizon, &tmp_time_horizon, sizeof(tmp_time_horizon));
-  if (raw_time_horizon != 0) {
+  // .protocols.SimulationRequest.SimulationMode mode = 5;
+  if (this->_internal_mode() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(5, this->_internal_time_horizon(), target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      5, this->_internal_mode(), target);
   }
 
-  // double timestep = 6;
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_timestep = this->_internal_timestep();
-  uint64_t raw_timestep;
-  memcpy(&raw_timestep, &tmp_timestep, sizeof(tmp_timestep));
-  if (raw_timestep != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(6, this->_internal_timestep(), target);
+  // optional .protocols.BatchConfig batch_config = 6;
+  if (_internal_has_batch_config()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(6, _Internal::batch_config(this),
+        _Internal::batch_config(this).GetCachedSize(), target, stream);
   }
 
-  // int32 num_paths = 7;
-  if (this->_internal_num_paths() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(7, this->_internal_num_paths(), target);
-  }
-
-  // bool stream_results = 8;
-  if (this->_internal_stream_results() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(8, this->_internal_stream_results(), target);
-  }
-
-  // uint64 timestamp = 9;
+  // uint64 timestamp = 8;
   if (this->_internal_timestamp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(9, this->_internal_timestamp(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(8, this->_internal_timestamp(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -601,11 +680,19 @@ size_t SimulationRequest::ByteSizeLong() const {
         *_impl_.integration_);
   }
 
-  // .protocols.LogConfig logConfig = 4;
-  if (this->_internal_has_logconfig()) {
+  // .protocols.LogConfig log_config = 4;
+  if (this->_internal_has_log_config()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.logconfig_);
+        *_impl_.log_config_);
+  }
+
+  // optional .protocols.BatchConfig batch_config = 6;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.batch_config_);
   }
 
   // .protocols.SimulationRequest.ModelType model = 1;
@@ -614,37 +701,15 @@ size_t SimulationRequest::ByteSizeLong() const {
       ::_pbi::WireFormatLite::EnumSize(this->_internal_model());
   }
 
-  // int32 num_paths = 7;
-  if (this->_internal_num_paths() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_num_paths());
+  // .protocols.SimulationRequest.SimulationMode mode = 5;
+  if (this->_internal_mode() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_mode());
   }
 
-  // double time_horizon = 5;
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_time_horizon = this->_internal_time_horizon();
-  uint64_t raw_time_horizon;
-  memcpy(&raw_time_horizon, &tmp_time_horizon, sizeof(tmp_time_horizon));
-  if (raw_time_horizon != 0) {
-    total_size += 1 + 8;
-  }
-
-  // double timestep = 6;
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_timestep = this->_internal_timestep();
-  uint64_t raw_timestep;
-  memcpy(&raw_timestep, &tmp_timestep, sizeof(tmp_timestep));
-  if (raw_timestep != 0) {
-    total_size += 1 + 8;
-  }
-
-  // uint64 timestamp = 9;
+  // uint64 timestamp = 8;
   if (this->_internal_timestamp() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_timestamp());
-  }
-
-  // bool stream_results = 8;
-  if (this->_internal_stream_results() != 0) {
-    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -673,35 +738,22 @@ void SimulationRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
     _this->_internal_mutable_integration()->::protocols::IntegrationConfig::MergeFrom(
         from._internal_integration());
   }
-  if (from._internal_has_logconfig()) {
-    _this->_internal_mutable_logconfig()->::protocols::LogConfig::MergeFrom(
-        from._internal_logconfig());
+  if (from._internal_has_log_config()) {
+    _this->_internal_mutable_log_config()->::protocols::LogConfig::MergeFrom(
+        from._internal_log_config());
+  }
+  if (from._internal_has_batch_config()) {
+    _this->_internal_mutable_batch_config()->::protocols::BatchConfig::MergeFrom(
+        from._internal_batch_config());
   }
   if (from._internal_model() != 0) {
     _this->_internal_set_model(from._internal_model());
   }
-  if (from._internal_num_paths() != 0) {
-    _this->_internal_set_num_paths(from._internal_num_paths());
-  }
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_time_horizon = from._internal_time_horizon();
-  uint64_t raw_time_horizon;
-  memcpy(&raw_time_horizon, &tmp_time_horizon, sizeof(tmp_time_horizon));
-  if (raw_time_horizon != 0) {
-    _this->_internal_set_time_horizon(from._internal_time_horizon());
-  }
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_timestep = from._internal_timestep();
-  uint64_t raw_timestep;
-  memcpy(&raw_timestep, &tmp_timestep, sizeof(tmp_timestep));
-  if (raw_timestep != 0) {
-    _this->_internal_set_timestep(from._internal_timestep());
+  if (from._internal_mode() != 0) {
+    _this->_internal_set_mode(from._internal_mode());
   }
   if (from._internal_timestamp() != 0) {
     _this->_internal_set_timestamp(from._internal_timestamp());
-  }
-  if (from._internal_stream_results() != 0) {
-    _this->_internal_set_stream_results(from._internal_stream_results());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -720,9 +772,10 @@ bool SimulationRequest::IsInitialized() const {
 void SimulationRequest::InternalSwap(SimulationRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SimulationRequest, _impl_.stream_results_)
-      + sizeof(SimulationRequest::_impl_.stream_results_)
+      PROTOBUF_FIELD_OFFSET(SimulationRequest, _impl_.timestamp_)
+      + sizeof(SimulationRequest::_impl_.timestamp_)
       - PROTOBUF_FIELD_OFFSET(SimulationRequest, _impl_.parameters_)>(
           reinterpret_cast<char*>(&_impl_.parameters_),
           reinterpret_cast<char*>(&other->_impl_.parameters_));
@@ -1181,11 +1234,15 @@ IntegrationConfig::IntegrationConfig(const IntegrationConfig& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   IntegrationConfig* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.scheme_){}
+      decltype(_impl_.timestep_){}
+    , decltype(_impl_.time_horizon_){}
+    , decltype(_impl_.scheme_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _this->_impl_.scheme_ = from._impl_.scheme_;
+  ::memcpy(&_impl_.timestep_, &from._impl_.timestep_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.scheme_) -
+    reinterpret_cast<char*>(&_impl_.timestep_)) + sizeof(_impl_.scheme_));
   // @@protoc_insertion_point(copy_constructor:protocols.IntegrationConfig)
 }
 
@@ -1194,7 +1251,9 @@ inline void IntegrationConfig::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.scheme_){0}
+      decltype(_impl_.timestep_){0}
+    , decltype(_impl_.time_horizon_){0}
+    , decltype(_impl_.scheme_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -1222,7 +1281,9 @@ void IntegrationConfig::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.scheme_ = 0;
+  ::memset(&_impl_.timestep_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.scheme_) -
+      reinterpret_cast<char*>(&_impl_.timestep_)) + sizeof(_impl_.scheme_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1238,6 +1299,22 @@ const char* IntegrationConfig::_InternalParse(const char* ptr, ::_pbi::ParseCont
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_scheme(static_cast<::protocols::IntegrationConfig_Scheme>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // double timestep = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 17)) {
+          _impl_.timestep_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // double time_horizon = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 25)) {
+          _impl_.time_horizon_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
         } else
           goto handle_unusual;
         continue;
@@ -1277,6 +1354,26 @@ uint8_t* IntegrationConfig::_InternalSerialize(
       1, this->_internal_scheme(), target);
   }
 
+  // double timestep = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_timestep = this->_internal_timestep();
+  uint64_t raw_timestep;
+  memcpy(&raw_timestep, &tmp_timestep, sizeof(tmp_timestep));
+  if (raw_timestep != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(2, this->_internal_timestep(), target);
+  }
+
+  // double time_horizon = 3;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_time_horizon = this->_internal_time_horizon();
+  uint64_t raw_time_horizon;
+  memcpy(&raw_time_horizon, &tmp_time_horizon, sizeof(tmp_time_horizon));
+  if (raw_time_horizon != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(3, this->_internal_time_horizon(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1292,6 +1389,24 @@ size_t IntegrationConfig::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // double timestep = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_timestep = this->_internal_timestep();
+  uint64_t raw_timestep;
+  memcpy(&raw_timestep, &tmp_timestep, sizeof(tmp_timestep));
+  if (raw_timestep != 0) {
+    total_size += 1 + 8;
+  }
+
+  // double time_horizon = 3;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_time_horizon = this->_internal_time_horizon();
+  uint64_t raw_time_horizon;
+  memcpy(&raw_time_horizon, &tmp_time_horizon, sizeof(tmp_time_horizon));
+  if (raw_time_horizon != 0) {
+    total_size += 1 + 8;
+  }
 
   // .protocols.IntegrationConfig.Scheme scheme = 1;
   if (this->_internal_scheme() != 0) {
@@ -1317,6 +1432,20 @@ void IntegrationConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_timestep = from._internal_timestep();
+  uint64_t raw_timestep;
+  memcpy(&raw_timestep, &tmp_timestep, sizeof(tmp_timestep));
+  if (raw_timestep != 0) {
+    _this->_internal_set_timestep(from._internal_timestep());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_time_horizon = from._internal_time_horizon();
+  uint64_t raw_time_horizon;
+  memcpy(&raw_time_horizon, &tmp_time_horizon, sizeof(tmp_time_horizon));
+  if (raw_time_horizon != 0) {
+    _this->_internal_set_time_horizon(from._internal_time_horizon());
+  }
   if (from._internal_scheme() != 0) {
     _this->_internal_set_scheme(from._internal_scheme());
   }
@@ -1337,7 +1466,12 @@ bool IntegrationConfig::IsInitialized() const {
 void IntegrationConfig::InternalSwap(IntegrationConfig* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_.scheme_, other->_impl_.scheme_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(IntegrationConfig, _impl_.scheme_)
+      + sizeof(IntegrationConfig::_impl_.scheme_)
+      - PROTOBUF_FIELD_OFFSET(IntegrationConfig, _impl_.timestep_)>(
+          reinterpret_cast<char*>(&_impl_.timestep_),
+          reinterpret_cast<char*>(&other->_impl_.timestep_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata IntegrationConfig::GetMetadata() const {
@@ -1584,6 +1718,505 @@ void LogConfig::InternalSwap(LogConfig* other) {
       file_level_metadata_Simulation_2eproto[3]);
 }
 
+// ===================================================================
+
+class BatchConfig_Interval::_Internal {
+ public:
+};
+
+BatchConfig_Interval::BatchConfig_Interval(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:protocols.BatchConfig.Interval)
+}
+BatchConfig_Interval::BatchConfig_Interval(const BatchConfig_Interval& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  BatchConfig_Interval* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.a_){}
+    , decltype(_impl_.b_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.a_, &from._impl_.a_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.b_) -
+    reinterpret_cast<char*>(&_impl_.a_)) + sizeof(_impl_.b_));
+  // @@protoc_insertion_point(copy_constructor:protocols.BatchConfig.Interval)
+}
+
+inline void BatchConfig_Interval::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.a_){0}
+    , decltype(_impl_.b_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+BatchConfig_Interval::~BatchConfig_Interval() {
+  // @@protoc_insertion_point(destructor:protocols.BatchConfig.Interval)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void BatchConfig_Interval::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void BatchConfig_Interval::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void BatchConfig_Interval::Clear() {
+// @@protoc_insertion_point(message_clear_start:protocols.BatchConfig.Interval)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.a_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.b_) -
+      reinterpret_cast<char*>(&_impl_.a_)) + sizeof(_impl_.b_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* BatchConfig_Interval::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // double a = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 9)) {
+          _impl_.a_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // double b = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 17)) {
+          _impl_.b_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* BatchConfig_Interval::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:protocols.BatchConfig.Interval)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // double a = 1;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_a = this->_internal_a();
+  uint64_t raw_a;
+  memcpy(&raw_a, &tmp_a, sizeof(tmp_a));
+  if (raw_a != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(1, this->_internal_a(), target);
+  }
+
+  // double b = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_b = this->_internal_b();
+  uint64_t raw_b;
+  memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
+  if (raw_b != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(2, this->_internal_b(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:protocols.BatchConfig.Interval)
+  return target;
+}
+
+size_t BatchConfig_Interval::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:protocols.BatchConfig.Interval)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // double a = 1;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_a = this->_internal_a();
+  uint64_t raw_a;
+  memcpy(&raw_a, &tmp_a, sizeof(tmp_a));
+  if (raw_a != 0) {
+    total_size += 1 + 8;
+  }
+
+  // double b = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_b = this->_internal_b();
+  uint64_t raw_b;
+  memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
+  if (raw_b != 0) {
+    total_size += 1 + 8;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BatchConfig_Interval::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    BatchConfig_Interval::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BatchConfig_Interval::GetClassData() const { return &_class_data_; }
+
+
+void BatchConfig_Interval::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<BatchConfig_Interval*>(&to_msg);
+  auto& from = static_cast<const BatchConfig_Interval&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:protocols.BatchConfig.Interval)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_a = from._internal_a();
+  uint64_t raw_a;
+  memcpy(&raw_a, &tmp_a, sizeof(tmp_a));
+  if (raw_a != 0) {
+    _this->_internal_set_a(from._internal_a());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_b = from._internal_b();
+  uint64_t raw_b;
+  memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
+  if (raw_b != 0) {
+    _this->_internal_set_b(from._internal_b());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void BatchConfig_Interval::CopyFrom(const BatchConfig_Interval& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:protocols.BatchConfig.Interval)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BatchConfig_Interval::IsInitialized() const {
+  return true;
+}
+
+void BatchConfig_Interval::InternalSwap(BatchConfig_Interval* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(BatchConfig_Interval, _impl_.b_)
+      + sizeof(BatchConfig_Interval::_impl_.b_)
+      - PROTOBUF_FIELD_OFFSET(BatchConfig_Interval, _impl_.a_)>(
+          reinterpret_cast<char*>(&_impl_.a_),
+          reinterpret_cast<char*>(&other->_impl_.a_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata BatchConfig_Interval::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Simulation_2eproto_getter, &descriptor_table_Simulation_2eproto_once,
+      file_level_metadata_Simulation_2eproto[4]);
+}
+
+// ===================================================================
+
+class BatchConfig::_Internal {
+ public:
+  using HasBits = decltype(std::declval<BatchConfig>()._impl_._has_bits_);
+  static const ::protocols::BatchConfig_Interval& interval(const BatchConfig* msg);
+  static void set_has_interval(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::protocols::BatchConfig_Interval&
+BatchConfig::_Internal::interval(const BatchConfig* msg) {
+  return *msg->_impl_.interval_;
+}
+BatchConfig::BatchConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:protocols.BatchConfig)
+}
+BatchConfig::BatchConfig(const BatchConfig& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  BatchConfig* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.interval_){nullptr}
+    , decltype(_impl_.num_paths_){}
+    , decltype(_impl_.mean_crossing_time_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_interval()) {
+    _this->_impl_.interval_ = new ::protocols::BatchConfig_Interval(*from._impl_.interval_);
+  }
+  ::memcpy(&_impl_.num_paths_, &from._impl_.num_paths_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.mean_crossing_time_) -
+    reinterpret_cast<char*>(&_impl_.num_paths_)) + sizeof(_impl_.mean_crossing_time_));
+  // @@protoc_insertion_point(copy_constructor:protocols.BatchConfig)
+}
+
+inline void BatchConfig::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.interval_){nullptr}
+    , decltype(_impl_.num_paths_){0u}
+    , decltype(_impl_.mean_crossing_time_){false}
+  };
+}
+
+BatchConfig::~BatchConfig() {
+  // @@protoc_insertion_point(destructor:protocols.BatchConfig)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void BatchConfig::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.interval_;
+}
+
+void BatchConfig::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void BatchConfig::Clear() {
+// @@protoc_insertion_point(message_clear_start:protocols.BatchConfig)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(_impl_.interval_ != nullptr);
+    _impl_.interval_->Clear();
+  }
+  ::memset(&_impl_.num_paths_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.mean_crossing_time_) -
+      reinterpret_cast<char*>(&_impl_.num_paths_)) + sizeof(_impl_.mean_crossing_time_));
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* BatchConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 num_paths = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.num_paths_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool mean_crossing_time = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.mean_crossing_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .protocols.BatchConfig.Interval interval = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_interval(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* BatchConfig::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:protocols.BatchConfig)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 num_paths = 1;
+  if (this->_internal_num_paths() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_num_paths(), target);
+  }
+
+  // bool mean_crossing_time = 2;
+  if (this->_internal_mean_crossing_time() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_mean_crossing_time(), target);
+  }
+
+  // optional .protocols.BatchConfig.Interval interval = 3;
+  if (_internal_has_interval()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::interval(this),
+        _Internal::interval(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:protocols.BatchConfig)
+  return target;
+}
+
+size_t BatchConfig::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:protocols.BatchConfig)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .protocols.BatchConfig.Interval interval = 3;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.interval_);
+  }
+
+  // uint32 num_paths = 1;
+  if (this->_internal_num_paths() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_num_paths());
+  }
+
+  // bool mean_crossing_time = 2;
+  if (this->_internal_mean_crossing_time() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BatchConfig::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    BatchConfig::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BatchConfig::GetClassData() const { return &_class_data_; }
+
+
+void BatchConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<BatchConfig*>(&to_msg);
+  auto& from = static_cast<const BatchConfig&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:protocols.BatchConfig)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_interval()) {
+    _this->_internal_mutable_interval()->::protocols::BatchConfig_Interval::MergeFrom(
+        from._internal_interval());
+  }
+  if (from._internal_num_paths() != 0) {
+    _this->_internal_set_num_paths(from._internal_num_paths());
+  }
+  if (from._internal_mean_crossing_time() != 0) {
+    _this->_internal_set_mean_crossing_time(from._internal_mean_crossing_time());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void BatchConfig::CopyFrom(const BatchConfig& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:protocols.BatchConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BatchConfig::IsInitialized() const {
+  return true;
+}
+
+void BatchConfig::InternalSwap(BatchConfig* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(BatchConfig, _impl_.mean_crossing_time_)
+      + sizeof(BatchConfig::_impl_.mean_crossing_time_)
+      - PROTOBUF_FIELD_OFFSET(BatchConfig, _impl_.interval_)>(
+          reinterpret_cast<char*>(&_impl_.interval_),
+          reinterpret_cast<char*>(&other->_impl_.interval_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata BatchConfig::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Simulation_2eproto_getter, &descriptor_table_Simulation_2eproto_once,
+      file_level_metadata_Simulation_2eproto[5]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace protocols
 PROTOBUF_NAMESPACE_OPEN
@@ -1602,6 +2235,14 @@ Arena::CreateMaybeMessage< ::protocols::IntegrationConfig >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::protocols::LogConfig*
 Arena::CreateMaybeMessage< ::protocols::LogConfig >(Arena* arena) {
   return Arena::CreateMessageInternal< ::protocols::LogConfig >(arena);
+}
+template<> PROTOBUF_NOINLINE ::protocols::BatchConfig_Interval*
+Arena::CreateMaybeMessage< ::protocols::BatchConfig_Interval >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::protocols::BatchConfig_Interval >(arena);
+}
+template<> PROTOBUF_NOINLINE ::protocols::BatchConfig*
+Arena::CreateMaybeMessage< ::protocols::BatchConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::protocols::BatchConfig >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

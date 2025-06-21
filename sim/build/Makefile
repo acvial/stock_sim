@@ -143,6 +143,19 @@ COMMUNICATIONS_LIB/fast:
 .PHONY : COMMUNICATIONS_LIB/fast
 
 #=============================================================================
+# Target rules for targets named INTEGRATOR_LIB
+
+# Build rule for target.
+INTEGRATOR_LIB: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 INTEGRATOR_LIB
+.PHONY : INTEGRATOR_LIB
+
+# fast build rule for target.
+INTEGRATOR_LIB/fast:
+	$(MAKE) $(MAKESILENT) -f src/Integrator/CMakeFiles/INTEGRATOR_LIB.dir/build.make src/Integrator/CMakeFiles/INTEGRATOR_LIB.dir/build
+.PHONY : INTEGRATOR_LIB/fast
+
+#=============================================================================
 # Target rules for targets named LOGGER_LIB
 
 # Build rule for target.
@@ -169,6 +182,19 @@ MANAGER_LIB/fast:
 .PHONY : MANAGER_LIB/fast
 
 #=============================================================================
+# Target rules for targets named MODEL_LIB
+
+# Build rule for target.
+MODEL_LIB: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MODEL_LIB
+.PHONY : MODEL_LIB
+
+# fast build rule for target.
+MODEL_LIB/fast:
+	$(MAKE) $(MAKESILENT) -f src/Models/CMakeFiles/MODEL_LIB.dir/build.make src/Models/CMakeFiles/MODEL_LIB.dir/build
+.PHONY : MODEL_LIB/fast
+
+#=============================================================================
 # Target rules for targets named PROTOCOL_LIB
 
 # Build rule for target.
@@ -182,17 +208,17 @@ PROTOCOL_LIB/fast:
 .PHONY : PROTOCOL_LIB/fast
 
 #=============================================================================
-# Target rules for targets named MODEL_LIB
+# Target rules for targets named BATCH_RUNNER_LIB
 
 # Build rule for target.
-MODEL_LIB: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MODEL_LIB
-.PHONY : MODEL_LIB
+BATCH_RUNNER_LIB: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BATCH_RUNNER_LIB
+.PHONY : BATCH_RUNNER_LIB
 
 # fast build rule for target.
-MODEL_LIB/fast:
-	$(MAKE) $(MAKESILENT) -f src/Models/CMakeFiles/MODEL_LIB.dir/build.make src/Models/CMakeFiles/MODEL_LIB.dir/build
-.PHONY : MODEL_LIB/fast
+BATCH_RUNNER_LIB/fast:
+	$(MAKE) $(MAKESILENT) -f src/Simulation_Runner/Batch_Runner/CMakeFiles/BATCH_RUNNER_LIB.dir/build.make src/Simulation_Runner/Batch_Runner/CMakeFiles/BATCH_RUNNER_LIB.dir/build
+.PHONY : BATCH_RUNNER_LIB/fast
 
 # Help Target
 help:
@@ -202,7 +228,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... BATCH_RUNNER_LIB"
 	@echo "... COMMUNICATIONS_LIB"
+	@echo "... INTEGRATOR_LIB"
 	@echo "... LOGGER_LIB"
 	@echo "... MANAGER_LIB"
 	@echo "... MODEL_LIB"

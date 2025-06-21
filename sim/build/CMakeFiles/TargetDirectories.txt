@@ -18,6 +18,9 @@
 /app/build/src/Manager/CMakeFiles/MANAGER_LIB.dir
 /app/build/src/Manager/CMakeFiles/edit_cache.dir
 /app/build/src/Manager/CMakeFiles/rebuild_cache.dir
+/app/build/src/Mappers/CMakeFiles/MAPPER_LIB.dir
+/app/build/src/Mappers/CMakeFiles/edit_cache.dir
+/app/build/src/Mappers/CMakeFiles/rebuild_cache.dir
 /app/build/src/Models/CMakeFiles/MODEL_LIB.dir
 /app/build/src/Models/CMakeFiles/edit_cache.dir
 /app/build/src/Models/CMakeFiles/rebuild_cache.dir

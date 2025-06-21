@@ -195,6 +195,19 @@ MANAGER_LIB/fast:
 .PHONY : MANAGER_LIB/fast
 
 #=============================================================================
+# Target rules for targets named MAPPER_LIB
+
+# Build rule for target.
+MAPPER_LIB: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MAPPER_LIB
+.PHONY : MAPPER_LIB
+
+# fast build rule for target.
+MAPPER_LIB/fast:
+	$(MAKE) $(MAKESILENT) -f src/Mappers/CMakeFiles/MAPPER_LIB.dir/build.make src/Mappers/CMakeFiles/MAPPER_LIB.dir/build
+.PHONY : MAPPER_LIB/fast
+
+#=============================================================================
 # Target rules for targets named MODEL_LIB
 
 # Build rule for target.
@@ -247,6 +260,7 @@ help:
 	@echo "... INTEGRATOR_LIB"
 	@echo "... LOGGER_LIB"
 	@echo "... MANAGER_LIB"
+	@echo "... MAPPER_LIB"
 	@echo "... MODEL_LIB"
 	@echo "... PROTOCOL_LIB"
 	@echo "... Simulator"

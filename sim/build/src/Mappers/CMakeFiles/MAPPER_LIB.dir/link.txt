@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMAPPER_LIB.a CMakeFiles/MAPPER_LIB.dir/Mappers.cpp.o
+/usr/bin/ranlib libMAPPER_LIB.a

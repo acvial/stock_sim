@@ -12,6 +12,7 @@ src/CMakeFiles/Simulator.dir/main.cpp.o
  /app/src/Integrator/Integrator_Factory.h
  /app/src/Logger/Logger.h
  /app/src/Manager/Manager.h
+ /app/src/Mappers/Mapper.h
  /app/src/Models/Geometric_Brownian_Model.h
  /app/src/Models/Model.h
  /app/src/Models/Model_Data.h

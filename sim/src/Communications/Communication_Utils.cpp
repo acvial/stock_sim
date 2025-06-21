@@ -19,7 +19,7 @@ CommunicationUtils::CommunicationUtils(){
     // Push address
     auto pushAddress = "tcp://" + std::string(EnvironmentManager::getEnv("CONTROLLER_NAME")) + ":" + EnvironmentManager::getEnv("OUT_PORT");
     SPDLOG_DEBUG("Sending address: {}", pushAddress);
-    pullSocket.bind(pushAddress);
+    pushSocket.connect(pushAddress);
 }
 
 CommunicationUtils::~CommunicationUtils(){

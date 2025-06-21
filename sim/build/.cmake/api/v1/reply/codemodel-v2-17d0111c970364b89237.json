@@ -1,0 +1,320 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "src/Communications",
+					"jsonFile" : "directory-src.Communications-Debug-7290cba179cb29fec316.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Communications",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "src/Environment_Manager",
+					"jsonFile" : "directory-src.Environment_Manager-Debug-1f1b7f707b5a8ddb5c2f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Environment_Manager",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "src/Integrator",
+					"jsonFile" : "directory-src.Integrator-Debug-680dc0f00ca0116334c4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Integrator",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "src/Logger",
+					"jsonFile" : "directory-src.Logger-Debug-18262c2bdca6287e1b99.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Logger",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "src/Manager",
+					"jsonFile" : "directory-src.Manager-Debug-fbaffd8c9592b2a51b65.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Manager",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "src/Mappers",
+					"jsonFile" : "directory-src.Mappers-Debug-e71d96d426e30b07da01.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Mappers",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "src/Models",
+					"jsonFile" : "directory-src.Models-Debug-4f62bf0c83087803b6cb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Models",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "src/Protocols",
+					"jsonFile" : "directory-src.Protocols-Debug-0ef3943ce78c08e8ba82.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Protocols",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "src/Simulation_Runner",
+					"childIndexes" : 
+					[
+						11
+					],
+					"jsonFile" : "directory-src.Simulation_Runner-Debug-15e9defb4f19a9144a08.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/Simulation_Runner"
+				},
+				{
+					"build" : "src/Simulation_Runner/Batch_Runner",
+					"jsonFile" : "directory-src.Simulation_Runner.Batch_Runner-Debug-21cad096b240a345f164.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/Simulation_Runner/Batch_Runner",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11
+					],
+					"name" : "Stock_Simulator",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 11,
+					"id" : "BATCH_RUNNER_LIB::@d4b682abe76a890e8f0c",
+					"jsonFile" : "target-BATCH_RUNNER_LIB-Debug-34b01314da57833f06ca.json",
+					"name" : "BATCH_RUNNER_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "COMMUNICATIONS_LIB::@35a6a6d2c96d13e300b4",
+					"jsonFile" : "target-COMMUNICATIONS_LIB-Debug-0dcba0721f64ea3666ef.json",
+					"name" : "COMMUNICATIONS_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ENVIRONMENT_LIB::@5c5d17c1b63830d26fe1",
+					"jsonFile" : "target-ENVIRONMENT_LIB-Debug-20da4cc8906ca210e030.json",
+					"name" : "ENVIRONMENT_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "INTEGRATOR_LIB::@e7e6e5acd825ac1f264d",
+					"jsonFile" : "target-INTEGRATOR_LIB-Debug-76a13524b967bb855e43.json",
+					"name" : "INTEGRATOR_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "LOGGER_LIB::@8f2c0937412c0976db5b",
+					"jsonFile" : "target-LOGGER_LIB-Debug-12222409d22ff6e6b823.json",
+					"name" : "LOGGER_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "MANAGER_LIB::@7ca4fe4d00630860de97",
+					"jsonFile" : "target-MANAGER_LIB-Debug-7d2abf49558e0dbe0fc7.json",
+					"name" : "MANAGER_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "MAPPER_LIB::@3162d2aafd10dd55647f",
+					"jsonFile" : "target-MAPPER_LIB-Debug-43b843dc7ac70e05538d.json",
+					"name" : "MAPPER_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "MODEL_LIB::@9c841789ed2d01b6023a",
+					"jsonFile" : "target-MODEL_LIB-Debug-3dd2de846d4c661f5e30.json",
+					"name" : "MODEL_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "PROTOCOL_LIB::@0d6d85245ab30f279b0c",
+					"jsonFile" : "target-PROTOCOL_LIB-Debug-fbf56eff003fa8786136.json",
+					"name" : "PROTOCOL_LIB",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Simulator::@145eef247bfb46b6828c",
+					"jsonFile" : "target-Simulator-Debug-fb8966fdfa7049de08a9.json",
+					"name" : "Simulator",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/app/build",
+		"source" : "/app"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

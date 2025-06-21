@@ -1,0 +1,331 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "src/Simulator"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"add_compile_options"
+		],
+		"files" : 
+		[
+			"src/CMakeLists.txt",
+			"src/Manager/CMakeLists.txt",
+			"src/Communications/CMakeLists.txt",
+			"src/Mappers/CMakeLists.txt",
+			"src/Simulation_Runner/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 25,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 26,
+				"parent" : 3
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 2,
+				"line" : 26,
+				"parent" : 5
+			},
+			{
+				"file" : 3
+			},
+			{
+				"command" : 1,
+				"file" : 3,
+				"line" : 26,
+				"parent" : 7
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 1,
+				"file" : 4,
+				"line" : 10,
+				"parent" : 9
+			},
+			{
+				"file" : 5
+			},
+			{
+				"command" : 2,
+				"file" : 5,
+				"line" : 16,
+				"parent" : 11
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=c++17"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-Wpedantic"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-Werror"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-Wconversion"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-Wsign-conversion"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-Wshadow"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Communications"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Integrator"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Logger"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Manager"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Mappers"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Models"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Simulation_Runner"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Protocols"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Environment_Manager"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Simulation_Runner/Batch_Runner"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/app/src/Simulation_Runner/Batch_Runner/Metrics"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "COMMUNICATIONS_LIB::@35a6a6d2c96d13e300b4"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ENVIRONMENT_LIB::@5c5d17c1b63830d26fe1"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "INTEGRATOR_LIB::@e7e6e5acd825ac1f264d"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "LOGGER_LIB::@8f2c0937412c0976db5b"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "MANAGER_LIB::@7ca4fe4d00630860de97"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "MAPPER_LIB::@3162d2aafd10dd55647f"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "MODEL_LIB::@9c841789ed2d01b6023a"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "PROTOCOL_LIB::@0d6d85245ab30f279b0c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "BATCH_RUNNER_LIB::@d4b682abe76a890e8f0c"
+		}
+	],
+	"id" : "Simulator::@145eef247bfb46b6828c",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "Manager/libMANAGER_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "Communications/libCOMMUNICATIONS_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libzmq.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libprotobuf.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "Environment_Manager/libENVIRONMENT_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "Mappers/libMAPPER_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "Logger/libLOGGER_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "Protocols/libPROTOCOL_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "Simulation_Runner/Batch_Runner/libBATCH_RUNNER_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "Models/libMODEL_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "Integrator/libINTEGRATOR_LIB.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libfmt.so",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "Simulator",
+	"nameOnDisk" : "Simulator",
+	"paths" : 
+	{
+		"build" : "src",
+		"source" : "src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

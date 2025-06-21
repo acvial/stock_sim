@@ -9,15 +9,15 @@ set(MANAGER_INCLUDES
     "/app/src/Integrator/"
     "/app/src/Logger/"
     "/app/src/Manager/"
+    "/app/src/Mappers/"
     "/app/src/Models/"
-    "/app/src/Protocols/"
     "/app/src/Simulation_Runner/"
 )
 
 set(MANAGER_LIBRARIES
 
     COMMUNICATIONS_LIB
-    PROTOCOL_LIB
+    MAPPER_LIB
     SIMULATOR_RUNNER_LIB
 )
 

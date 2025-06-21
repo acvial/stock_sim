@@ -96,8 +96,9 @@ src/Simulator: src/Manager/libMANAGER_LIB.a
 src/Simulator: src/Communications/libCOMMUNICATIONS_LIB.a
 src/Simulator: /usr/lib/x86_64-linux-gnu/libzmq.so
 src/Simulator: /usr/lib/x86_64-linux-gnu/libprotobuf.so
-src/Simulator: src/Logger/libLOGGER_LIB.a
 src/Simulator: src/Environment_Manager/libENVIRONMENT_LIB.a
+src/Simulator: src/Mappers/libMAPPER_LIB.a
+src/Simulator: src/Logger/libLOGGER_LIB.a
 src/Simulator: src/Protocols/libPROTOCOL_LIB.a
 src/Simulator: src/Simulation_Runner/Batch_Runner/libBATCH_RUNNER_LIB.a
 src/Simulator: src/Models/libMODEL_LIB.a

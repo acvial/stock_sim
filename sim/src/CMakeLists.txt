@@ -7,6 +7,7 @@ set(SUBDIRECTORIES
     "/app/src/Integrator"
     "/app/src/Logger/"
     "/app/src/Manager/"
+    "/app/src/Mappers/"
     "/app/src/Models/"
     "/app/src/Protocols/"
     "/app/src/Simulation_Runner/"

@@ -12,6 +12,12 @@ class EulerMaruyamaScheme : public Integrator{
 
     public:
 
+    /// @brief Compute the next point of the path.
+    /// @param modelData SDE parameters.
+    /// @param p_0       Price of the stock at last timestep.
+    /// @return Value of the price on next timestep.
+    double computeOneTimestep(const ModelData& modelData, double p_0) override;
+
     /// @brief Calculates the path. Stop condition: time horizon reached.
     /// @param modelData SDE parameters at given time.
     /// @return Pointer to path.

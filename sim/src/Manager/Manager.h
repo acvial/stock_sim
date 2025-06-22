@@ -27,6 +27,10 @@ class Manager{
 
     /// @brief Core function of the simulator. Establishes communications, maps protocol data and calls solver.
     void runSimulation();
+
+    void executeBatchSimulation(protocols::SimulationRequest* deserialisedMessage, 
+                                std::unique_ptr<Model>        model, 
+                                std::unique_ptr<Integrator>   integrator);
 };
 
 #endif

@@ -629,7 +629,6 @@ class Parameters final :
     kJumpMeanFieldNumber = 5,
     kJumpStddevFieldNumber = 6,
     kMeanReversionRateFieldNumber = 7,
-    kLongTermMeanFieldNumber = 8,
   };
   // double drift = 1;
   void clear_drift();
@@ -710,19 +709,6 @@ class Parameters final :
   void _internal_set_mean_reversion_rate(double value);
   public:
 
-  // optional double long_term_mean = 8;
-  bool has_long_term_mean() const;
-  private:
-  bool _internal_has_long_term_mean() const;
-  public:
-  void clear_long_term_mean();
-  double long_term_mean() const;
-  void set_long_term_mean(double value);
-  private:
-  double _internal_long_term_mean() const;
-  void _internal_set_long_term_mean(double value);
-  public:
-
   // @@protoc_insertion_point(class_scope:protocols.Parameters)
  private:
   class _Internal;
@@ -740,7 +726,6 @@ class Parameters final :
     double jump_mean_;
     double jump_stddev_;
     double mean_reversion_rate_;
-    double long_term_mean_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_Simulation_2eproto;
@@ -2493,34 +2478,6 @@ inline void Parameters::_internal_set_mean_reversion_rate(double value) {
 inline void Parameters::set_mean_reversion_rate(double value) {
   _internal_set_mean_reversion_rate(value);
   // @@protoc_insertion_point(field_set:protocols.Parameters.mean_reversion_rate)
-}
-
-// optional double long_term_mean = 8;
-inline bool Parameters::_internal_has_long_term_mean() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
-  return value;
-}
-inline bool Parameters::has_long_term_mean() const {
-  return _internal_has_long_term_mean();
-}
-inline void Parameters::clear_long_term_mean() {
-  _impl_.long_term_mean_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000010u;
-}
-inline double Parameters::_internal_long_term_mean() const {
-  return _impl_.long_term_mean_;
-}
-inline double Parameters::long_term_mean() const {
-  // @@protoc_insertion_point(field_get:protocols.Parameters.long_term_mean)
-  return _internal_long_term_mean();
-}
-inline void Parameters::_internal_set_long_term_mean(double value) {
-  _impl_._has_bits_[0] |= 0x00000010u;
-  _impl_.long_term_mean_ = value;
-}
-inline void Parameters::set_long_term_mean(double value) {
-  _internal_set_long_term_mean(value);
-  // @@protoc_insertion_point(field_set:protocols.Parameters.long_term_mean)
 }
 
 // -------------------------------------------------------------------

@@ -44,23 +44,12 @@ void Manager::runSimulation(){
                 // Call simulator runner
                 if(deserialisedMessage->mode() == protocols::SimulationRequest::BATCH){
 
-                    // Get batch config
-                    BatchRunner& batchRunner = *Mapper::mapBatchConfig(deserialisedMessage->mutable_batch_config());
+                    executeBatchSimulation(deserialisedMessage, std::move(model), std::move(integrator));
+                }
+                else if(deserialisedMessage->mode() == protocols::SimulationRequest::INTERACTIVE){
 
-                    // Run batch simulation
-                    batchRunner.computePaths(std::move(model), std::move(integrator));
-
-                    // Compute metrics
-                    batchRunner.getMetrics()->computeMetrics(integrator->getTimestep());
-
-                    // Map results
-                    protocols::BatchResult* protoBatch = Mapper::mapBatchResults(batchRunner.getMetrics());
-
-                    // Serialize data
-                    std::string serializedMessage = CommunicationUtils::serialize<protocols::BatchResult>(protoBatch);
-
-                    // Send results
-                    CommunicationUtils::push(serializedMessage);
+                    /// TODO
+                    // executeInteractiveSimulation(deserialisedMessage, std::move(model), std::move(integrator));
                 }
 
                 // Delete data
@@ -84,3 +73,25 @@ void Manager::runSimulation(){
     }
 }
 
+void Manager::executeBatchSimulation(protocols::SimulationRequest* deserialisedMessage,
+                                     std::unique_ptr<Model>        model, 
+                                     std::unique_ptr<Integrator>   integrator){
+
+    // Get batch config
+    BatchRunner& batchRunner = *Mapper::mapBatchConfig(deserialisedMessage->mutable_batch_config());
+
+    // Run batch simulation
+    batchRunner.computePaths(std::move(model), std::move(integrator));
+
+    // Compute metrics
+    batchRunner.getMetrics()->computeMetrics(integrator->getTimestep());
+
+    // Map results
+    protocols::BatchResult* protoBatch = Mapper::mapBatchResults(batchRunner.getMetrics());
+
+    // Serialize data
+    std::string serializedMessage = CommunicationUtils::serialize<protocols::BatchResult>(protoBatch);
+
+    // Send results
+    CommunicationUtils::push(serializedMessage);
+}

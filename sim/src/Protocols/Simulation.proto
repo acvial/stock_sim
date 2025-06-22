@@ -10,7 +10,7 @@ message SimulationRequest{
 
         GEOMETRIC_BROWNIAN_MOTION = 0;
         JUMP_DIFFUSSION = 1;
-        ORNSTEIN_UHLEMBECK = 2;
+        ORNSTEIN_UHLENBECK = 2;
     }
 
     enum SimulationMode{
@@ -41,8 +41,7 @@ message Parameters {
     optional double jump_stddev = 6;
   
     // Optional fields for OU
-    optional double mean_reversion_rate = 7;
-    optional double long_term_mean = 8;
+    optional double mean_reversion_rate = 7; // theta
 }
   
 message IntegrationConfig{

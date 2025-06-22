@@ -11,11 +11,12 @@ src/Manager/CMakeFiles/MANAGER_LIB.dir/Manager.cpp.o
  /app/src/Integrator/Integrator_Factory.h
  /app/src/Logger/Logger.h
  /app/src/Manager/Manager.h
- /app/src/Mappers/Mapper.h
+ /app/src/Mappers/Mappers.h
  /app/src/Models/Geometric_Brownian_Model.h
  /app/src/Models/Model.h
  /app/src/Models/Model_Data.h
  /app/src/Models/Model_Factory.h
+ /app/src/Models/Ornstein_Uhlenbeck.h
  /app/src/Protocols/Simulation.pb.h
  /app/src/Simulation_Runner/Batch_Runner/Batch_Data.h
  /app/src/Simulation_Runner/Batch_Runner/Batch_Runner.h

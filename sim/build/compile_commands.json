@@ -67,6 +67,12 @@
 },
 {
   "directory": "/app/build/src/Models",
+  "command": "/usr/bin/g++  -I/app/src/Logger -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MODEL_LIB.dir/Ornstein_Uhlenbeck.cpp.o -c /app/src/Models/Ornstein_Uhlenbeck.cpp",
+  "file": "/app/src/Models/Ornstein_Uhlenbeck.cpp",
+  "output": "src/Models/CMakeFiles/MODEL_LIB.dir/Ornstein_Uhlenbeck.cpp.o"
+},
+{
+  "directory": "/app/build/src/Models",
   "command": "/usr/bin/g++  -I/app/src/Logger -I/app/src/Models -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -o CMakeFiles/MODEL_LIB.dir/Model_Factory.cpp.o -c /app/src/Models/Model_Factory.cpp",
   "file": "/app/src/Models/Model_Factory.cpp",
   "output": "src/Models/CMakeFiles/MODEL_LIB.dir/Model_Factory.cpp.o"

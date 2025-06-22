@@ -4,22 +4,33 @@
 
 EulerMaruyamaScheme::EulerMaruyamaScheme(const IntegrationData& integrationData) : Integrator(integrationData){}
 
+double EulerMaruyamaScheme::computeOneTimestep(const ModelData& modelData, double p_0){
+
+    // Unpack values
+    double mu    = modelData.drift;
+    double sigma = modelData.volatility;
+    
+    double p_1;
+
+    // Calculate initial price of the next iteration
+    p_1 = p_0 + mu * delta_t + sigma * dist(rng);
+
+    return p_1;
+}
+
 std::unique_ptr<std::vector<double>> EulerMaruyamaScheme::integratePath(const ModelData& modelData){
 
     std::vector<double> path;
 
     // Unpack values
-    double mu    = modelData.drift;
-    double sigma = modelData.volatility;
-    double p_0   = modelData.initialPrice;
-
+    double p_0 = modelData.initialPrice;
     double p_1 = 0;
 
     // Loop over number of steps
     for(size_t k = 0; k < numSteps; k++){
 
         // Calculate initial price of the next iteration
-        p_1 = p_0 + mu * delta_t + sigma * dist(rng);
+        p_1 = computeOneTimestep(modelData, p_0);
         p_0 = p_1;
 
         // Update path

@@ -2,6 +2,7 @@ set(MODEL_SOURCES
 
     "/app/src/Models/Model.cpp"
     "/app/src/Models/Geometric_Brownian_Model.cpp"
+    "/app/src/Models/Ornstein_Uhlenbeck.cpp"
     "/app/src/Models/Model_Factory.cpp"
 )
 

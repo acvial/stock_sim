@@ -76,5 +76,5 @@ double Model::getInitialPrice() const {
 
 ModelData Model::getModelData() const {
 
-    return ModelData(drift, volatility, initialPrice);
+    return ModelData(drift, volatility, initialPrice, 0);
 }

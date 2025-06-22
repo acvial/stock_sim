@@ -5,10 +5,13 @@ std::unique_ptr<Model> Mapper::mapModel(protocols::SimulationRequest* deserialis
     // Extract model data parameters
     const auto& parameters = deserialisedMessage->parameters();
 
+    double meanReversionSpeed = parameters.has_mean_reversion_rate() ? parameters.mean_reversion_rate() : -1;
+
     const ModelData modelData(
         parameters.drift(),
         parameters.volatility(),
-        parameters.initial_price()
+        parameters.initial_price(),
+        meanReversionSpeed
     );
 
     // Extract type of model

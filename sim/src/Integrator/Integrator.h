@@ -37,12 +37,18 @@ class Integrator{
     double getTimestep() const;
     uint   getNumSteps() const;
 
+    /// @brief Compute the next point of the path.
+    /// @param modelData SDE parameters.
+    /// @param p_0       Price of the stock at last timestep.
+    /// @return Value of the price on next timestep.
+    virtual double computeOneTimestep(const ModelData& modelData, double p_0) = 0;
+
     /// @brief Calculates the path. Stop condition: time horizon reached.
     /// @param modelData SDE parameters at given time.
     /// @return Pointer to path.
     virtual std::unique_ptr<std::vector<double>> integratePath(const ModelData& modelData) = 0;
 
-    /// @brief Calculates the path. Stop condition. price scpated interval.
+    /// @brief Calculates the path. Stop condition: price scpated interval.
     /// @param modelData SDE parameters at given time.
     /// @param interval Price interval.
     /// @return Pointer to path.

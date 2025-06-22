@@ -35,7 +35,8 @@ class Model{
     double    getDrift       () const;
     double    getVolatility  () const;
     double    getInitialPrice() const;
-    ModelData getModelData   () const;
+
+    virtual ModelData getModelData() const;
 
     protected:
 

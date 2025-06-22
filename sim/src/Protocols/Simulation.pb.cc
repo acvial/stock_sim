@@ -51,8 +51,7 @@ PROTOBUF_CONSTEXPR Parameters::Parameters(
   , /*decltype(_impl_.jump_intensity_)*/0
   , /*decltype(_impl_.jump_mean_)*/0
   , /*decltype(_impl_.jump_stddev_)*/0
-  , /*decltype(_impl_.mean_reversion_rate_)*/0
-  , /*decltype(_impl_.long_term_mean_)*/0} {}
+  , /*decltype(_impl_.mean_reversion_rate_)*/0} {}
 struct ParametersDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ParametersDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -194,7 +193,6 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_mean_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_stddev_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.mean_reversion_rate_),
-  PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.long_term_mean_),
   ~0u,
   ~0u,
   ~0u,
@@ -202,7 +200,6 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   1,
   2,
   3,
-  4,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::protocols::IntegrationConfig, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -267,13 +264,13 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 13, -1, sizeof(::protocols::SimulationRequest)},
-  { 20, 34, -1, sizeof(::protocols::Parameters)},
-  { 42, -1, -1, sizeof(::protocols::IntegrationConfig)},
-  { 51, -1, -1, sizeof(::protocols::LogConfig)},
-  { 60, -1, -1, sizeof(::protocols::BatchConfig_Interval)},
-  { 68, 77, -1, sizeof(::protocols::BatchConfig)},
-  { 80, 89, -1, sizeof(::protocols::BatchResult)},
-  { 92, -1, -1, sizeof(::protocols::MeanCrossingResults)},
+  { 20, 33, -1, sizeof(::protocols::Parameters)},
+  { 40, -1, -1, sizeof(::protocols::IntegrationConfig)},
+  { 49, -1, -1, sizeof(::protocols::LogConfig)},
+  { 58, -1, -1, sizeof(::protocols::BatchConfig_Interval)},
+  { 66, 75, -1, sizeof(::protocols::BatchConfig)},
+  { 78, 87, -1, sizeof(::protocols::BatchResult)},
+  { 90, -1, -1, sizeof(::protocols::MeanCrossingResults)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -301,39 +298,38 @@ const char descriptor_table_protodef_Simulation_2eproto[] PROTOBUF_SECTION_VARIA
   "OWNIAN_MOTION\020\000\022\023\n\017JUMP_DIFFUSSION\020\001\022\026\n\022"
   "ORNSTEIN_UHLEMBECK\020\002\",\n\016SimulationMode\022\t"
   "\n\005BATCH\020\000\022\017\n\013INTERACTIVE\020\001B\017\n\r_batch_con"
-  "fig\"\260\002\n\nParameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvol"
+  "fig\"\200\002\n\nParameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvol"
   "atility\030\002 \001(\001\022\025\n\rinitial_price\030\003 \001(\001\022\033\n\016"
   "jump_intensity\030\004 \001(\001H\000\210\001\001\022\026\n\tjump_mean\030\005"
   " \001(\001H\001\210\001\001\022\030\n\013jump_stddev\030\006 \001(\001H\002\210\001\001\022 \n\023m"
-  "ean_reversion_rate\030\007 \001(\001H\003\210\001\001\022\033\n\016long_te"
-  "rm_mean\030\010 \001(\001H\004\210\001\001B\021\n\017_jump_intensityB\014\n"
-  "\n_jump_meanB\016\n\014_jump_stddevB\026\n\024_mean_rev"
-  "ersion_rateB\021\n\017_long_term_mean\"\255\001\n\021Integ"
-  "rationConfig\0223\n\006scheme\030\001 \001(\0162#.protocols"
-  ".IntegrationConfig.Scheme\022\020\n\010timestep\030\002 "
-  "\001(\001\022\024\n\014time_horizon\030\003 \001(\001\";\n\006Scheme\022\022\n\016E"
-  "ULER_MARUYAMA\020\000\022\014\n\010MILSTEIN\020\001\022\017\n\013RUNGE_K"
-  "UTTA\020\003\"\217\001\n\tLogConfig\022,\n\005level\030\001 \001(\0162\035.pr"
-  "otocols.LogConfig.LogLevel\022\025\n\rlog_each_p"
-  "ath\030\002 \001(\010\022\021\n\tlog_stats\030\003 \001(\010\"*\n\010LogLevel"
-  "\022\t\n\005DEBUG\020\000\022\010\n\004INFO\020\001\022\t\n\005ERROR\020\002\"\243\001\n\013Bat"
-  "chConfig\022\021\n\tnum_paths\030\001 \001(\r\022\032\n\022mean_cros"
-  "sing_time\030\002 \001(\010\0226\n\010interval\030\003 \001(\0132\037.prot"
-  "ocols.BatchConfig.IntervalH\000\210\001\001\032 \n\010Inter"
-  "val\022\t\n\001a\030\001 \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_interval\"\217"
-  "\001\n\013BatchResult\022\025\n\rexpected_path\030\001 \003(\001\022\025\n"
-  "\rvariance_path\030\002 \003(\001\022=\n\020crossing_results"
-  "\030\003 \001(\0132\036.protocols.MeanCrossingResultsH\000"
-  "\210\001\001B\023\n\021_crossing_results\"\273\001\n\023MeanCrossin"
-  "gResults\022\035\n\025total_number_of_paths\030\001 \001(\r\022"
-  "!\n\031number_of_above_crossings\030\002 \001(\r\022!\n\031nu"
-  "mber_of_below_crossings\030\003 \001(\r\022\036\n\026expecte"
-  "d_crossing_time\030\004 \001(\001\022\037\n\027expected_crossi"
-  "ng_price\030\005 \001(\001B\002H\001b\006proto3"
+  "ean_reversion_rate\030\007 \001(\001H\003\210\001\001B\021\n\017_jump_i"
+  "ntensityB\014\n\n_jump_meanB\016\n\014_jump_stddevB\026"
+  "\n\024_mean_reversion_rate\"\255\001\n\021IntegrationCo"
+  "nfig\0223\n\006scheme\030\001 \001(\0162#.protocols.Integra"
+  "tionConfig.Scheme\022\020\n\010timestep\030\002 \001(\001\022\024\n\014t"
+  "ime_horizon\030\003 \001(\001\";\n\006Scheme\022\022\n\016EULER_MAR"
+  "UYAMA\020\000\022\014\n\010MILSTEIN\020\001\022\017\n\013RUNGE_KUTTA\020\003\"\217"
+  "\001\n\tLogConfig\022,\n\005level\030\001 \001(\0162\035.protocols."
+  "LogConfig.LogLevel\022\025\n\rlog_each_path\030\002 \001("
+  "\010\022\021\n\tlog_stats\030\003 \001(\010\"*\n\010LogLevel\022\t\n\005DEBU"
+  "G\020\000\022\010\n\004INFO\020\001\022\t\n\005ERROR\020\002\"\243\001\n\013BatchConfig"
+  "\022\021\n\tnum_paths\030\001 \001(\r\022\032\n\022mean_crossing_tim"
+  "e\030\002 \001(\010\0226\n\010interval\030\003 \001(\0132\037.protocols.Ba"
+  "tchConfig.IntervalH\000\210\001\001\032 \n\010Interval\022\t\n\001a"
+  "\030\001 \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_interval\"\217\001\n\013Batch"
+  "Result\022\025\n\rexpected_path\030\001 \003(\001\022\025\n\rvarianc"
+  "e_path\030\002 \003(\001\022=\n\020crossing_results\030\003 \001(\0132\036"
+  ".protocols.MeanCrossingResultsH\000\210\001\001B\023\n\021_"
+  "crossing_results\"\273\001\n\023MeanCrossingResults"
+  "\022\035\n\025total_number_of_paths\030\001 \001(\r\022!\n\031numbe"
+  "r_of_above_crossings\030\002 \001(\r\022!\n\031number_of_"
+  "below_crossings\030\003 \001(\r\022\036\n\026expected_crossi"
+  "ng_time\030\004 \001(\001\022\037\n\027expected_crossing_price"
+  "\030\005 \001(\001B\002H\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Simulation_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Simulation_2eproto = {
-    false, false, 1666, descriptor_table_protodef_Simulation_2eproto,
+    false, false, 1618, descriptor_table_protodef_Simulation_2eproto,
     "Simulation.proto",
     &descriptor_table_Simulation_2eproto_once, nullptr, 0, 8,
     schemas, file_default_instances, TableStruct_Simulation_2eproto::offsets,
@@ -872,9 +868,6 @@ class Parameters::_Internal {
   static void set_has_mean_reversion_rate(HasBits* has_bits) {
     (*has_bits)[0] |= 8u;
   }
-  static void set_has_long_term_mean(HasBits* has_bits) {
-    (*has_bits)[0] |= 16u;
-  }
 };
 
 Parameters::Parameters(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -895,13 +888,12 @@ Parameters::Parameters(const Parameters& from)
     , decltype(_impl_.jump_intensity_){}
     , decltype(_impl_.jump_mean_){}
     , decltype(_impl_.jump_stddev_){}
-    , decltype(_impl_.mean_reversion_rate_){}
-    , decltype(_impl_.long_term_mean_){}};
+    , decltype(_impl_.mean_reversion_rate_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&_impl_.drift_, &from._impl_.drift_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.long_term_mean_) -
-    reinterpret_cast<char*>(&_impl_.drift_)) + sizeof(_impl_.long_term_mean_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.mean_reversion_rate_) -
+    reinterpret_cast<char*>(&_impl_.drift_)) + sizeof(_impl_.mean_reversion_rate_));
   // @@protoc_insertion_point(copy_constructor:protocols.Parameters)
 }
 
@@ -919,7 +911,6 @@ inline void Parameters::SharedCtor(
     , decltype(_impl_.jump_mean_){0}
     , decltype(_impl_.jump_stddev_){0}
     , decltype(_impl_.mean_reversion_rate_){0}
-    , decltype(_impl_.long_term_mean_){0}
   };
 }
 
@@ -950,10 +941,10 @@ void Parameters::Clear() {
       reinterpret_cast<char*>(&_impl_.initial_price_) -
       reinterpret_cast<char*>(&_impl_.drift_)) + sizeof(_impl_.initial_price_));
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000000fu) {
     ::memset(&_impl_.jump_intensity_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.long_term_mean_) -
-        reinterpret_cast<char*>(&_impl_.jump_intensity_)) + sizeof(_impl_.long_term_mean_));
+        reinterpret_cast<char*>(&_impl_.mean_reversion_rate_) -
+        reinterpret_cast<char*>(&_impl_.jump_intensity_)) + sizeof(_impl_.mean_reversion_rate_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1022,15 +1013,6 @@ const char* Parameters::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 57)) {
           _Internal::set_has_mean_reversion_rate(&has_bits);
           _impl_.mean_reversion_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
-          ptr += sizeof(double);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional double long_term_mean = 8;
-      case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 65)) {
-          _Internal::set_has_long_term_mean(&has_bits);
-          _impl_.long_term_mean_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
         } else
           goto handle_unusual;
@@ -1119,12 +1101,6 @@ uint8_t* Parameters::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(7, this->_internal_mean_reversion_rate(), target);
   }
 
-  // optional double long_term_mean = 8;
-  if (_internal_has_long_term_mean()) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(8, this->_internal_long_term_mean(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1169,7 +1145,7 @@ size_t Parameters::ByteSizeLong() const {
   }
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000000fu) {
     // optional double jump_intensity = 4;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 + 8;
@@ -1187,11 +1163,6 @@ size_t Parameters::ByteSizeLong() const {
 
     // optional double mean_reversion_rate = 7;
     if (cached_has_bits & 0x00000008u) {
-      total_size += 1 + 8;
-    }
-
-    // optional double long_term_mean = 8;
-    if (cached_has_bits & 0x00000010u) {
       total_size += 1 + 8;
     }
 
@@ -1236,7 +1207,7 @@ void Parameters::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PRO
     _this->_internal_set_initial_price(from._internal_initial_price());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_impl_.jump_intensity_ = from._impl_.jump_intensity_;
     }
@@ -1248,9 +1219,6 @@ void Parameters::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PRO
     }
     if (cached_has_bits & 0x00000008u) {
       _this->_impl_.mean_reversion_rate_ = from._impl_.mean_reversion_rate_;
-    }
-    if (cached_has_bits & 0x00000010u) {
-      _this->_impl_.long_term_mean_ = from._impl_.long_term_mean_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
@@ -1273,8 +1241,8 @@ void Parameters::InternalSwap(Parameters* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Parameters, _impl_.long_term_mean_)
-      + sizeof(Parameters::_impl_.long_term_mean_)
+      PROTOBUF_FIELD_OFFSET(Parameters, _impl_.mean_reversion_rate_)
+      + sizeof(Parameters::_impl_.mean_reversion_rate_)
       - PROTOBUF_FIELD_OFFSET(Parameters, _impl_.drift_)>(
           reinterpret_cast<char*>(&_impl_.drift_),
           reinterpret_cast<char*>(&other->_impl_.drift_));

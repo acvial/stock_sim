@@ -4,7 +4,7 @@
 #include <memory>
 #include <Model.h>
 #include <Geometric_Brownian_Model.h>
-#include <Ornstein_Uhlenbeck.h>
+#include <Ornstein_Uhlenbeck_Model.h>
 
 class ModelFactory{
 

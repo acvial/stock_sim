@@ -15,7 +15,7 @@ std::unique_ptr<Model> Mapper::mapModel(protocols::SimulationRequest* deserialis
     );
 
     // Extract type of model
-    const std::string type = deserialisedMessage->ModelType_Name(deserialisedMessage->model());
+    const std::string type = deserialisedMessage->BaseModelType_Name(deserialisedMessage->model());
 
     // Call model factory
     return ModelFactory::create(type, modelData);

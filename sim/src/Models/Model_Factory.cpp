@@ -14,7 +14,7 @@ std::unique_ptr<Model> ModelFactory::create(const std::string type, const ModelD
     }
     else if(type == "ORNSTEIN_UHLENBECK"){
 
-        modelClass = std::make_unique<OrnsteinUhlenbeck>(modelData);
+        modelClass = std::make_unique<OrnsteinUhlenbeckModel>(modelData);
         SPDLOG_INFO("Ornstein-Uhlenbeck model created.");
     }
     else{

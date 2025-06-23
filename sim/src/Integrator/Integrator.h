@@ -33,6 +33,7 @@ class Integrator{
     public:
 
     void setTimestep(double delta_t_);
+    void setSeed(std::mt19937& rng_);
 
     double getTimestep() const;
     uint   getNumSteps() const;
@@ -54,15 +55,8 @@ class Integrator{
     /// @return Pointer to path.
     virtual std::unique_ptr<std::vector<double>> integratePath(const ModelData& modelData, const std::pair<double, double>& interval) = 0;
 
-    private:
-
-    /// @brief Created engine and seed.
-    void initialiseRandomEngine();
-
-    public:
-
-    /// @brief Refreshes random seed using time and entropy.
-    void refreshSeed();
+    /// @brief Generates normal distribution with class' seed.
+    void createDistribution();
 };
 
 #endif

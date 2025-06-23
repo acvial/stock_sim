@@ -2,6 +2,7 @@
 #define MODELS_H
 
 #include <Model_Data.h>
+#include <Jump_Interface.h>
 
 /*
     We attempt to solve some SDE of the form; dX_t = \mu(X_t, t) * dt + \sigm(X_t, t) * dW_t. 
@@ -15,6 +16,7 @@ class Model{
     double drift;
     double volatility;
     double initialPrice;
+    std::unique_ptr<JumpInterface> jumpModel;
 
     public:
 

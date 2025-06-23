@@ -83,31 +83,56 @@ template<> ::protocols::SimulationRequest* Arena::CreateMaybeMessage<::protocols
 PROTOBUF_NAMESPACE_CLOSE
 namespace protocols {
 
-enum SimulationRequest_ModelType : int {
-  SimulationRequest_ModelType_GEOMETRIC_BROWNIAN_MOTION = 0,
-  SimulationRequest_ModelType_JUMP_DIFFUSSION = 1,
-  SimulationRequest_ModelType_ORNSTEIN_UHLEMBECK = 2,
-  SimulationRequest_ModelType_SimulationRequest_ModelType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  SimulationRequest_ModelType_SimulationRequest_ModelType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+enum SimulationRequest_BaseModelType : int {
+  SimulationRequest_BaseModelType_GEOMETRIC_BROWNIAN_MOTION = 0,
+  SimulationRequest_BaseModelType_ORNSTEIN_UHLENBECK = 1,
+  SimulationRequest_BaseModelType_SimulationRequest_BaseModelType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  SimulationRequest_BaseModelType_SimulationRequest_BaseModelType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
-bool SimulationRequest_ModelType_IsValid(int value);
-constexpr SimulationRequest_ModelType SimulationRequest_ModelType_ModelType_MIN = SimulationRequest_ModelType_GEOMETRIC_BROWNIAN_MOTION;
-constexpr SimulationRequest_ModelType SimulationRequest_ModelType_ModelType_MAX = SimulationRequest_ModelType_ORNSTEIN_UHLEMBECK;
-constexpr int SimulationRequest_ModelType_ModelType_ARRAYSIZE = SimulationRequest_ModelType_ModelType_MAX + 1;
+bool SimulationRequest_BaseModelType_IsValid(int value);
+constexpr SimulationRequest_BaseModelType SimulationRequest_BaseModelType_BaseModelType_MIN = SimulationRequest_BaseModelType_GEOMETRIC_BROWNIAN_MOTION;
+constexpr SimulationRequest_BaseModelType SimulationRequest_BaseModelType_BaseModelType_MAX = SimulationRequest_BaseModelType_ORNSTEIN_UHLENBECK;
+constexpr int SimulationRequest_BaseModelType_BaseModelType_ARRAYSIZE = SimulationRequest_BaseModelType_BaseModelType_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_ModelType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_BaseModelType_descriptor();
 template<typename T>
-inline const std::string& SimulationRequest_ModelType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, SimulationRequest_ModelType>::value ||
+inline const std::string& SimulationRequest_BaseModelType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, SimulationRequest_BaseModelType>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function SimulationRequest_ModelType_Name.");
+    "Incorrect type passed to function SimulationRequest_BaseModelType_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    SimulationRequest_ModelType_descriptor(), enum_t_value);
+    SimulationRequest_BaseModelType_descriptor(), enum_t_value);
 }
-inline bool SimulationRequest_ModelType_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SimulationRequest_ModelType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SimulationRequest_ModelType>(
-    SimulationRequest_ModelType_descriptor(), name, value);
+inline bool SimulationRequest_BaseModelType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SimulationRequest_BaseModelType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SimulationRequest_BaseModelType>(
+    SimulationRequest_BaseModelType_descriptor(), name, value);
+}
+enum SimulationRequest_JumpDistribution : int {
+  SimulationRequest_JumpDistribution_NONE = 0,
+  SimulationRequest_JumpDistribution_LOGNORMAL = 1,
+  SimulationRequest_JumpDistribution_NORMAL = 2,
+  SimulationRequest_JumpDistribution_SimulationRequest_JumpDistribution_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  SimulationRequest_JumpDistribution_SimulationRequest_JumpDistribution_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool SimulationRequest_JumpDistribution_IsValid(int value);
+constexpr SimulationRequest_JumpDistribution SimulationRequest_JumpDistribution_JumpDistribution_MIN = SimulationRequest_JumpDistribution_NONE;
+constexpr SimulationRequest_JumpDistribution SimulationRequest_JumpDistribution_JumpDistribution_MAX = SimulationRequest_JumpDistribution_NORMAL;
+constexpr int SimulationRequest_JumpDistribution_JumpDistribution_ARRAYSIZE = SimulationRequest_JumpDistribution_JumpDistribution_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_JumpDistribution_descriptor();
+template<typename T>
+inline const std::string& SimulationRequest_JumpDistribution_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, SimulationRequest_JumpDistribution>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function SimulationRequest_JumpDistribution_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    SimulationRequest_JumpDistribution_descriptor(), enum_t_value);
+}
+inline bool SimulationRequest_JumpDistribution_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SimulationRequest_JumpDistribution* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SimulationRequest_JumpDistribution>(
+    SimulationRequest_JumpDistribution_descriptor(), name, value);
 }
 enum SimulationRequest_SimulationMode : int {
   SimulationRequest_SimulationMode_BATCH = 0,
@@ -306,36 +331,66 @@ class SimulationRequest final :
 
   // nested types ----------------------------------------------------
 
-  typedef SimulationRequest_ModelType ModelType;
-  static constexpr ModelType GEOMETRIC_BROWNIAN_MOTION =
-    SimulationRequest_ModelType_GEOMETRIC_BROWNIAN_MOTION;
-  static constexpr ModelType JUMP_DIFFUSSION =
-    SimulationRequest_ModelType_JUMP_DIFFUSSION;
-  static constexpr ModelType ORNSTEIN_UHLEMBECK =
-    SimulationRequest_ModelType_ORNSTEIN_UHLEMBECK;
-  static inline bool ModelType_IsValid(int value) {
-    return SimulationRequest_ModelType_IsValid(value);
+  typedef SimulationRequest_BaseModelType BaseModelType;
+  static constexpr BaseModelType GEOMETRIC_BROWNIAN_MOTION =
+    SimulationRequest_BaseModelType_GEOMETRIC_BROWNIAN_MOTION;
+  static constexpr BaseModelType ORNSTEIN_UHLENBECK =
+    SimulationRequest_BaseModelType_ORNSTEIN_UHLENBECK;
+  static inline bool BaseModelType_IsValid(int value) {
+    return SimulationRequest_BaseModelType_IsValid(value);
   }
-  static constexpr ModelType ModelType_MIN =
-    SimulationRequest_ModelType_ModelType_MIN;
-  static constexpr ModelType ModelType_MAX =
-    SimulationRequest_ModelType_ModelType_MAX;
-  static constexpr int ModelType_ARRAYSIZE =
-    SimulationRequest_ModelType_ModelType_ARRAYSIZE;
+  static constexpr BaseModelType BaseModelType_MIN =
+    SimulationRequest_BaseModelType_BaseModelType_MIN;
+  static constexpr BaseModelType BaseModelType_MAX =
+    SimulationRequest_BaseModelType_BaseModelType_MAX;
+  static constexpr int BaseModelType_ARRAYSIZE =
+    SimulationRequest_BaseModelType_BaseModelType_ARRAYSIZE;
   static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  ModelType_descriptor() {
-    return SimulationRequest_ModelType_descriptor();
+  BaseModelType_descriptor() {
+    return SimulationRequest_BaseModelType_descriptor();
   }
   template<typename T>
-  static inline const std::string& ModelType_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, ModelType>::value ||
+  static inline const std::string& BaseModelType_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, BaseModelType>::value ||
       ::std::is_integral<T>::value,
-      "Incorrect type passed to function ModelType_Name.");
-    return SimulationRequest_ModelType_Name(enum_t_value);
+      "Incorrect type passed to function BaseModelType_Name.");
+    return SimulationRequest_BaseModelType_Name(enum_t_value);
   }
-  static inline bool ModelType_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
-      ModelType* value) {
-    return SimulationRequest_ModelType_Parse(name, value);
+  static inline bool BaseModelType_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      BaseModelType* value) {
+    return SimulationRequest_BaseModelType_Parse(name, value);
+  }
+
+  typedef SimulationRequest_JumpDistribution JumpDistribution;
+  static constexpr JumpDistribution NONE =
+    SimulationRequest_JumpDistribution_NONE;
+  static constexpr JumpDistribution LOGNORMAL =
+    SimulationRequest_JumpDistribution_LOGNORMAL;
+  static constexpr JumpDistribution NORMAL =
+    SimulationRequest_JumpDistribution_NORMAL;
+  static inline bool JumpDistribution_IsValid(int value) {
+    return SimulationRequest_JumpDistribution_IsValid(value);
+  }
+  static constexpr JumpDistribution JumpDistribution_MIN =
+    SimulationRequest_JumpDistribution_JumpDistribution_MIN;
+  static constexpr JumpDistribution JumpDistribution_MAX =
+    SimulationRequest_JumpDistribution_JumpDistribution_MAX;
+  static constexpr int JumpDistribution_ARRAYSIZE =
+    SimulationRequest_JumpDistribution_JumpDistribution_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  JumpDistribution_descriptor() {
+    return SimulationRequest_JumpDistribution_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& JumpDistribution_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, JumpDistribution>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function JumpDistribution_Name.");
+    return SimulationRequest_JumpDistribution_Name(enum_t_value);
+  }
+  static inline bool JumpDistribution_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      JumpDistribution* value) {
+    return SimulationRequest_JumpDistribution_Parse(name, value);
   }
 
   typedef SimulationRequest_SimulationMode SimulationMode;
@@ -371,15 +426,16 @@ class SimulationRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kParametersFieldNumber = 2,
-    kIntegrationFieldNumber = 3,
-    kLogConfigFieldNumber = 4,
-    kBatchConfigFieldNumber = 6,
+    kParametersFieldNumber = 3,
+    kIntegrationFieldNumber = 4,
+    kLogConfigFieldNumber = 5,
+    kBatchConfigFieldNumber = 7,
     kModelFieldNumber = 1,
-    kModeFieldNumber = 5,
+    kJumpDistributionFieldNumber = 2,
     kTimestampFieldNumber = 8,
+    kModeFieldNumber = 6,
   };
-  // .protocols.Parameters parameters = 2;
+  // .protocols.Parameters parameters = 3;
   bool has_parameters() const;
   private:
   bool _internal_has_parameters() const;
@@ -397,7 +453,7 @@ class SimulationRequest final :
       ::protocols::Parameters* parameters);
   ::protocols::Parameters* unsafe_arena_release_parameters();
 
-  // .protocols.IntegrationConfig integration = 3;
+  // .protocols.IntegrationConfig integration = 4;
   bool has_integration() const;
   private:
   bool _internal_has_integration() const;
@@ -415,7 +471,7 @@ class SimulationRequest final :
       ::protocols::IntegrationConfig* integration);
   ::protocols::IntegrationConfig* unsafe_arena_release_integration();
 
-  // .protocols.LogConfig log_config = 4;
+  // .protocols.LogConfig log_config = 5;
   bool has_log_config() const;
   private:
   bool _internal_has_log_config() const;
@@ -433,7 +489,7 @@ class SimulationRequest final :
       ::protocols::LogConfig* log_config);
   ::protocols::LogConfig* unsafe_arena_release_log_config();
 
-  // optional .protocols.BatchConfig batch_config = 6;
+  // optional .protocols.BatchConfig batch_config = 7;
   bool has_batch_config() const;
   private:
   bool _internal_has_batch_config() const;
@@ -451,22 +507,22 @@ class SimulationRequest final :
       ::protocols::BatchConfig* batch_config);
   ::protocols::BatchConfig* unsafe_arena_release_batch_config();
 
-  // .protocols.SimulationRequest.ModelType model = 1;
+  // .protocols.SimulationRequest.BaseModelType model = 1;
   void clear_model();
-  ::protocols::SimulationRequest_ModelType model() const;
-  void set_model(::protocols::SimulationRequest_ModelType value);
+  ::protocols::SimulationRequest_BaseModelType model() const;
+  void set_model(::protocols::SimulationRequest_BaseModelType value);
   private:
-  ::protocols::SimulationRequest_ModelType _internal_model() const;
-  void _internal_set_model(::protocols::SimulationRequest_ModelType value);
+  ::protocols::SimulationRequest_BaseModelType _internal_model() const;
+  void _internal_set_model(::protocols::SimulationRequest_BaseModelType value);
   public:
 
-  // .protocols.SimulationRequest.SimulationMode mode = 5;
-  void clear_mode();
-  ::protocols::SimulationRequest_SimulationMode mode() const;
-  void set_mode(::protocols::SimulationRequest_SimulationMode value);
+  // .protocols.SimulationRequest.JumpDistribution jump_distribution = 2;
+  void clear_jump_distribution();
+  ::protocols::SimulationRequest_JumpDistribution jump_distribution() const;
+  void set_jump_distribution(::protocols::SimulationRequest_JumpDistribution value);
   private:
-  ::protocols::SimulationRequest_SimulationMode _internal_mode() const;
-  void _internal_set_mode(::protocols::SimulationRequest_SimulationMode value);
+  ::protocols::SimulationRequest_JumpDistribution _internal_jump_distribution() const;
+  void _internal_set_jump_distribution(::protocols::SimulationRequest_JumpDistribution value);
   public:
 
   // uint64 timestamp = 8;
@@ -476,6 +532,15 @@ class SimulationRequest final :
   private:
   uint64_t _internal_timestamp() const;
   void _internal_set_timestamp(uint64_t value);
+  public:
+
+  // .protocols.SimulationRequest.SimulationMode mode = 6;
+  void clear_mode();
+  ::protocols::SimulationRequest_SimulationMode mode() const;
+  void set_mode(::protocols::SimulationRequest_SimulationMode value);
+  private:
+  ::protocols::SimulationRequest_SimulationMode _internal_mode() const;
+  void _internal_set_mode(::protocols::SimulationRequest_SimulationMode value);
   public:
 
   // @@protoc_insertion_point(class_scope:protocols.SimulationRequest)
@@ -493,8 +558,9 @@ class SimulationRequest final :
     ::protocols::LogConfig* log_config_;
     ::protocols::BatchConfig* batch_config_;
     int model_;
-    int mode_;
+    int jump_distribution_;
     uint64_t timestamp_;
+    int mode_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_Simulation_2eproto;
@@ -1884,27 +1950,47 @@ class MeanCrossingResults final :
 #endif  // __GNUC__
 // SimulationRequest
 
-// .protocols.SimulationRequest.ModelType model = 1;
+// .protocols.SimulationRequest.BaseModelType model = 1;
 inline void SimulationRequest::clear_model() {
   _impl_.model_ = 0;
 }
-inline ::protocols::SimulationRequest_ModelType SimulationRequest::_internal_model() const {
-  return static_cast< ::protocols::SimulationRequest_ModelType >(_impl_.model_);
+inline ::protocols::SimulationRequest_BaseModelType SimulationRequest::_internal_model() const {
+  return static_cast< ::protocols::SimulationRequest_BaseModelType >(_impl_.model_);
 }
-inline ::protocols::SimulationRequest_ModelType SimulationRequest::model() const {
+inline ::protocols::SimulationRequest_BaseModelType SimulationRequest::model() const {
   // @@protoc_insertion_point(field_get:protocols.SimulationRequest.model)
   return _internal_model();
 }
-inline void SimulationRequest::_internal_set_model(::protocols::SimulationRequest_ModelType value) {
+inline void SimulationRequest::_internal_set_model(::protocols::SimulationRequest_BaseModelType value) {
   
   _impl_.model_ = value;
 }
-inline void SimulationRequest::set_model(::protocols::SimulationRequest_ModelType value) {
+inline void SimulationRequest::set_model(::protocols::SimulationRequest_BaseModelType value) {
   _internal_set_model(value);
   // @@protoc_insertion_point(field_set:protocols.SimulationRequest.model)
 }
 
-// .protocols.Parameters parameters = 2;
+// .protocols.SimulationRequest.JumpDistribution jump_distribution = 2;
+inline void SimulationRequest::clear_jump_distribution() {
+  _impl_.jump_distribution_ = 0;
+}
+inline ::protocols::SimulationRequest_JumpDistribution SimulationRequest::_internal_jump_distribution() const {
+  return static_cast< ::protocols::SimulationRequest_JumpDistribution >(_impl_.jump_distribution_);
+}
+inline ::protocols::SimulationRequest_JumpDistribution SimulationRequest::jump_distribution() const {
+  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.jump_distribution)
+  return _internal_jump_distribution();
+}
+inline void SimulationRequest::_internal_set_jump_distribution(::protocols::SimulationRequest_JumpDistribution value) {
+  
+  _impl_.jump_distribution_ = value;
+}
+inline void SimulationRequest::set_jump_distribution(::protocols::SimulationRequest_JumpDistribution value) {
+  _internal_set_jump_distribution(value);
+  // @@protoc_insertion_point(field_set:protocols.SimulationRequest.jump_distribution)
+}
+
+// .protocols.Parameters parameters = 3;
 inline bool SimulationRequest::_internal_has_parameters() const {
   return this != internal_default_instance() && _impl_.parameters_ != nullptr;
 }
@@ -1994,7 +2080,7 @@ inline void SimulationRequest::set_allocated_parameters(::protocols::Parameters*
   // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.parameters)
 }
 
-// .protocols.IntegrationConfig integration = 3;
+// .protocols.IntegrationConfig integration = 4;
 inline bool SimulationRequest::_internal_has_integration() const {
   return this != internal_default_instance() && _impl_.integration_ != nullptr;
 }
@@ -2084,7 +2170,7 @@ inline void SimulationRequest::set_allocated_integration(::protocols::Integratio
   // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.integration)
 }
 
-// .protocols.LogConfig log_config = 4;
+// .protocols.LogConfig log_config = 5;
 inline bool SimulationRequest::_internal_has_log_config() const {
   return this != internal_default_instance() && _impl_.log_config_ != nullptr;
 }
@@ -2174,7 +2260,7 @@ inline void SimulationRequest::set_allocated_log_config(::protocols::LogConfig* 
   // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.log_config)
 }
 
-// .protocols.SimulationRequest.SimulationMode mode = 5;
+// .protocols.SimulationRequest.SimulationMode mode = 6;
 inline void SimulationRequest::clear_mode() {
   _impl_.mode_ = 0;
 }
@@ -2194,7 +2280,7 @@ inline void SimulationRequest::set_mode(::protocols::SimulationRequest_Simulatio
   // @@protoc_insertion_point(field_set:protocols.SimulationRequest.mode)
 }
 
-// optional .protocols.BatchConfig batch_config = 6;
+// optional .protocols.BatchConfig batch_config = 7;
 inline bool SimulationRequest::_internal_has_batch_config() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.batch_config_ != nullptr);
@@ -3102,10 +3188,15 @@ inline void MeanCrossingResults::set_expected_crossing_price(double value) {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::protocols::SimulationRequest_ModelType> : ::std::true_type {};
+template <> struct is_proto_enum< ::protocols::SimulationRequest_BaseModelType> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::protocols::SimulationRequest_ModelType>() {
-  return ::protocols::SimulationRequest_ModelType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::protocols::SimulationRequest_BaseModelType>() {
+  return ::protocols::SimulationRequest_BaseModelType_descriptor();
+}
+template <> struct is_proto_enum< ::protocols::SimulationRequest_JumpDistribution> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::protocols::SimulationRequest_JumpDistribution>() {
+  return ::protocols::SimulationRequest_JumpDistribution_descriptor();
 }
 template <> struct is_proto_enum< ::protocols::SimulationRequest_SimulationMode> : ::std::true_type {};
 template <>

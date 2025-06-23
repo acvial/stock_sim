@@ -77,11 +77,12 @@ void Manager::executeBatchSimulation(protocols::SimulationRequest* deserialisedM
                                      std::unique_ptr<Model>        model, 
                                      std::unique_ptr<Integrator>   integrator){
 
-    // Get batch config
+    // Get batch config and set parameters
     BatchRunner& batchRunner = *Mapper::mapBatchConfig(deserialisedMessage->mutable_batch_config());
+    batchRunner.setIntegratorAndModel(std::move(model), std::move(integrator));
 
     // Run batch simulation
-    batchRunner.computePaths(std::move(model), std::move(integrator));
+    batchRunner.computePaths();
 
     // Compute metrics
     batchRunner.getMetrics()->computeMetrics(integrator->getTimestep());

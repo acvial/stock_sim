@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/app/src/Simulation_Runner/Batch_Runner -I/app/src/Simulation_Runner/Batch_Runner/Metrics -I/app/src/Models -I/app/src/Integrator -I/app/src/Logger
+CXX_INCLUDES = -I/app/src/Simulation_Runner/Batch_Runner -I/app/src/Simulation_Runner/Batch_Runner/Metrics -I/app/src/Models -I/app/src/Integrator -I/app/src/Logger -I/app/src/Models/Jump_Model
 
 CXX_FLAGS = -g -std=c++17 -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow
 

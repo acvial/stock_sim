@@ -9,6 +9,8 @@ BatchRunner::BatchRunner(const BatchData& batchData) :
 {
     basicPaths.reserve(numberOfPaths);
     crossingPaths.reserve(numberOfPaths);
+
+    initialiseRandomEngine();
 }
 
 BatchRunner::BatchRunner(const BatchRunner& other) :
@@ -18,6 +20,8 @@ BatchRunner::BatchRunner(const BatchRunner& other) :
 
     basicPaths.reserve(numberOfPaths);
     crossingPaths.reserve(numberOfPaths);
+
+    initialiseRandomEngine();
 }
 
 BatchRunner& BatchRunner::operator=(const BatchRunner& other){
@@ -31,6 +35,17 @@ BatchRunner& BatchRunner::operator=(const BatchRunner& other){
     }
 
     return *this;
+}
+
+void BatchRunner::setIntegratorAndModel(std::unique_ptr<Model> model_, std::unique_ptr<Integrator> integrator_){
+
+    // Model
+    model = std::move(model_);
+
+    // Integrator
+    integrator = std::move(integrator_);
+    integrator->setSeed(rng);
+    integrator->createDistribution();
 }
 
 void BatchRunner::setNumberOfPaths(uint numberOfPaths_){
@@ -58,7 +73,7 @@ const std::vector<std::vector<double>>* BatchRunner::getCrossingPaths() const {
     return &crossingPaths;
 }
 
-void BatchRunner::computePaths(std::unique_ptr<Model> model, std::unique_ptr<Integrator> integrator){
+void BatchRunner::computePaths(){
 
     // Integrate requested number of paths
     for(size_t k = 0; k < numberOfPaths; k++){
@@ -83,10 +98,29 @@ void BatchRunner::computePaths(std::unique_ptr<Model> model, std::unique_ptr<Int
         }
 
         // Refresh seed
-        integrator->refreshSeed();
+        refreshSeed();
     }
 
     // Pass object reference to metrics object
     metrics.setBasicPaths(basicPaths);
     metrics.setCrossingPaths(crossingPaths);
+}
+
+void BatchRunner::initialiseRandomEngine(){
+
+    // Seed
+    std::random_device rd;
+    rng = std::mt19937(rd());
+
+    // Engine
+    dist = std::normal_distribution(0.0, integrator->getTimestep());
+}
+
+void BatchRunner::refreshSeed(){
+
+    auto timeSeed = static_cast<uint>(std::chrono::high_resolution_clock::now().time_since_epoch().count());
+
+    // Memory address as simple entropy usiing XOR
+    auto entropyMix = reinterpret_cast<uintptr_t>(this); 
+    rng = std::mt19937(static_cast<uint>(timeSeed ^ entropyMix));
 }

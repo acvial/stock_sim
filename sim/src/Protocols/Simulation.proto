@@ -6,11 +6,17 @@ package protocols;
 // ------------------ SIMULATION INPUT --------------------- //
 message SimulationRequest{
 
-    enum ModelType{
+    enum BaseModelType{
 
         GEOMETRIC_BROWNIAN_MOTION = 0;
-        JUMP_DIFFUSSION = 1;
-        ORNSTEIN_UHLENBECK = 2;
+        ORNSTEIN_UHLENBECK = 1;
+    }
+
+    enum JumpDistribution{
+
+        NONE = 0;
+        LOGNORMAL = 1;
+        NORMAL = 2;
     }
 
     enum SimulationMode{
@@ -19,12 +25,13 @@ message SimulationRequest{
         INTERACTIVE = 1;
     }
 
-    ModelType model = 1;
-    Parameters parameters = 2;
-    IntegrationConfig integration = 3;
-    LogConfig log_config = 4;
-    SimulationMode mode = 5;
-    optional BatchConfig batch_config = 6;
+    BaseModelType model = 1;
+    JumpDistribution jump_distribution = 2;
+    Parameters parameters = 3;
+    IntegrationConfig integration = 4;
+    LogConfig log_config = 5;
+    SimulationMode mode = 6;
+    optional BatchConfig batch_config = 7;
     
     uint64 timestamp = 8;
 }
@@ -35,7 +42,7 @@ message Parameters {
     double volatility = 2;
     double initial_price = 3;
   
-    // Optional fields for jump diffusion
+    // Optional fields for jump 
     optional double jump_intensity = 4;
     optional double jump_mean = 5;
     optional double jump_stddev = 6;

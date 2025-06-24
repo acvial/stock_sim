@@ -5,6 +5,7 @@
 #include <vector>
 #include <Simulation.pb.h>
 #include <Model_Factory.h>
+#include <Jump_Model.h>
 #include <Integrator_Factory.h>
 #include <Batch_Runner.h>
 
@@ -16,8 +17,13 @@ class Mapper{
 
     /// @brief Creates model class on protocol input.
     /// @param deserialisedMessage Protocol data.
-    /// @return Pointer to suitable Model class.
+    /// @return deserialisedMessage Protocol data.
     static std::unique_ptr<Model> mapModel(protocols::SimulationRequest* deserialisedMessage);
+
+    /// @brief Creates pointer to jump type class
+    /// @param deserialisedMessage Protocol data.
+    /// @return deserialisedMessage Protocol data.
+    static std::unique_ptr<JumpInterface> mapJumpType(protocols::SimulationRequest* deserialisedMessage);
 
     /// @brief Creates integrator class on protocol input.
     /// @param deserialisedMessage Protocol data.

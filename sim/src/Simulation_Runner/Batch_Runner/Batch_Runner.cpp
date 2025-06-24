@@ -9,8 +9,6 @@ BatchRunner::BatchRunner(const BatchData& batchData) :
 {
     basicPaths.reserve(numberOfPaths);
     crossingPaths.reserve(numberOfPaths);
-
-    initialiseRandomEngine();
 }
 
 BatchRunner::BatchRunner(const BatchRunner& other) :
@@ -20,8 +18,6 @@ BatchRunner::BatchRunner(const BatchRunner& other) :
 
     basicPaths.reserve(numberOfPaths);
     crossingPaths.reserve(numberOfPaths);
-
-    initialiseRandomEngine();
 }
 
 BatchRunner& BatchRunner::operator=(const BatchRunner& other){
@@ -44,8 +40,8 @@ void BatchRunner::setIntegratorAndModel(std::unique_ptr<Model> model_, std::uniq
 
     // Integrator
     integrator = std::move(integrator_);
-    integrator->setSeed(rng);
-    integrator->createDistribution();
+
+    initialiseRandomEngine();
 }
 
 void BatchRunner::setNumberOfPaths(uint numberOfPaths_){
@@ -83,7 +79,7 @@ void BatchRunner::computePaths(){
         // Integrate one path (BASIC) and save it
         basicPaths.push_back(
             *std::move(
-                integrator->integratePath(model->getModelData())
+                integrator->integratePath(model.get())
             )
         );
 
@@ -92,7 +88,7 @@ void BatchRunner::computePaths(){
             // Integrate one path (CROSSING) and save it
            crossingPaths.push_back(
                *std::move(
-                    integrator->integratePath(model->getModelData(), *metrics.getInterval())
+                    integrator->integratePath(model.get(), *metrics.getInterval())
                 )
             );
         }
@@ -112,8 +108,11 @@ void BatchRunner::initialiseRandomEngine(){
     std::random_device rd;
     rng = std::mt19937(rd());
 
-    // Engine
-    dist = std::normal_distribution(0.0, integrator->getTimestep());
+    // Engine: Integrator
+    integrator->createDistribution(rng);
+
+    // Engine: Jump Model
+    model->getJumpModel()->createDistributions(rng, integrator->getTimestep());
 }
 
 void BatchRunner::refreshSeed(){

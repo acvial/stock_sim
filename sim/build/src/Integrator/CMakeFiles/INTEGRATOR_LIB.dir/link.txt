@@ -1,2 +1,0 @@
-/usr/bin/ar qc libINTEGRATOR_LIB.a CMakeFiles/INTEGRATOR_LIB.dir/Integrator.cpp.o CMakeFiles/INTEGRATOR_LIB.dir/Euler_Maruyama.cpp.o CMakeFiles/INTEGRATOR_LIB.dir/Integrator_Factory.cpp.o
-/usr/bin/ranlib libINTEGRATOR_LIB.a

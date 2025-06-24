@@ -1,11 +1,10 @@
 #include <Jump_Model.h>
 
 template <typename Distribution>
-JumpModel<Distribution>::JumpModel(const JumpData& jumpData, JumpMechanism jumpType_, std::mt19937& rng_) :
-    jumpFrequency    (jumpData.jumpFrequency    ),
+JumpModel<Distribution>::JumpModel(const JumpData&& jumpData, JumpMechanism jumpType_) :
     meanJumpIntensity(jumpData.meanJumpIntensity),
-    jumpType         (jumpType_                 ),
-    rng              (rng_                      )
+    jumpFrequency    (jumpData.jumpFrequency    ),
+    jumpType         (jumpType_                 )
 {}
 
 template <typename Distribution>
@@ -40,42 +39,16 @@ double JumpModel<Distribution>::operator*(double rhs){
 
     if(jumpType == ADDITIVE){
 
-        for(int k = 0; k < numberOfJumps, k++){
+        for(int k = 0; k < numberOfJumps; k++){
 
             result += jumpIntDist(rng);
         }
     }
     else if(jumpType == MULTIPLICATIVE){
 
-        for(int k = 0; k < numberOfJumps, k++){
+        for(int k = 0; k < numberOfJumps; k++){
 
             result *= jumpIntDist(rng) - 1;
-        }
-    }
-
-    return result;
-}
-
-template <typename Distribution>
-double operator*(double lhs, const JumpModel<Distribution>& rhs){
-
-    double result = lhs;
-
-    // Compute number of jumps
-    int numberOfJumps = jumpFreqDist(rhs.rng);
-
-    if(rhs.jumpType == ADDITIVE){
-
-        for(int k = 0; k < numberOfJumps, k++){
-
-            result += rhs.jumpIntDist(rhs.rng);
-        }
-    }
-    else if(rhs.jumpType == MULTIPLICATIVE){
-
-        for(int k = 0; k < numberOfJumps, k++){
-
-            result *= rhs.jumpIntDist(rhs.rng) - 1;
         }
     }
 

@@ -1,3 +1,0 @@
-file(REMOVE_RECURSE
-  "libBATCH_RUNNER_LIB.a"
-)

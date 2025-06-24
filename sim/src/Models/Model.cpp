@@ -6,13 +6,14 @@ Model::Model() :
     initialPrice(0)
 {}
 
-Model::Model(double drift_, double volatility_, double initialPrice_) : 
-    drift       (drift_       ), 
-    volatility  (volatility_  ), 
-    initialPrice(initialPrice_)
+Model::Model(double drift_, double volatility_, double initialPrice_, std::unique_ptr<JumpInterface> jumpModel_) : 
+    drift       (drift_               ), 
+    volatility  (volatility_          ), 
+    initialPrice(initialPrice_        ),
+    jumpModel   (std::move(jumpModel_))
 {}
 
-Model::Model(const ModelData& modelData){
+Model::Model(const ModelData& modelData, std::unique_ptr<JumpInterface> jumpModel_) : jumpModel   (std::move(jumpModel_)){
 
     drift        = modelData.drift;
     volatility   = modelData.volatility;
@@ -20,9 +21,9 @@ Model::Model(const ModelData& modelData){
 }
 
 Model::Model(const Model& other) :
-    drift       ( other.drift      ),
-    volatility  ( other.volatility ),
-    initialPrice(other.initialPrice)
+    drift       ( other.drift              ),
+    volatility  ( other.volatility         ),
+    initialPrice(other.initialPrice        )
 {}
 
 Model& Model::operator=(const Model& other){
@@ -59,6 +60,11 @@ void Model::setModelData(const ModelData& modelData_){
     initialPrice = modelData_.initialPrice;
 }
 
+void Model::setJumpModel(std::unique_ptr<JumpInterface> jumpModel_){
+
+    jumpModel = std::move(jumpModel_);
+}
+
 double Model::getDrift() const {
 
     return drift;
@@ -77,4 +83,9 @@ double Model::getInitialPrice() const {
 ModelData Model::getModelData() const {
 
     return ModelData(drift, volatility, initialPrice, 0);
+}
+
+JumpInterface* Model::getJumpModel() const {
+
+    return jumpModel.get();
 }

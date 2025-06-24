@@ -14,6 +14,7 @@ set(INTEGRATOR_INCLUDES
 
 set(INTEGRATOR_LIBRARIES
 
+    MODEL_LIB
     "/usr/lib/x86_64-linux-gnu/libfmt.so"
 )
 

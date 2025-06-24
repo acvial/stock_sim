@@ -31,8 +31,9 @@ PROTOBUF_CONSTEXPR SimulationRequest::SimulationRequest(
   , /*decltype(_impl_.batch_config_)*/nullptr
   , /*decltype(_impl_.model_)*/0
   , /*decltype(_impl_.jump_distribution_)*/0
-  , /*decltype(_impl_.timestamp_)*/uint64_t{0u}
-  , /*decltype(_impl_.mode_)*/0} {}
+  , /*decltype(_impl_.jump_mechanism_)*/0
+  , /*decltype(_impl_.mode_)*/0
+  , /*decltype(_impl_.timestamp_)*/uint64_t{0u}} {}
 struct SimulationRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SimulationRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -50,8 +51,7 @@ PROTOBUF_CONSTEXPR Parameters::Parameters(
   , /*decltype(_impl_.volatility_)*/0
   , /*decltype(_impl_.initial_price_)*/0
   , /*decltype(_impl_.jump_intensity_)*/0
-  , /*decltype(_impl_.jump_mean_)*/0
-  , /*decltype(_impl_.jump_stddev_)*/0
+  , /*decltype(_impl_.jump_frequency_)*/0
   , /*decltype(_impl_.mean_reversion_rate_)*/0} {}
 struct ParametersDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ParametersDefaultTypeInternal()
@@ -157,7 +157,7 @@ struct MeanCrossingResultsDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MeanCrossingResultsDefaultTypeInternal _MeanCrossingResults_default_instance_;
 }  // namespace protocols
 static ::_pb::Metadata file_level_metadata_Simulation_2eproto[8];
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Simulation_2eproto[5];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Simulation_2eproto[6];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Simulation_2eproto = nullptr;
 
 const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -169,12 +169,14 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.model_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.jump_distribution_),
+  PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.jump_mechanism_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.parameters_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.integration_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.log_config_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.mode_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.batch_config_),
   PROTOBUF_FIELD_OFFSET(::protocols::SimulationRequest, _impl_.timestamp_),
+  ~0u,
   ~0u,
   ~0u,
   ~0u,
@@ -193,8 +195,7 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.volatility_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.initial_price_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_intensity_),
-  PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_mean_),
-  PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_stddev_),
+  PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_frequency_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.mean_reversion_rate_),
   ~0u,
   ~0u,
@@ -202,7 +203,6 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   0,
   1,
   2,
-  3,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::protocols::IntegrationConfig, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -266,8 +266,8 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   PROTOBUF_FIELD_OFFSET(::protocols::MeanCrossingResults, _impl_.expected_crossing_price_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 14, -1, sizeof(::protocols::SimulationRequest)},
-  { 22, 35, -1, sizeof(::protocols::Parameters)},
+  { 0, 15, -1, sizeof(::protocols::SimulationRequest)},
+  { 24, 36, -1, sizeof(::protocols::Parameters)},
   { 42, -1, -1, sizeof(::protocols::IntegrationConfig)},
   { 51, -1, -1, sizeof(::protocols::LogConfig)},
   { 60, -1, -1, sizeof(::protocols::BatchConfig_Interval)},
@@ -288,54 +288,56 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_Simulation_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020Simulation.proto\022\tprotocols\"\341\004\n\021Simula"
+  "\n\020Simulation.proto\022\tprotocols\"\330\005\n\021Simula"
   "tionRequest\0229\n\005model\030\001 \001(\0162*.protocols.S"
   "imulationRequest.BaseModelType\022H\n\021jump_d"
   "istribution\030\002 \001(\0162-.protocols.Simulation"
-  "Request.JumpDistribution\022)\n\nparameters\030\003"
-  " \001(\0132\025.protocols.Parameters\0221\n\013integrati"
-  "on\030\004 \001(\0132\034.protocols.IntegrationConfig\022("
-  "\n\nlog_config\030\005 \001(\0132\024.protocols.LogConfig"
-  "\0229\n\004mode\030\006 \001(\0162+.protocols.SimulationReq"
-  "uest.SimulationMode\0221\n\014batch_config\030\007 \001("
-  "\0132\026.protocols.BatchConfigH\000\210\001\001\022\021\n\ttimest"
-  "amp\030\010 \001(\004\"F\n\rBaseModelType\022\035\n\031GEOMETRIC_"
-  "BROWNIAN_MOTION\020\000\022\026\n\022ORNSTEIN_UHLENBECK\020"
-  "\001\"7\n\020JumpDistribution\022\010\n\004NONE\020\000\022\r\n\tLOGNO"
-  "RMAL\020\001\022\n\n\006NORMAL\020\002\",\n\016SimulationMode\022\t\n\005"
-  "BATCH\020\000\022\017\n\013INTERACTIVE\020\001B\017\n\r_batch_confi"
-  "g\"\200\002\n\nParameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvolat"
-  "ility\030\002 \001(\001\022\025\n\rinitial_price\030\003 \001(\001\022\033\n\016ju"
-  "mp_intensity\030\004 \001(\001H\000\210\001\001\022\026\n\tjump_mean\030\005 \001"
-  "(\001H\001\210\001\001\022\030\n\013jump_stddev\030\006 \001(\001H\002\210\001\001\022 \n\023mea"
-  "n_reversion_rate\030\007 \001(\001H\003\210\001\001B\021\n\017_jump_int"
-  "ensityB\014\n\n_jump_meanB\016\n\014_jump_stddevB\026\n\024"
-  "_mean_reversion_rate\"\255\001\n\021IntegrationConf"
-  "ig\0223\n\006scheme\030\001 \001(\0162#.protocols.Integrati"
-  "onConfig.Scheme\022\020\n\010timestep\030\002 \001(\001\022\024\n\014tim"
-  "e_horizon\030\003 \001(\001\";\n\006Scheme\022\022\n\016EULER_MARUY"
-  "AMA\020\000\022\014\n\010MILSTEIN\020\001\022\017\n\013RUNGE_KUTTA\020\003\"\217\001\n"
-  "\tLogConfig\022,\n\005level\030\001 \001(\0162\035.protocols.Lo"
-  "gConfig.LogLevel\022\025\n\rlog_each_path\030\002 \001(\010\022"
-  "\021\n\tlog_stats\030\003 \001(\010\"*\n\010LogLevel\022\t\n\005DEBUG\020"
-  "\000\022\010\n\004INFO\020\001\022\t\n\005ERROR\020\002\"\243\001\n\013BatchConfig\022\021"
-  "\n\tnum_paths\030\001 \001(\r\022\032\n\022mean_crossing_time\030"
-  "\002 \001(\010\0226\n\010interval\030\003 \001(\0132\037.protocols.Batc"
-  "hConfig.IntervalH\000\210\001\001\032 \n\010Interval\022\t\n\001a\030\001"
-  " \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_interval\"\217\001\n\013BatchRe"
-  "sult\022\025\n\rexpected_path\030\001 \003(\001\022\025\n\rvariance_"
-  "path\030\002 \003(\001\022=\n\020crossing_results\030\003 \001(\0132\036.p"
-  "rotocols.MeanCrossingResultsH\000\210\001\001B\023\n\021_cr"
-  "ossing_results\"\273\001\n\023MeanCrossingResults\022\035"
-  "\n\025total_number_of_paths\030\001 \001(\r\022!\n\031number_"
-  "of_above_crossings\030\002 \001(\r\022!\n\031number_of_be"
-  "low_crossings\030\003 \001(\r\022\036\n\026expected_crossing"
-  "_time\030\004 \001(\001\022\037\n\027expected_crossing_price\030\005"
-  " \001(\001B\002H\001b\006proto3"
+  "Request.JumpDistribution\022B\n\016jump_mechani"
+  "sm\030\003 \001(\0162*.protocols.SimulationRequest.J"
+  "umpMechanism\022)\n\nparameters\030\004 \001(\0132\025.proto"
+  "cols.Parameters\0221\n\013integration\030\005 \001(\0132\034.p"
+  "rotocols.IntegrationConfig\022(\n\nlog_config"
+  "\030\006 \001(\0132\024.protocols.LogConfig\0229\n\004mode\030\007 \001"
+  "(\0162+.protocols.SimulationRequest.Simulat"
+  "ionMode\0221\n\014batch_config\030\010 \001(\0132\026.protocol"
+  "s.BatchConfigH\000\210\001\001\022\021\n\ttimestamp\030\t \001(\004\"F\n"
+  "\rBaseModelType\022\035\n\031GEOMETRIC_BROWNIAN_MOT"
+  "ION\020\000\022\026\n\022ORNSTEIN_UHLENBECK\020\001\"7\n\020JumpDis"
+  "tribution\022\010\n\004NONE\020\000\022\r\n\tLOGNORMAL\020\001\022\n\n\006NO"
+  "RMAL\020\002\"1\n\rJumpMechanism\022\014\n\010ADDITIVE\020\000\022\022\n"
+  "\016MULTIPLICATIVE\020\001\",\n\016SimulationMode\022\t\n\005B"
+  "ATCH\020\000\022\017\n\013INTERACTIVE\020\001B\017\n\r_batch_config"
+  "\"\340\001\n\nParameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvolati"
+  "lity\030\002 \001(\001\022\025\n\rinitial_price\030\003 \001(\001\022\033\n\016jum"
+  "p_intensity\030\004 \001(\001H\000\210\001\001\022\033\n\016jump_frequency"
+  "\030\005 \001(\001H\001\210\001\001\022 \n\023mean_reversion_rate\030\006 \001(\001"
+  "H\002\210\001\001B\021\n\017_jump_intensityB\021\n\017_jump_freque"
+  "ncyB\026\n\024_mean_reversion_rate\"\255\001\n\021Integrat"
+  "ionConfig\0223\n\006scheme\030\001 \001(\0162#.protocols.In"
+  "tegrationConfig.Scheme\022\020\n\010timestep\030\002 \001(\001"
+  "\022\024\n\014time_horizon\030\003 \001(\001\";\n\006Scheme\022\022\n\016EULE"
+  "R_MARUYAMA\020\000\022\014\n\010MILSTEIN\020\001\022\017\n\013RUNGE_KUTT"
+  "A\020\003\"\217\001\n\tLogConfig\022,\n\005level\030\001 \001(\0162\035.proto"
+  "cols.LogConfig.LogLevel\022\025\n\rlog_each_path"
+  "\030\002 \001(\010\022\021\n\tlog_stats\030\003 \001(\010\"*\n\010LogLevel\022\t\n"
+  "\005DEBUG\020\000\022\010\n\004INFO\020\001\022\t\n\005ERROR\020\002\"\243\001\n\013BatchC"
+  "onfig\022\021\n\tnum_paths\030\001 \001(\r\022\032\n\022mean_crossin"
+  "g_time\030\002 \001(\010\0226\n\010interval\030\003 \001(\0132\037.protoco"
+  "ls.BatchConfig.IntervalH\000\210\001\001\032 \n\010Interval"
+  "\022\t\n\001a\030\001 \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_interval\"\217\001\n\013"
+  "BatchResult\022\025\n\rexpected_path\030\001 \003(\001\022\025\n\rva"
+  "riance_path\030\002 \003(\001\022=\n\020crossing_results\030\003 "
+  "\001(\0132\036.protocols.MeanCrossingResultsH\000\210\001\001"
+  "B\023\n\021_crossing_results\"\273\001\n\023MeanCrossingRe"
+  "sults\022\035\n\025total_number_of_paths\030\001 \001(\r\022!\n\031"
+  "number_of_above_crossings\030\002 \001(\r\022!\n\031numbe"
+  "r_of_below_crossings\030\003 \001(\r\022\036\n\026expected_c"
+  "rossing_time\030\004 \001(\001\022\037\n\027expected_crossing_"
+  "price\030\005 \001(\001B\002H\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Simulation_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Simulation_2eproto = {
-    false, false, 1736, descriptor_table_protodef_Simulation_2eproto,
+    false, false, 1823, descriptor_table_protodef_Simulation_2eproto,
     "Simulation.proto",
     &descriptor_table_Simulation_2eproto_once, nullptr, 0, 8,
     schemas, file_default_instances, TableStruct_Simulation_2eproto::offsets,
@@ -393,9 +395,30 @@ constexpr SimulationRequest_JumpDistribution SimulationRequest::JumpDistribution
 constexpr SimulationRequest_JumpDistribution SimulationRequest::JumpDistribution_MAX;
 constexpr int SimulationRequest::JumpDistribution_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_SimulationMode_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_JumpMechanism_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Simulation_2eproto);
   return file_level_enum_descriptors_Simulation_2eproto[2];
+}
+bool SimulationRequest_JumpMechanism_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+constexpr SimulationRequest_JumpMechanism SimulationRequest::ADDITIVE;
+constexpr SimulationRequest_JumpMechanism SimulationRequest::MULTIPLICATIVE;
+constexpr SimulationRequest_JumpMechanism SimulationRequest::JumpMechanism_MIN;
+constexpr SimulationRequest_JumpMechanism SimulationRequest::JumpMechanism_MAX;
+constexpr int SimulationRequest::JumpMechanism_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_SimulationMode_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Simulation_2eproto);
+  return file_level_enum_descriptors_Simulation_2eproto[3];
 }
 bool SimulationRequest_SimulationMode_IsValid(int value) {
   switch (value) {
@@ -416,7 +439,7 @@ constexpr int SimulationRequest::SimulationMode_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* IntegrationConfig_Scheme_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Simulation_2eproto);
-  return file_level_enum_descriptors_Simulation_2eproto[3];
+  return file_level_enum_descriptors_Simulation_2eproto[4];
 }
 bool IntegrationConfig_Scheme_IsValid(int value) {
   switch (value) {
@@ -439,7 +462,7 @@ constexpr int IntegrationConfig::Scheme_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* LogConfig_LogLevel_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Simulation_2eproto);
-  return file_level_enum_descriptors_Simulation_2eproto[4];
+  return file_level_enum_descriptors_Simulation_2eproto[5];
 }
 bool LogConfig_LogLevel_IsValid(int value) {
   switch (value) {
@@ -509,8 +532,9 @@ SimulationRequest::SimulationRequest(const SimulationRequest& from)
     , decltype(_impl_.batch_config_){nullptr}
     , decltype(_impl_.model_){}
     , decltype(_impl_.jump_distribution_){}
-    , decltype(_impl_.timestamp_){}
-    , decltype(_impl_.mode_){}};
+    , decltype(_impl_.jump_mechanism_){}
+    , decltype(_impl_.mode_){}
+    , decltype(_impl_.timestamp_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_parameters()) {
@@ -526,8 +550,8 @@ SimulationRequest::SimulationRequest(const SimulationRequest& from)
     _this->_impl_.batch_config_ = new ::protocols::BatchConfig(*from._impl_.batch_config_);
   }
   ::memcpy(&_impl_.model_, &from._impl_.model_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.mode_) -
-    reinterpret_cast<char*>(&_impl_.model_)) + sizeof(_impl_.mode_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.timestamp_) -
+    reinterpret_cast<char*>(&_impl_.model_)) + sizeof(_impl_.timestamp_));
   // @@protoc_insertion_point(copy_constructor:protocols.SimulationRequest)
 }
 
@@ -544,8 +568,9 @@ inline void SimulationRequest::SharedCtor(
     , decltype(_impl_.batch_config_){nullptr}
     , decltype(_impl_.model_){0}
     , decltype(_impl_.jump_distribution_){0}
-    , decltype(_impl_.timestamp_){uint64_t{0u}}
+    , decltype(_impl_.jump_mechanism_){0}
     , decltype(_impl_.mode_){0}
+    , decltype(_impl_.timestamp_){uint64_t{0u}}
   };
 }
 
@@ -594,8 +619,8 @@ void SimulationRequest::Clear() {
     _impl_.batch_config_->Clear();
   }
   ::memset(&_impl_.model_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.mode_) -
-      reinterpret_cast<char*>(&_impl_.model_)) + sizeof(_impl_.mode_));
+      reinterpret_cast<char*>(&_impl_.timestamp_) -
+      reinterpret_cast<char*>(&_impl_.model_)) + sizeof(_impl_.timestamp_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -625,50 +650,59 @@ const char* SimulationRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
         } else
           goto handle_unusual;
         continue;
-      // .protocols.Parameters parameters = 3;
+      // .protocols.SimulationRequest.JumpMechanism jump_mechanism = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_jump_mechanism(static_cast<::protocols::SimulationRequest_JumpMechanism>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // .protocols.Parameters parameters = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_parameters(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // .protocols.IntegrationConfig integration = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+      // .protocols.IntegrationConfig integration = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           ptr = ctx->ParseMessage(_internal_mutable_integration(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // .protocols.LogConfig log_config = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+      // .protocols.LogConfig log_config = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           ptr = ctx->ParseMessage(_internal_mutable_log_config(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // .protocols.SimulationRequest.SimulationMode mode = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+      // .protocols.SimulationRequest.SimulationMode mode = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_mode(static_cast<::protocols::SimulationRequest_SimulationMode>(val));
         } else
           goto handle_unusual;
         continue;
-      // optional .protocols.BatchConfig batch_config = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+      // optional .protocols.BatchConfig batch_config = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
           ptr = ctx->ParseMessage(_internal_mutable_batch_config(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint64 timestamp = 8;
-      case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+      // uint64 timestamp = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
           _impl_.timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -718,45 +752,52 @@ uint8_t* SimulationRequest::_InternalSerialize(
       2, this->_internal_jump_distribution(), target);
   }
 
-  // .protocols.Parameters parameters = 3;
+  // .protocols.SimulationRequest.JumpMechanism jump_mechanism = 3;
+  if (this->_internal_jump_mechanism() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      3, this->_internal_jump_mechanism(), target);
+  }
+
+  // .protocols.Parameters parameters = 4;
   if (this->_internal_has_parameters()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, _Internal::parameters(this),
+      InternalWriteMessage(4, _Internal::parameters(this),
         _Internal::parameters(this).GetCachedSize(), target, stream);
   }
 
-  // .protocols.IntegrationConfig integration = 4;
+  // .protocols.IntegrationConfig integration = 5;
   if (this->_internal_has_integration()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, _Internal::integration(this),
+      InternalWriteMessage(5, _Internal::integration(this),
         _Internal::integration(this).GetCachedSize(), target, stream);
   }
 
-  // .protocols.LogConfig log_config = 5;
+  // .protocols.LogConfig log_config = 6;
   if (this->_internal_has_log_config()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(5, _Internal::log_config(this),
+      InternalWriteMessage(6, _Internal::log_config(this),
         _Internal::log_config(this).GetCachedSize(), target, stream);
   }
 
-  // .protocols.SimulationRequest.SimulationMode mode = 6;
+  // .protocols.SimulationRequest.SimulationMode mode = 7;
   if (this->_internal_mode() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      6, this->_internal_mode(), target);
+      7, this->_internal_mode(), target);
   }
 
-  // optional .protocols.BatchConfig batch_config = 7;
+  // optional .protocols.BatchConfig batch_config = 8;
   if (_internal_has_batch_config()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(7, _Internal::batch_config(this),
+      InternalWriteMessage(8, _Internal::batch_config(this),
         _Internal::batch_config(this).GetCachedSize(), target, stream);
   }
 
-  // uint64 timestamp = 8;
+  // uint64 timestamp = 9;
   if (this->_internal_timestamp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(8, this->_internal_timestamp(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(9, this->_internal_timestamp(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -775,28 +816,28 @@ size_t SimulationRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .protocols.Parameters parameters = 3;
+  // .protocols.Parameters parameters = 4;
   if (this->_internal_has_parameters()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.parameters_);
   }
 
-  // .protocols.IntegrationConfig integration = 4;
+  // .protocols.IntegrationConfig integration = 5;
   if (this->_internal_has_integration()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.integration_);
   }
 
-  // .protocols.LogConfig log_config = 5;
+  // .protocols.LogConfig log_config = 6;
   if (this->_internal_has_log_config()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.log_config_);
   }
 
-  // optional .protocols.BatchConfig batch_config = 7;
+  // optional .protocols.BatchConfig batch_config = 8;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
@@ -816,15 +857,21 @@ size_t SimulationRequest::ByteSizeLong() const {
       ::_pbi::WireFormatLite::EnumSize(this->_internal_jump_distribution());
   }
 
-  // uint64 timestamp = 8;
-  if (this->_internal_timestamp() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_timestamp());
+  // .protocols.SimulationRequest.JumpMechanism jump_mechanism = 3;
+  if (this->_internal_jump_mechanism() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_jump_mechanism());
   }
 
-  // .protocols.SimulationRequest.SimulationMode mode = 6;
+  // .protocols.SimulationRequest.SimulationMode mode = 7;
   if (this->_internal_mode() != 0) {
     total_size += 1 +
       ::_pbi::WireFormatLite::EnumSize(this->_internal_mode());
+  }
+
+  // uint64 timestamp = 9;
+  if (this->_internal_timestamp() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_timestamp());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -867,11 +914,14 @@ void SimulationRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   if (from._internal_jump_distribution() != 0) {
     _this->_internal_set_jump_distribution(from._internal_jump_distribution());
   }
-  if (from._internal_timestamp() != 0) {
-    _this->_internal_set_timestamp(from._internal_timestamp());
+  if (from._internal_jump_mechanism() != 0) {
+    _this->_internal_set_jump_mechanism(from._internal_jump_mechanism());
   }
   if (from._internal_mode() != 0) {
     _this->_internal_set_mode(from._internal_mode());
+  }
+  if (from._internal_timestamp() != 0) {
+    _this->_internal_set_timestamp(from._internal_timestamp());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -892,8 +942,8 @@ void SimulationRequest::InternalSwap(SimulationRequest* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SimulationRequest, _impl_.mode_)
-      + sizeof(SimulationRequest::_impl_.mode_)
+      PROTOBUF_FIELD_OFFSET(SimulationRequest, _impl_.timestamp_)
+      + sizeof(SimulationRequest::_impl_.timestamp_)
       - PROTOBUF_FIELD_OFFSET(SimulationRequest, _impl_.parameters_)>(
           reinterpret_cast<char*>(&_impl_.parameters_),
           reinterpret_cast<char*>(&other->_impl_.parameters_));
@@ -913,14 +963,11 @@ class Parameters::_Internal {
   static void set_has_jump_intensity(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_jump_mean(HasBits* has_bits) {
+  static void set_has_jump_frequency(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
-  static void set_has_jump_stddev(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
-  }
   static void set_has_mean_reversion_rate(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
+    (*has_bits)[0] |= 4u;
   }
 };
 
@@ -940,8 +987,7 @@ Parameters::Parameters(const Parameters& from)
     , decltype(_impl_.volatility_){}
     , decltype(_impl_.initial_price_){}
     , decltype(_impl_.jump_intensity_){}
-    , decltype(_impl_.jump_mean_){}
-    , decltype(_impl_.jump_stddev_){}
+    , decltype(_impl_.jump_frequency_){}
     , decltype(_impl_.mean_reversion_rate_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -962,8 +1008,7 @@ inline void Parameters::SharedCtor(
     , decltype(_impl_.volatility_){0}
     , decltype(_impl_.initial_price_){0}
     , decltype(_impl_.jump_intensity_){0}
-    , decltype(_impl_.jump_mean_){0}
-    , decltype(_impl_.jump_stddev_){0}
+    , decltype(_impl_.jump_frequency_){0}
     , decltype(_impl_.mean_reversion_rate_){0}
   };
 }
@@ -995,7 +1040,7 @@ void Parameters::Clear() {
       reinterpret_cast<char*>(&_impl_.initial_price_) -
       reinterpret_cast<char*>(&_impl_.drift_)) + sizeof(_impl_.initial_price_));
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x00000007u) {
     ::memset(&_impl_.jump_intensity_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&_impl_.mean_reversion_rate_) -
         reinterpret_cast<char*>(&_impl_.jump_intensity_)) + sizeof(_impl_.mean_reversion_rate_));
@@ -1044,27 +1089,18 @@ const char* Parameters::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
         } else
           goto handle_unusual;
         continue;
-      // optional double jump_mean = 5;
+      // optional double jump_frequency = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 41)) {
-          _Internal::set_has_jump_mean(&has_bits);
-          _impl_.jump_mean_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          _Internal::set_has_jump_frequency(&has_bits);
+          _impl_.jump_frequency_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
         } else
           goto handle_unusual;
         continue;
-      // optional double jump_stddev = 6;
+      // optional double mean_reversion_rate = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 49)) {
-          _Internal::set_has_jump_stddev(&has_bits);
-          _impl_.jump_stddev_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
-          ptr += sizeof(double);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional double mean_reversion_rate = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 57)) {
           _Internal::set_has_mean_reversion_rate(&has_bits);
           _impl_.mean_reversion_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
@@ -1137,22 +1173,16 @@ uint8_t* Parameters::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(4, this->_internal_jump_intensity(), target);
   }
 
-  // optional double jump_mean = 5;
-  if (_internal_has_jump_mean()) {
+  // optional double jump_frequency = 5;
+  if (_internal_has_jump_frequency()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(5, this->_internal_jump_mean(), target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(5, this->_internal_jump_frequency(), target);
   }
 
-  // optional double jump_stddev = 6;
-  if (_internal_has_jump_stddev()) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(6, this->_internal_jump_stddev(), target);
-  }
-
-  // optional double mean_reversion_rate = 7;
+  // optional double mean_reversion_rate = 6;
   if (_internal_has_mean_reversion_rate()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(7, this->_internal_mean_reversion_rate(), target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(6, this->_internal_mean_reversion_rate(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1199,24 +1229,19 @@ size_t Parameters::ByteSizeLong() const {
   }
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x00000007u) {
     // optional double jump_intensity = 4;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 + 8;
     }
 
-    // optional double jump_mean = 5;
+    // optional double jump_frequency = 5;
     if (cached_has_bits & 0x00000002u) {
       total_size += 1 + 8;
     }
 
-    // optional double jump_stddev = 6;
+    // optional double mean_reversion_rate = 6;
     if (cached_has_bits & 0x00000004u) {
-      total_size += 1 + 8;
-    }
-
-    // optional double mean_reversion_rate = 7;
-    if (cached_has_bits & 0x00000008u) {
       total_size += 1 + 8;
     }
 
@@ -1261,17 +1286,14 @@ void Parameters::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PRO
     _this->_internal_set_initial_price(from._internal_initial_price());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _this->_impl_.jump_intensity_ = from._impl_.jump_intensity_;
     }
     if (cached_has_bits & 0x00000002u) {
-      _this->_impl_.jump_mean_ = from._impl_.jump_mean_;
+      _this->_impl_.jump_frequency_ = from._impl_.jump_frequency_;
     }
     if (cached_has_bits & 0x00000004u) {
-      _this->_impl_.jump_stddev_ = from._impl_.jump_stddev_;
-    }
-    if (cached_has_bits & 0x00000008u) {
       _this->_impl_.mean_reversion_rate_ = from._impl_.mean_reversion_rate_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;

@@ -1,6 +1,7 @@
 #ifndef MODELS_H
 #define MODELS_H
 
+#include <memory>
 #include <Model_Data.h>
 #include <Jump_Interface.h>
 
@@ -21,26 +22,28 @@ class Model{
     public:
 
     Model           ();
-    Model           (double drift_, double volatility_, double initialPrice_);
-    Model           (const ModelData& modelData);
+    Model           (double drift_, double volatility_, double initialPrice_, std::unique_ptr<JumpInterface> jumpModel_);
+    Model           (const ModelData& modelData, std::unique_ptr<JumpInterface> jumpModel_);
     Model           (const Model& other);
     Model& operator=(const Model& other);
     ~Model          () = default;
 
     public:
 
-    void setDrift       (double drift_              );
-    void setVolatility  (double volatility_         );
-    void setInitialPrice(double initialPrice_       );
-    void setModelData   (const ModelData& modelData_);
+    void setDrift       (double drift_                            );
+    void setVolatility  (double volatility_                       );
+    void setInitialPrice(double initialPrice_                     );
+    void setModelData   (const ModelData& modelData_              );
+    void setJumpModel   (std::unique_ptr<JumpInterface> jumpModel_);
 
-    double    getDrift       () const;
-    double    getVolatility  () const;
-    double    getInitialPrice() const;
+    double         getDrift       () const;
+    double         getVolatility  () const;
+    double         getInitialPrice() const;
+    JumpInterface* getJumpModel   () const;
 
     virtual ModelData getModelData() const;
 
-    protected:
+    public:
 
     /// @brief Computes drift function.
     /// @param price_t Price of the stock at time t.

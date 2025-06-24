@@ -1,2 +1,0 @@
-/usr/bin/ar qc libCOMMUNICATIONS_LIB.a CMakeFiles/COMMUNICATIONS_LIB.dir/Communication_Utils.cpp.o
-/usr/bin/ranlib libCOMMUNICATIONS_LIB.a

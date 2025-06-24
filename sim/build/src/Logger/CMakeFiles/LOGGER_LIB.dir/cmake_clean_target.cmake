@@ -1,3 +1,0 @@
-file(REMOVE_RECURSE
-  "libLOGGER_LIB.a"
-)

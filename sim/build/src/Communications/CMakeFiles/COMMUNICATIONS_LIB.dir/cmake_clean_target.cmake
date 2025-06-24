@@ -1,3 +1,0 @@
-file(REMOVE_RECURSE
-  "libCOMMUNICATIONS_LIB.a"
-)

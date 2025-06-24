@@ -1,3 +1,0 @@
-file(REMOVE_RECURSE
-  "libMAPPER_LIB.a"
-)

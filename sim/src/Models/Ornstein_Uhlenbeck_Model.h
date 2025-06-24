@@ -11,7 +11,7 @@ class OrnsteinUhlenbeckModel : public Model{
 
     public: 
 
-    OrnsteinUhlenbeckModel(const ModelData& modelData);
+    OrnsteinUhlenbeckModel(const ModelData& modelData, std::unique_ptr<JumpInterface> jumpModel_);
     ~OrnsteinUhlenbeckModel() = default;
 
     public:

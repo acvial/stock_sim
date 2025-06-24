@@ -134,6 +134,31 @@ inline bool SimulationRequest_JumpDistribution_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SimulationRequest_JumpDistribution>(
     SimulationRequest_JumpDistribution_descriptor(), name, value);
 }
+enum SimulationRequest_JumpMechanism : int {
+  SimulationRequest_JumpMechanism_ADDITIVE = 0,
+  SimulationRequest_JumpMechanism_MULTIPLICATIVE = 1,
+  SimulationRequest_JumpMechanism_SimulationRequest_JumpMechanism_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  SimulationRequest_JumpMechanism_SimulationRequest_JumpMechanism_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool SimulationRequest_JumpMechanism_IsValid(int value);
+constexpr SimulationRequest_JumpMechanism SimulationRequest_JumpMechanism_JumpMechanism_MIN = SimulationRequest_JumpMechanism_ADDITIVE;
+constexpr SimulationRequest_JumpMechanism SimulationRequest_JumpMechanism_JumpMechanism_MAX = SimulationRequest_JumpMechanism_MULTIPLICATIVE;
+constexpr int SimulationRequest_JumpMechanism_JumpMechanism_ARRAYSIZE = SimulationRequest_JumpMechanism_JumpMechanism_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimulationRequest_JumpMechanism_descriptor();
+template<typename T>
+inline const std::string& SimulationRequest_JumpMechanism_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, SimulationRequest_JumpMechanism>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function SimulationRequest_JumpMechanism_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    SimulationRequest_JumpMechanism_descriptor(), enum_t_value);
+}
+inline bool SimulationRequest_JumpMechanism_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SimulationRequest_JumpMechanism* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SimulationRequest_JumpMechanism>(
+    SimulationRequest_JumpMechanism_descriptor(), name, value);
+}
 enum SimulationRequest_SimulationMode : int {
   SimulationRequest_SimulationMode_BATCH = 0,
   SimulationRequest_SimulationMode_INTERACTIVE = 1,
@@ -393,6 +418,36 @@ class SimulationRequest final :
     return SimulationRequest_JumpDistribution_Parse(name, value);
   }
 
+  typedef SimulationRequest_JumpMechanism JumpMechanism;
+  static constexpr JumpMechanism ADDITIVE =
+    SimulationRequest_JumpMechanism_ADDITIVE;
+  static constexpr JumpMechanism MULTIPLICATIVE =
+    SimulationRequest_JumpMechanism_MULTIPLICATIVE;
+  static inline bool JumpMechanism_IsValid(int value) {
+    return SimulationRequest_JumpMechanism_IsValid(value);
+  }
+  static constexpr JumpMechanism JumpMechanism_MIN =
+    SimulationRequest_JumpMechanism_JumpMechanism_MIN;
+  static constexpr JumpMechanism JumpMechanism_MAX =
+    SimulationRequest_JumpMechanism_JumpMechanism_MAX;
+  static constexpr int JumpMechanism_ARRAYSIZE =
+    SimulationRequest_JumpMechanism_JumpMechanism_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  JumpMechanism_descriptor() {
+    return SimulationRequest_JumpMechanism_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& JumpMechanism_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, JumpMechanism>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function JumpMechanism_Name.");
+    return SimulationRequest_JumpMechanism_Name(enum_t_value);
+  }
+  static inline bool JumpMechanism_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      JumpMechanism* value) {
+    return SimulationRequest_JumpMechanism_Parse(name, value);
+  }
+
   typedef SimulationRequest_SimulationMode SimulationMode;
   static constexpr SimulationMode BATCH =
     SimulationRequest_SimulationMode_BATCH;
@@ -426,16 +481,17 @@ class SimulationRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kParametersFieldNumber = 3,
-    kIntegrationFieldNumber = 4,
-    kLogConfigFieldNumber = 5,
-    kBatchConfigFieldNumber = 7,
+    kParametersFieldNumber = 4,
+    kIntegrationFieldNumber = 5,
+    kLogConfigFieldNumber = 6,
+    kBatchConfigFieldNumber = 8,
     kModelFieldNumber = 1,
     kJumpDistributionFieldNumber = 2,
-    kTimestampFieldNumber = 8,
-    kModeFieldNumber = 6,
+    kJumpMechanismFieldNumber = 3,
+    kModeFieldNumber = 7,
+    kTimestampFieldNumber = 9,
   };
-  // .protocols.Parameters parameters = 3;
+  // .protocols.Parameters parameters = 4;
   bool has_parameters() const;
   private:
   bool _internal_has_parameters() const;
@@ -453,7 +509,7 @@ class SimulationRequest final :
       ::protocols::Parameters* parameters);
   ::protocols::Parameters* unsafe_arena_release_parameters();
 
-  // .protocols.IntegrationConfig integration = 4;
+  // .protocols.IntegrationConfig integration = 5;
   bool has_integration() const;
   private:
   bool _internal_has_integration() const;
@@ -471,7 +527,7 @@ class SimulationRequest final :
       ::protocols::IntegrationConfig* integration);
   ::protocols::IntegrationConfig* unsafe_arena_release_integration();
 
-  // .protocols.LogConfig log_config = 5;
+  // .protocols.LogConfig log_config = 6;
   bool has_log_config() const;
   private:
   bool _internal_has_log_config() const;
@@ -489,7 +545,7 @@ class SimulationRequest final :
       ::protocols::LogConfig* log_config);
   ::protocols::LogConfig* unsafe_arena_release_log_config();
 
-  // optional .protocols.BatchConfig batch_config = 7;
+  // optional .protocols.BatchConfig batch_config = 8;
   bool has_batch_config() const;
   private:
   bool _internal_has_batch_config() const;
@@ -525,22 +581,31 @@ class SimulationRequest final :
   void _internal_set_jump_distribution(::protocols::SimulationRequest_JumpDistribution value);
   public:
 
-  // uint64 timestamp = 8;
-  void clear_timestamp();
-  uint64_t timestamp() const;
-  void set_timestamp(uint64_t value);
+  // .protocols.SimulationRequest.JumpMechanism jump_mechanism = 3;
+  void clear_jump_mechanism();
+  ::protocols::SimulationRequest_JumpMechanism jump_mechanism() const;
+  void set_jump_mechanism(::protocols::SimulationRequest_JumpMechanism value);
   private:
-  uint64_t _internal_timestamp() const;
-  void _internal_set_timestamp(uint64_t value);
+  ::protocols::SimulationRequest_JumpMechanism _internal_jump_mechanism() const;
+  void _internal_set_jump_mechanism(::protocols::SimulationRequest_JumpMechanism value);
   public:
 
-  // .protocols.SimulationRequest.SimulationMode mode = 6;
+  // .protocols.SimulationRequest.SimulationMode mode = 7;
   void clear_mode();
   ::protocols::SimulationRequest_SimulationMode mode() const;
   void set_mode(::protocols::SimulationRequest_SimulationMode value);
   private:
   ::protocols::SimulationRequest_SimulationMode _internal_mode() const;
   void _internal_set_mode(::protocols::SimulationRequest_SimulationMode value);
+  public:
+
+  // uint64 timestamp = 9;
+  void clear_timestamp();
+  uint64_t timestamp() const;
+  void set_timestamp(uint64_t value);
+  private:
+  uint64_t _internal_timestamp() const;
+  void _internal_set_timestamp(uint64_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:protocols.SimulationRequest)
@@ -559,8 +624,9 @@ class SimulationRequest final :
     ::protocols::BatchConfig* batch_config_;
     int model_;
     int jump_distribution_;
-    uint64_t timestamp_;
+    int jump_mechanism_;
     int mode_;
+    uint64_t timestamp_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_Simulation_2eproto;
@@ -692,9 +758,8 @@ class Parameters final :
     kVolatilityFieldNumber = 2,
     kInitialPriceFieldNumber = 3,
     kJumpIntensityFieldNumber = 4,
-    kJumpMeanFieldNumber = 5,
-    kJumpStddevFieldNumber = 6,
-    kMeanReversionRateFieldNumber = 7,
+    kJumpFrequencyFieldNumber = 5,
+    kMeanReversionRateFieldNumber = 6,
   };
   // double drift = 1;
   void clear_drift();
@@ -736,33 +801,20 @@ class Parameters final :
   void _internal_set_jump_intensity(double value);
   public:
 
-  // optional double jump_mean = 5;
-  bool has_jump_mean() const;
+  // optional double jump_frequency = 5;
+  bool has_jump_frequency() const;
   private:
-  bool _internal_has_jump_mean() const;
+  bool _internal_has_jump_frequency() const;
   public:
-  void clear_jump_mean();
-  double jump_mean() const;
-  void set_jump_mean(double value);
+  void clear_jump_frequency();
+  double jump_frequency() const;
+  void set_jump_frequency(double value);
   private:
-  double _internal_jump_mean() const;
-  void _internal_set_jump_mean(double value);
-  public:
-
-  // optional double jump_stddev = 6;
-  bool has_jump_stddev() const;
-  private:
-  bool _internal_has_jump_stddev() const;
-  public:
-  void clear_jump_stddev();
-  double jump_stddev() const;
-  void set_jump_stddev(double value);
-  private:
-  double _internal_jump_stddev() const;
-  void _internal_set_jump_stddev(double value);
+  double _internal_jump_frequency() const;
+  void _internal_set_jump_frequency(double value);
   public:
 
-  // optional double mean_reversion_rate = 7;
+  // optional double mean_reversion_rate = 6;
   bool has_mean_reversion_rate() const;
   private:
   bool _internal_has_mean_reversion_rate() const;
@@ -789,8 +841,7 @@ class Parameters final :
     double volatility_;
     double initial_price_;
     double jump_intensity_;
-    double jump_mean_;
-    double jump_stddev_;
+    double jump_frequency_;
     double mean_reversion_rate_;
   };
   union { Impl_ _impl_; };
@@ -1990,7 +2041,27 @@ inline void SimulationRequest::set_jump_distribution(::protocols::SimulationRequ
   // @@protoc_insertion_point(field_set:protocols.SimulationRequest.jump_distribution)
 }
 
-// .protocols.Parameters parameters = 3;
+// .protocols.SimulationRequest.JumpMechanism jump_mechanism = 3;
+inline void SimulationRequest::clear_jump_mechanism() {
+  _impl_.jump_mechanism_ = 0;
+}
+inline ::protocols::SimulationRequest_JumpMechanism SimulationRequest::_internal_jump_mechanism() const {
+  return static_cast< ::protocols::SimulationRequest_JumpMechanism >(_impl_.jump_mechanism_);
+}
+inline ::protocols::SimulationRequest_JumpMechanism SimulationRequest::jump_mechanism() const {
+  // @@protoc_insertion_point(field_get:protocols.SimulationRequest.jump_mechanism)
+  return _internal_jump_mechanism();
+}
+inline void SimulationRequest::_internal_set_jump_mechanism(::protocols::SimulationRequest_JumpMechanism value) {
+  
+  _impl_.jump_mechanism_ = value;
+}
+inline void SimulationRequest::set_jump_mechanism(::protocols::SimulationRequest_JumpMechanism value) {
+  _internal_set_jump_mechanism(value);
+  // @@protoc_insertion_point(field_set:protocols.SimulationRequest.jump_mechanism)
+}
+
+// .protocols.Parameters parameters = 4;
 inline bool SimulationRequest::_internal_has_parameters() const {
   return this != internal_default_instance() && _impl_.parameters_ != nullptr;
 }
@@ -2080,7 +2151,7 @@ inline void SimulationRequest::set_allocated_parameters(::protocols::Parameters*
   // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.parameters)
 }
 
-// .protocols.IntegrationConfig integration = 4;
+// .protocols.IntegrationConfig integration = 5;
 inline bool SimulationRequest::_internal_has_integration() const {
   return this != internal_default_instance() && _impl_.integration_ != nullptr;
 }
@@ -2170,7 +2241,7 @@ inline void SimulationRequest::set_allocated_integration(::protocols::Integratio
   // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.integration)
 }
 
-// .protocols.LogConfig log_config = 5;
+// .protocols.LogConfig log_config = 6;
 inline bool SimulationRequest::_internal_has_log_config() const {
   return this != internal_default_instance() && _impl_.log_config_ != nullptr;
 }
@@ -2260,7 +2331,7 @@ inline void SimulationRequest::set_allocated_log_config(::protocols::LogConfig* 
   // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.log_config)
 }
 
-// .protocols.SimulationRequest.SimulationMode mode = 6;
+// .protocols.SimulationRequest.SimulationMode mode = 7;
 inline void SimulationRequest::clear_mode() {
   _impl_.mode_ = 0;
 }
@@ -2280,7 +2351,7 @@ inline void SimulationRequest::set_mode(::protocols::SimulationRequest_Simulatio
   // @@protoc_insertion_point(field_set:protocols.SimulationRequest.mode)
 }
 
-// optional .protocols.BatchConfig batch_config = 7;
+// optional .protocols.BatchConfig batch_config = 8;
 inline bool SimulationRequest::_internal_has_batch_config() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.batch_config_ != nullptr);
@@ -2370,7 +2441,7 @@ inline void SimulationRequest::set_allocated_batch_config(::protocols::BatchConf
   // @@protoc_insertion_point(field_set_allocated:protocols.SimulationRequest.batch_config)
 }
 
-// uint64 timestamp = 8;
+// uint64 timestamp = 9;
 inline void SimulationRequest::clear_timestamp() {
   _impl_.timestamp_ = uint64_t{0u};
 }
@@ -2482,65 +2553,37 @@ inline void Parameters::set_jump_intensity(double value) {
   // @@protoc_insertion_point(field_set:protocols.Parameters.jump_intensity)
 }
 
-// optional double jump_mean = 5;
-inline bool Parameters::_internal_has_jump_mean() const {
+// optional double jump_frequency = 5;
+inline bool Parameters::_internal_has_jump_frequency() const {
   bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
-inline bool Parameters::has_jump_mean() const {
-  return _internal_has_jump_mean();
+inline bool Parameters::has_jump_frequency() const {
+  return _internal_has_jump_frequency();
 }
-inline void Parameters::clear_jump_mean() {
-  _impl_.jump_mean_ = 0;
+inline void Parameters::clear_jump_frequency() {
+  _impl_.jump_frequency_ = 0;
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-inline double Parameters::_internal_jump_mean() const {
-  return _impl_.jump_mean_;
+inline double Parameters::_internal_jump_frequency() const {
+  return _impl_.jump_frequency_;
 }
-inline double Parameters::jump_mean() const {
-  // @@protoc_insertion_point(field_get:protocols.Parameters.jump_mean)
-  return _internal_jump_mean();
+inline double Parameters::jump_frequency() const {
+  // @@protoc_insertion_point(field_get:protocols.Parameters.jump_frequency)
+  return _internal_jump_frequency();
 }
-inline void Parameters::_internal_set_jump_mean(double value) {
+inline void Parameters::_internal_set_jump_frequency(double value) {
   _impl_._has_bits_[0] |= 0x00000002u;
-  _impl_.jump_mean_ = value;
+  _impl_.jump_frequency_ = value;
 }
-inline void Parameters::set_jump_mean(double value) {
-  _internal_set_jump_mean(value);
-  // @@protoc_insertion_point(field_set:protocols.Parameters.jump_mean)
-}
-
-// optional double jump_stddev = 6;
-inline bool Parameters::_internal_has_jump_stddev() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
-  return value;
-}
-inline bool Parameters::has_jump_stddev() const {
-  return _internal_has_jump_stddev();
-}
-inline void Parameters::clear_jump_stddev() {
-  _impl_.jump_stddev_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000004u;
-}
-inline double Parameters::_internal_jump_stddev() const {
-  return _impl_.jump_stddev_;
-}
-inline double Parameters::jump_stddev() const {
-  // @@protoc_insertion_point(field_get:protocols.Parameters.jump_stddev)
-  return _internal_jump_stddev();
-}
-inline void Parameters::_internal_set_jump_stddev(double value) {
-  _impl_._has_bits_[0] |= 0x00000004u;
-  _impl_.jump_stddev_ = value;
-}
-inline void Parameters::set_jump_stddev(double value) {
-  _internal_set_jump_stddev(value);
-  // @@protoc_insertion_point(field_set:protocols.Parameters.jump_stddev)
+inline void Parameters::set_jump_frequency(double value) {
+  _internal_set_jump_frequency(value);
+  // @@protoc_insertion_point(field_set:protocols.Parameters.jump_frequency)
 }
 
-// optional double mean_reversion_rate = 7;
+// optional double mean_reversion_rate = 6;
 inline bool Parameters::_internal_has_mean_reversion_rate() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline bool Parameters::has_mean_reversion_rate() const {
@@ -2548,7 +2591,7 @@ inline bool Parameters::has_mean_reversion_rate() const {
 }
 inline void Parameters::clear_mean_reversion_rate() {
   _impl_.mean_reversion_rate_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000008u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 inline double Parameters::_internal_mean_reversion_rate() const {
   return _impl_.mean_reversion_rate_;
@@ -2558,7 +2601,7 @@ inline double Parameters::mean_reversion_rate() const {
   return _internal_mean_reversion_rate();
 }
 inline void Parameters::_internal_set_mean_reversion_rate(double value) {
-  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   _impl_.mean_reversion_rate_ = value;
 }
 inline void Parameters::set_mean_reversion_rate(double value) {
@@ -3197,6 +3240,11 @@ template <> struct is_proto_enum< ::protocols::SimulationRequest_JumpDistributio
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::protocols::SimulationRequest_JumpDistribution>() {
   return ::protocols::SimulationRequest_JumpDistribution_descriptor();
+}
+template <> struct is_proto_enum< ::protocols::SimulationRequest_JumpMechanism> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::protocols::SimulationRequest_JumpMechanism>() {
+  return ::protocols::SimulationRequest_JumpMechanism_descriptor();
 }
 template <> struct is_proto_enum< ::protocols::SimulationRequest_SimulationMode> : ::std::true_type {};
 template <>

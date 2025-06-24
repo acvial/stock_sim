@@ -1,3 +1,0 @@
-file(REMOVE_RECURSE
-  "libINTEGRATOR_LIB.a"
-)

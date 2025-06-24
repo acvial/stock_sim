@@ -16,8 +16,9 @@ class ModelFactory{
     /// @brief Created the correct derived instance of model.
     /// @param type      String indicating the type of model.
     /// @param modelData Contruction parameters.
+    /// @param Pointer to selected jump model.
     /// @return Pointer to selected derived class.
-    static std::unique_ptr<Model> create(const std::string type, const ModelData& modelData);
+    static std::unique_ptr<Model> create(const std::string type, const ModelData& modelData, std::unique_ptr<JumpInterface> jumpModel);
 };
 
 #endif

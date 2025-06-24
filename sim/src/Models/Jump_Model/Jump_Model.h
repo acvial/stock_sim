@@ -13,21 +13,22 @@ enum JumpMechanism{
 };
 
 template<typename Distribution>
-double operator*(double lhs, const JumpModel<Distribution>& rhs);
+class JumpModel : public JumpInterface{
 
-template<typename Distribution>
-class JumpModel : JumpInterface{
+    private:
 
     std::mt19937 rng;
-    std::poisson_distribution<int> jumpFreqDist:
+    std::poisson_distribution<int> jumpFreqDist;
     Distribution jumpIntDist;
 
-    JumpMechanism jumpType;
-    double jumpFrequency;
     double meanJumpIntensity;
+    double jumpFrequency;
+    JumpMechanism jumpType;
+
+    public:
 
     JumpModel           () = default;
-    JumpModel           (const JumpData& jumpData, JumpMechanism jumpType_, std::mt19937& rng_);
+    JumpModel           (const JumpData&& jumpData, JumpMechanism jumpType_);
     JumpModel           (const JumpModel& other);
     JumpModel& operator=(const JumpModel& other);
     ~JumpModel          () = default;

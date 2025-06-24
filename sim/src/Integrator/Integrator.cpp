@@ -45,12 +45,7 @@ void Integrator::setTimestep(double timestep){
 
     delta_t = timestep;
 }
-
-void Integrator::setSeed(std::mt19937& rng_){
-
-    rng = rng_;
-}
-
+    
 double Integrator::getTimestep() const {
 
     return delta_t;
@@ -61,7 +56,8 @@ uint Integrator::getNumSteps() const {
     return numSteps;
 }
 
-void Integrator::createDistribution(){
+void Integrator::createDistribution(std::mt19937& rng_){
 
     dist = std::normal_distribution(0.0, delta_t);
+    rng = rng_;
 }

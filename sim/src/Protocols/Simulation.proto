@@ -19,6 +19,12 @@ message SimulationRequest{
         NORMAL = 2;
     }
 
+    enum JumpMechanism{
+
+        ADDITIVE = 0;
+        MULTIPLICATIVE = 1;
+    }
+
     enum SimulationMode{
 
         BATCH = 0;
@@ -27,13 +33,14 @@ message SimulationRequest{
 
     BaseModelType model = 1;
     JumpDistribution jump_distribution = 2;
-    Parameters parameters = 3;
-    IntegrationConfig integration = 4;
-    LogConfig log_config = 5;
-    SimulationMode mode = 6;
-    optional BatchConfig batch_config = 7;
+    JumpMechanism jump_mechanism = 3;
+    Parameters parameters = 4;
+    IntegrationConfig integration = 5;
+    LogConfig log_config = 6;
+    SimulationMode mode = 7;
+    optional BatchConfig batch_config = 8;
     
-    uint64 timestamp = 8;
+    uint64 timestamp = 9;
 }
 
 message Parameters {
@@ -44,11 +51,10 @@ message Parameters {
   
     // Optional fields for jump 
     optional double jump_intensity = 4;
-    optional double jump_mean = 5;
-    optional double jump_stddev = 6;
+    optional double jump_frequency = 5;
   
     // Optional fields for OU
-    optional double mean_reversion_rate = 7; // theta
+    optional double mean_reversion_rate = 6; // theta
 }
   
 message IntegrationConfig{

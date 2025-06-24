@@ -7,7 +7,7 @@ class GeometricBrownianModel: public Model{
 
     public: 
 
-    GeometricBrownianModel(const ModelData& modelData);
+    GeometricBrownianModel(const ModelData& modelData, std::unique_ptr<JumpInterface> jumpModel_);
     ~GeometricBrownianModel() = default;
 
     public:

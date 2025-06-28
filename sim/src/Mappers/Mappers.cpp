@@ -30,9 +30,12 @@ std::unique_ptr<JumpInterface> Mapper::mapJumpType(protocols::SimulationRequest*
     std::unique_ptr<JumpInterface> jumpModel;
 
     // Extract jump data
+    auto parameters = deserialisedMessage->mutable_parameters();
+
     JumpData jumpData(
-        deserialisedMessage->mutable_parameters()->jump_frequency(),
-        deserialisedMessage->mutable_parameters()->jump_intensity()
+        parameters->jump_frequency(),
+        parameters->jump_intensity(),
+        parameters->jump_deviation()
     );
 
     // Extract type of jump

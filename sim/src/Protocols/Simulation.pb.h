@@ -758,8 +758,9 @@ class Parameters final :
     kVolatilityFieldNumber = 2,
     kInitialPriceFieldNumber = 3,
     kJumpIntensityFieldNumber = 4,
-    kJumpFrequencyFieldNumber = 5,
-    kMeanReversionRateFieldNumber = 6,
+    kJumpDeviationFieldNumber = 5,
+    kJumpFrequencyFieldNumber = 6,
+    kMeanReversionRateFieldNumber = 7,
   };
   // double drift = 1;
   void clear_drift();
@@ -801,7 +802,20 @@ class Parameters final :
   void _internal_set_jump_intensity(double value);
   public:
 
-  // optional double jump_frequency = 5;
+  // optional double jump_deviation = 5;
+  bool has_jump_deviation() const;
+  private:
+  bool _internal_has_jump_deviation() const;
+  public:
+  void clear_jump_deviation();
+  double jump_deviation() const;
+  void set_jump_deviation(double value);
+  private:
+  double _internal_jump_deviation() const;
+  void _internal_set_jump_deviation(double value);
+  public:
+
+  // optional double jump_frequency = 6;
   bool has_jump_frequency() const;
   private:
   bool _internal_has_jump_frequency() const;
@@ -814,7 +828,7 @@ class Parameters final :
   void _internal_set_jump_frequency(double value);
   public:
 
-  // optional double mean_reversion_rate = 6;
+  // optional double mean_reversion_rate = 7;
   bool has_mean_reversion_rate() const;
   private:
   bool _internal_has_mean_reversion_rate() const;
@@ -841,6 +855,7 @@ class Parameters final :
     double volatility_;
     double initial_price_;
     double jump_intensity_;
+    double jump_deviation_;
     double jump_frequency_;
     double mean_reversion_rate_;
   };
@@ -2553,9 +2568,37 @@ inline void Parameters::set_jump_intensity(double value) {
   // @@protoc_insertion_point(field_set:protocols.Parameters.jump_intensity)
 }
 
-// optional double jump_frequency = 5;
-inline bool Parameters::_internal_has_jump_frequency() const {
+// optional double jump_deviation = 5;
+inline bool Parameters::_internal_has_jump_deviation() const {
   bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool Parameters::has_jump_deviation() const {
+  return _internal_has_jump_deviation();
+}
+inline void Parameters::clear_jump_deviation() {
+  _impl_.jump_deviation_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline double Parameters::_internal_jump_deviation() const {
+  return _impl_.jump_deviation_;
+}
+inline double Parameters::jump_deviation() const {
+  // @@protoc_insertion_point(field_get:protocols.Parameters.jump_deviation)
+  return _internal_jump_deviation();
+}
+inline void Parameters::_internal_set_jump_deviation(double value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.jump_deviation_ = value;
+}
+inline void Parameters::set_jump_deviation(double value) {
+  _internal_set_jump_deviation(value);
+  // @@protoc_insertion_point(field_set:protocols.Parameters.jump_deviation)
+}
+
+// optional double jump_frequency = 6;
+inline bool Parameters::_internal_has_jump_frequency() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline bool Parameters::has_jump_frequency() const {
@@ -2563,7 +2606,7 @@ inline bool Parameters::has_jump_frequency() const {
 }
 inline void Parameters::clear_jump_frequency() {
   _impl_.jump_frequency_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 inline double Parameters::_internal_jump_frequency() const {
   return _impl_.jump_frequency_;
@@ -2573,7 +2616,7 @@ inline double Parameters::jump_frequency() const {
   return _internal_jump_frequency();
 }
 inline void Parameters::_internal_set_jump_frequency(double value) {
-  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   _impl_.jump_frequency_ = value;
 }
 inline void Parameters::set_jump_frequency(double value) {
@@ -2581,9 +2624,9 @@ inline void Parameters::set_jump_frequency(double value) {
   // @@protoc_insertion_point(field_set:protocols.Parameters.jump_frequency)
 }
 
-// optional double mean_reversion_rate = 6;
+// optional double mean_reversion_rate = 7;
 inline bool Parameters::_internal_has_mean_reversion_rate() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool Parameters::has_mean_reversion_rate() const {
@@ -2591,7 +2634,7 @@ inline bool Parameters::has_mean_reversion_rate() const {
 }
 inline void Parameters::clear_mean_reversion_rate() {
   _impl_.mean_reversion_rate_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 inline double Parameters::_internal_mean_reversion_rate() const {
   return _impl_.mean_reversion_rate_;
@@ -2601,7 +2644,7 @@ inline double Parameters::mean_reversion_rate() const {
   return _internal_mean_reversion_rate();
 }
 inline void Parameters::_internal_set_mean_reversion_rate(double value) {
-  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_._has_bits_[0] |= 0x00000008u;
   _impl_.mean_reversion_rate_ = value;
 }
 inline void Parameters::set_mean_reversion_rate(double value) {

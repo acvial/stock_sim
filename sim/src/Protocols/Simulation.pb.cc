@@ -51,6 +51,7 @@ PROTOBUF_CONSTEXPR Parameters::Parameters(
   , /*decltype(_impl_.volatility_)*/0
   , /*decltype(_impl_.initial_price_)*/0
   , /*decltype(_impl_.jump_intensity_)*/0
+  , /*decltype(_impl_.jump_deviation_)*/0
   , /*decltype(_impl_.jump_frequency_)*/0
   , /*decltype(_impl_.mean_reversion_rate_)*/0} {}
 struct ParametersDefaultTypeInternal {
@@ -195,6 +196,7 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.volatility_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.initial_price_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_intensity_),
+  PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_deviation_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.jump_frequency_),
   PROTOBUF_FIELD_OFFSET(::protocols::Parameters, _impl_.mean_reversion_rate_),
   ~0u,
@@ -203,6 +205,7 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   0,
   1,
   2,
+  3,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::protocols::IntegrationConfig, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -267,13 +270,13 @@ const uint32_t TableStruct_Simulation_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 15, -1, sizeof(::protocols::SimulationRequest)},
-  { 24, 36, -1, sizeof(::protocols::Parameters)},
-  { 42, -1, -1, sizeof(::protocols::IntegrationConfig)},
-  { 51, -1, -1, sizeof(::protocols::LogConfig)},
-  { 60, -1, -1, sizeof(::protocols::BatchConfig_Interval)},
-  { 68, 77, -1, sizeof(::protocols::BatchConfig)},
-  { 80, 89, -1, sizeof(::protocols::BatchResult)},
-  { 92, -1, -1, sizeof(::protocols::MeanCrossingResults)},
+  { 24, 37, -1, sizeof(::protocols::Parameters)},
+  { 44, -1, -1, sizeof(::protocols::IntegrationConfig)},
+  { 53, -1, -1, sizeof(::protocols::LogConfig)},
+  { 62, -1, -1, sizeof(::protocols::BatchConfig_Interval)},
+  { 70, 79, -1, sizeof(::protocols::BatchConfig)},
+  { 82, 91, -1, sizeof(::protocols::BatchResult)},
+  { 94, -1, -1, sizeof(::protocols::MeanCrossingResults)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -307,37 +310,38 @@ const char descriptor_table_protodef_Simulation_2eproto[] PROTOBUF_SECTION_VARIA
   "RMAL\020\002\"1\n\rJumpMechanism\022\014\n\010ADDITIVE\020\000\022\022\n"
   "\016MULTIPLICATIVE\020\001\",\n\016SimulationMode\022\t\n\005B"
   "ATCH\020\000\022\017\n\013INTERACTIVE\020\001B\017\n\r_batch_config"
-  "\"\340\001\n\nParameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvolati"
+  "\"\220\002\n\nParameters\022\r\n\005drift\030\001 \001(\001\022\022\n\nvolati"
   "lity\030\002 \001(\001\022\025\n\rinitial_price\030\003 \001(\001\022\033\n\016jum"
-  "p_intensity\030\004 \001(\001H\000\210\001\001\022\033\n\016jump_frequency"
-  "\030\005 \001(\001H\001\210\001\001\022 \n\023mean_reversion_rate\030\006 \001(\001"
-  "H\002\210\001\001B\021\n\017_jump_intensityB\021\n\017_jump_freque"
-  "ncyB\026\n\024_mean_reversion_rate\"\255\001\n\021Integrat"
-  "ionConfig\0223\n\006scheme\030\001 \001(\0162#.protocols.In"
-  "tegrationConfig.Scheme\022\020\n\010timestep\030\002 \001(\001"
-  "\022\024\n\014time_horizon\030\003 \001(\001\";\n\006Scheme\022\022\n\016EULE"
-  "R_MARUYAMA\020\000\022\014\n\010MILSTEIN\020\001\022\017\n\013RUNGE_KUTT"
-  "A\020\003\"\217\001\n\tLogConfig\022,\n\005level\030\001 \001(\0162\035.proto"
-  "cols.LogConfig.LogLevel\022\025\n\rlog_each_path"
-  "\030\002 \001(\010\022\021\n\tlog_stats\030\003 \001(\010\"*\n\010LogLevel\022\t\n"
-  "\005DEBUG\020\000\022\010\n\004INFO\020\001\022\t\n\005ERROR\020\002\"\243\001\n\013BatchC"
-  "onfig\022\021\n\tnum_paths\030\001 \001(\r\022\032\n\022mean_crossin"
-  "g_time\030\002 \001(\010\0226\n\010interval\030\003 \001(\0132\037.protoco"
-  "ls.BatchConfig.IntervalH\000\210\001\001\032 \n\010Interval"
-  "\022\t\n\001a\030\001 \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_interval\"\217\001\n\013"
-  "BatchResult\022\025\n\rexpected_path\030\001 \003(\001\022\025\n\rva"
-  "riance_path\030\002 \003(\001\022=\n\020crossing_results\030\003 "
-  "\001(\0132\036.protocols.MeanCrossingResultsH\000\210\001\001"
-  "B\023\n\021_crossing_results\"\273\001\n\023MeanCrossingRe"
-  "sults\022\035\n\025total_number_of_paths\030\001 \001(\r\022!\n\031"
-  "number_of_above_crossings\030\002 \001(\r\022!\n\031numbe"
-  "r_of_below_crossings\030\003 \001(\r\022\036\n\026expected_c"
-  "rossing_time\030\004 \001(\001\022\037\n\027expected_crossing_"
-  "price\030\005 \001(\001B\002H\001b\006proto3"
+  "p_intensity\030\004 \001(\001H\000\210\001\001\022\033\n\016jump_deviation"
+  "\030\005 \001(\001H\001\210\001\001\022\033\n\016jump_frequency\030\006 \001(\001H\002\210\001\001"
+  "\022 \n\023mean_reversion_rate\030\007 \001(\001H\003\210\001\001B\021\n\017_j"
+  "ump_intensityB\021\n\017_jump_deviationB\021\n\017_jum"
+  "p_frequencyB\026\n\024_mean_reversion_rate\"\255\001\n\021"
+  "IntegrationConfig\0223\n\006scheme\030\001 \001(\0162#.prot"
+  "ocols.IntegrationConfig.Scheme\022\020\n\010timest"
+  "ep\030\002 \001(\001\022\024\n\014time_horizon\030\003 \001(\001\";\n\006Scheme"
+  "\022\022\n\016EULER_MARUYAMA\020\000\022\014\n\010MILSTEIN\020\001\022\017\n\013RU"
+  "NGE_KUTTA\020\003\"\217\001\n\tLogConfig\022,\n\005level\030\001 \001(\016"
+  "2\035.protocols.LogConfig.LogLevel\022\025\n\rlog_e"
+  "ach_path\030\002 \001(\010\022\021\n\tlog_stats\030\003 \001(\010\"*\n\010Log"
+  "Level\022\t\n\005DEBUG\020\000\022\010\n\004INFO\020\001\022\t\n\005ERROR\020\002\"\243\001"
+  "\n\013BatchConfig\022\021\n\tnum_paths\030\001 \001(\r\022\032\n\022mean"
+  "_crossing_time\030\002 \001(\010\0226\n\010interval\030\003 \001(\0132\037"
+  ".protocols.BatchConfig.IntervalH\000\210\001\001\032 \n\010"
+  "Interval\022\t\n\001a\030\001 \001(\001\022\t\n\001b\030\002 \001(\001B\013\n\t_inter"
+  "val\"\217\001\n\013BatchResult\022\025\n\rexpected_path\030\001 \003"
+  "(\001\022\025\n\rvariance_path\030\002 \003(\001\022=\n\020crossing_re"
+  "sults\030\003 \001(\0132\036.protocols.MeanCrossingResu"
+  "ltsH\000\210\001\001B\023\n\021_crossing_results\"\273\001\n\023MeanCr"
+  "ossingResults\022\035\n\025total_number_of_paths\030\001"
+  " \001(\r\022!\n\031number_of_above_crossings\030\002 \001(\r\022"
+  "!\n\031number_of_below_crossings\030\003 \001(\r\022\036\n\026ex"
+  "pected_crossing_time\030\004 \001(\001\022\037\n\027expected_c"
+  "rossing_price\030\005 \001(\001B\002H\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Simulation_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Simulation_2eproto = {
-    false, false, 1823, descriptor_table_protodef_Simulation_2eproto,
+    false, false, 1871, descriptor_table_protodef_Simulation_2eproto,
     "Simulation.proto",
     &descriptor_table_Simulation_2eproto_once, nullptr, 0, 8,
     schemas, file_default_instances, TableStruct_Simulation_2eproto::offsets,
@@ -963,11 +967,14 @@ class Parameters::_Internal {
   static void set_has_jump_intensity(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_jump_frequency(HasBits* has_bits) {
+  static void set_has_jump_deviation(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
-  static void set_has_mean_reversion_rate(HasBits* has_bits) {
+  static void set_has_jump_frequency(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
+  }
+  static void set_has_mean_reversion_rate(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
   }
 };
 
@@ -987,6 +994,7 @@ Parameters::Parameters(const Parameters& from)
     , decltype(_impl_.volatility_){}
     , decltype(_impl_.initial_price_){}
     , decltype(_impl_.jump_intensity_){}
+    , decltype(_impl_.jump_deviation_){}
     , decltype(_impl_.jump_frequency_){}
     , decltype(_impl_.mean_reversion_rate_){}};
 
@@ -1008,6 +1016,7 @@ inline void Parameters::SharedCtor(
     , decltype(_impl_.volatility_){0}
     , decltype(_impl_.initial_price_){0}
     , decltype(_impl_.jump_intensity_){0}
+    , decltype(_impl_.jump_deviation_){0}
     , decltype(_impl_.jump_frequency_){0}
     , decltype(_impl_.mean_reversion_rate_){0}
   };
@@ -1040,7 +1049,7 @@ void Parameters::Clear() {
       reinterpret_cast<char*>(&_impl_.initial_price_) -
       reinterpret_cast<char*>(&_impl_.drift_)) + sizeof(_impl_.initial_price_));
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     ::memset(&_impl_.jump_intensity_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&_impl_.mean_reversion_rate_) -
         reinterpret_cast<char*>(&_impl_.jump_intensity_)) + sizeof(_impl_.mean_reversion_rate_));
@@ -1089,18 +1098,27 @@ const char* Parameters::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
         } else
           goto handle_unusual;
         continue;
-      // optional double jump_frequency = 5;
+      // optional double jump_deviation = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 41)) {
+          _Internal::set_has_jump_deviation(&has_bits);
+          _impl_.jump_deviation_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional double jump_frequency = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 49)) {
           _Internal::set_has_jump_frequency(&has_bits);
           _impl_.jump_frequency_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
         } else
           goto handle_unusual;
         continue;
-      // optional double mean_reversion_rate = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 49)) {
+      // optional double mean_reversion_rate = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 57)) {
           _Internal::set_has_mean_reversion_rate(&has_bits);
           _impl_.mean_reversion_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
@@ -1173,16 +1191,22 @@ uint8_t* Parameters::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(4, this->_internal_jump_intensity(), target);
   }
 
-  // optional double jump_frequency = 5;
-  if (_internal_has_jump_frequency()) {
+  // optional double jump_deviation = 5;
+  if (_internal_has_jump_deviation()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(5, this->_internal_jump_frequency(), target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(5, this->_internal_jump_deviation(), target);
   }
 
-  // optional double mean_reversion_rate = 6;
+  // optional double jump_frequency = 6;
+  if (_internal_has_jump_frequency()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(6, this->_internal_jump_frequency(), target);
+  }
+
+  // optional double mean_reversion_rate = 7;
   if (_internal_has_mean_reversion_rate()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(6, this->_internal_mean_reversion_rate(), target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(7, this->_internal_mean_reversion_rate(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1229,19 +1253,24 @@ size_t Parameters::ByteSizeLong() const {
   }
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     // optional double jump_intensity = 4;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 + 8;
     }
 
-    // optional double jump_frequency = 5;
+    // optional double jump_deviation = 5;
     if (cached_has_bits & 0x00000002u) {
       total_size += 1 + 8;
     }
 
-    // optional double mean_reversion_rate = 6;
+    // optional double jump_frequency = 6;
     if (cached_has_bits & 0x00000004u) {
+      total_size += 1 + 8;
+    }
+
+    // optional double mean_reversion_rate = 7;
+    if (cached_has_bits & 0x00000008u) {
       total_size += 1 + 8;
     }
 
@@ -1286,14 +1315,17 @@ void Parameters::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PRO
     _this->_internal_set_initial_price(from._internal_initial_price());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_impl_.jump_intensity_ = from._impl_.jump_intensity_;
     }
     if (cached_has_bits & 0x00000002u) {
-      _this->_impl_.jump_frequency_ = from._impl_.jump_frequency_;
+      _this->_impl_.jump_deviation_ = from._impl_.jump_deviation_;
     }
     if (cached_has_bits & 0x00000004u) {
+      _this->_impl_.jump_frequency_ = from._impl_.jump_frequency_;
+    }
+    if (cached_has_bits & 0x00000008u) {
       _this->_impl_.mean_reversion_rate_ = from._impl_.mean_reversion_rate_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;

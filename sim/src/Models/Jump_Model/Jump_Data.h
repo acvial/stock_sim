@@ -5,12 +5,14 @@ struct JumpData{
 
     double jumpFrequency;
     double meanJumpIntensity;
+    double stdJumpIntensity;
 
     JumpData() = default;
-    JumpData(double jumpFrequency_, double meanJumpIntensity_){
+    JumpData(double jumpFrequency_, double meanJumpIntensity_, double stdJumpIntensity_){
 
         jumpFrequency     = jumpFrequency_;
         meanJumpIntensity = meanJumpIntensity_;
+        stdJumpIntensity  = stdJumpIntensity_;
     }
     ~JumpData() = default;
 };

@@ -51,10 +51,11 @@ message Parameters {
   
     // Optional fields for jump 
     optional double jump_intensity = 4;
-    optional double jump_frequency = 5;
+    optional double jump_deviation = 5;
+    optional double jump_frequency = 6;
   
     // Optional fields for OU
-    optional double mean_reversion_rate = 6; // theta
+    optional double mean_reversion_rate = 7; // theta
 }
   
 message IntegrationConfig{

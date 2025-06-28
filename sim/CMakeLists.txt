@@ -24,6 +24,8 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     )
 endif()
 
+enable_testing()
+
 # Add subdirectories
 add_subdirectory(src)
 add_subdirectory(tests)

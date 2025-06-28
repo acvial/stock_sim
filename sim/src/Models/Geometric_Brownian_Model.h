@@ -12,8 +12,8 @@ class GeometricBrownianModel: public Model{
 
     public:
 
-    double mu(double price_t, double time_t) override;
-    double sigma(double price_t, double time_t) override;
+    double mu(double price_t, double time_t) const override;
+    double sigma(double price_t, double time_t) const override;
 };
 
 #endif

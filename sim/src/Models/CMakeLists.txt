@@ -5,6 +5,7 @@ set(MODEL_SOURCES
     "/app/src/Models/Ornstein_Uhlenbeck_Model.cpp"
     "/app/src/Models/Model_Factory.cpp"
     "/app/src/Models/Jump_Model/Jump_Model.tpp"
+    "/app/src/Models/Jump_Model/Jump_Interface.cpp"
 )
 
 set(MODEL_INCLUDES

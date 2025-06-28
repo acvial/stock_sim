@@ -4,7 +4,9 @@ Model::Model() :
     drift(0),
     volatility(0),
     initialPrice(0)
-{}
+{
+    jumpModel = nullptr;
+}
 
 Model::Model(double drift_, double volatility_, double initialPrice_, std::unique_ptr<JumpInterface> jumpModel_) : 
     drift       (drift_               ), 
@@ -33,9 +35,29 @@ Model& Model::operator=(const Model& other){
         drift        = other.drift;
         volatility   = other.volatility;
         initialPrice = other.initialPrice;
+        jumpModel    = other.jumpModel->clone();
     }
 
     return *this;
+}
+
+bool Model::operator==(const Model& other){
+    
+    bool isEqual = (drift         == other.drift        &&
+                    volatility    == other.volatility   &&
+                    initialPrice  == other.initialPrice
+                );
+
+    if((jumpModel != nullptr) && (other.jumpModel != nullptr)){
+
+        isEqual = (isEqual && *jumpModel == *other.jumpModel);
+    }
+    else{
+
+        isEqual = (isEqual && jumpModel == other.jumpModel);
+    }
+
+    return isEqual;
 }
 
 void Model::setDrift(double drift_){

@@ -26,6 +26,7 @@ class Model{
     Model           (const ModelData& modelData, std::unique_ptr<JumpInterface> jumpModel_);
     Model           (const Model& other);
     Model& operator=(const Model& other);
+    bool  operator==(const Model& other);
     ~Model          () = default;
 
     public:
@@ -49,13 +50,13 @@ class Model{
     /// @param price_t Price of the stock at time t.
     /// @param time_t  Given time.
     /// @return Drift at time t.
-    virtual double mu(double price_t, double time_t) = 0;
+    virtual double mu(double price_t, double time_t) const = 0;
 
     /// @brief Computes volatitily function.
     /// @param price_t Price of the stock at time t.
     /// @param time_t  Given time.
     /// @return Volatitily at time t.
-    virtual double sigma(double price_t, double time_t) = 0;
+    virtual double sigma(double price_t, double time_t) const = 0;
 };
 
 #endif

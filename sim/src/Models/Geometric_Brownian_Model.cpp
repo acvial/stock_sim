@@ -3,13 +3,13 @@
 GeometricBrownianModel::GeometricBrownianModel(const ModelData& modelData, std::unique_ptr<JumpInterface> jumpModel_) : 
     Model(modelData, std::move(jumpModel_)){}
 
-double GeometricBrownianModel::mu(double price_t, double time){
+double GeometricBrownianModel::mu(double price_t, double time) const {
 
     (void) time;
     return drift * price_t;
 }
 
-double GeometricBrownianModel::sigma(double price_t, double time){
+double GeometricBrownianModel::sigma(double price_t, double time) const {
 
     (void) time;
     return volatility * price_t;
